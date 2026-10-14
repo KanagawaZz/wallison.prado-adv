@@ -1,18 +1,9 @@
 export const trustBadges = [
   {
-    icon: 'scale',
-    badge: 'Inscrição Oficial',
-    title: 'OAB/MT 31.726',
-    description: 'Situação regular e verificável publicamente no Cadastro Nacional dos Advogados.',
-    linkText: 'Consultar no site da OAB',
-    linkHref: 'https://cna.oab.org.br/',
-    isExternal: true,
-  },
-  {
     icon: 'shield',
     badge: 'Foco Exclusivo',
     title: 'Servidores de MT',
-    description: 'Atuação fundamentada na LC 04/90, estatutos municipais e precedentes do TJMT.',
+    description: 'Atuação fundamentada na legislação aplicável, estatutos municipais e precedentes dos tribunais.',
     linkText: 'Ver áreas de atuação',
     linkHref: '#atuacao',
     isExternal: false,
@@ -22,8 +13,8 @@ export const trustBadges = [
     badge: 'Comunicação Direta',
     title: 'Retorno Ágil',
     description: 'Atendimento prestativo e direto com o advogado em horário comercial.',
-    linkText: 'Conheça o atendimento',
-    linkHref: '#como-funciona',
+    linkText: 'Conheça os diferenciais',
+    linkHref: '#institucional',
     isExternal: false,
   },
   {
@@ -31,8 +22,8 @@ export const trustBadges = [
     badge: '100% Digital',
     title: 'Cuiabá e Interior de MT',
     description: 'Atendimento por WhatsApp e assinatura eletrônica no celular, sem deslocamentos.',
-    linkText: 'Entenda o procedimento',
-    linkHref: '#como-funciona',
+    linkText: 'Ver áreas de atuação',
+    linkHref: '#atuacao',
     isExternal: false,
   },
 ];

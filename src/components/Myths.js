@@ -80,8 +80,8 @@ export function Myths({ myths, siteConfig }) {
               <p>Cada situação funcional possui particularidades normativas e documentais. O conteúdo aqui exposto tem finalidade estritamente informativa e não constitui promessa ou garantia de resultado.</p>
             </div>
             <div class="callout-action-link">
-              <a href="#como-funciona" class="link-subtle">
-                <span>Ver etapas do atendimento</span>
+              <a href="#institucional" class="link-subtle">
+                <span>Ver diferenciais de atuação</span>
                 ${Icon({ name: 'arrowRight', size: 14 })}
               </a>
             </div>

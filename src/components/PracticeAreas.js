@@ -11,7 +11,7 @@ export function PracticeAreas({ practiceAreas, siteConfig }) {
           </div>
           <h2>Demandas frequentes de servidores públicos em Mato Grosso</h2>
           <p class="section-subheading">
-            Atuação técnica para combater arbitrariedades, destravar direitos de carreira e recuperar valores retidos nas esferas <strong>Estadual (LC 04/90), Municipal e Federal</strong>.
+            Atuação técnica para combater arbitrariedades, destravar direitos de carreira e recuperar valores retidos nas esferas <strong>Estadual, Municipal e Federal</strong>.
           </p>
         </div>
 

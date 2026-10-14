@@ -2,7 +2,7 @@ export const faq = [
   {
     question: 'Minha chefia imediata ou o RH vão saber que consultei um advogado?',
     answer:
-      'Não. O atendimento inicial e qualquer análise de documentos são estritamente sigilosos, protegidos pelo sigilo profissional inerente à advocacia (Lei nº 8.906/1994) e pela LGPD. Nenhuma informação é comunicada ao seu órgão ou a colegas de trabalho.',
+      'Não. O atendimento inicial e qualquer análise de documentos são estritamente sigilosos, protegidos pelo sigilo profissional inerente à advocacia e pela legislação de proteção de dados. Nenhuma informação é comunicada ao seu órgão ou a colegas de trabalho.',
   },
   {
     question: 'Moro no interior de Mato Grosso. Preciso me deslocar até Cuiabá?',
@@ -20,9 +20,9 @@ export const faq = [
       'Você envia seu relato e seus documentos básicos pelo WhatsApp. O Dr. Wallison faz uma triagem técnica preliminar para verificar se há amparo legal ou jurisprudencial no seu caso. Se houver viabilidade e você optar pela atuação, todas as etapas e honorários contratuais são formalizados com absoluta transparência.',
   },
   {
-    question: 'Atende servidores municipais, estaduais (LC 04/90) e federais?',
+    question: 'Atende servidores municipais, estaduais e federais?',
     answer:
-      'Sim. Atuamos na defesa de servidores do Estado de Mato Grosso regidos pela Lei Complementar nº 04/1990 (como SEDUC, SES-MT, Segurança Pública), servidores municipais de todas as prefeituras de MT e servidores federais (Lei nº 8.112/1990), incluindo cargos efetivos e contratados temporários.',
+      'Sim. Atuamos na defesa de servidores do Estado de Mato Grosso, servidores municipais de todas as prefeituras de MT e servidores da esfera federal, incluindo cargos efetivos e contratados temporários.',
   },
   {
     question: 'Quais documentos preciso ter em mãos para a conversa?',

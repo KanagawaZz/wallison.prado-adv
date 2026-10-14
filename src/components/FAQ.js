@@ -40,7 +40,7 @@ export function FAQ({ faq, siteConfig }) {
         <div class="faq-support-box" data-reveal="fade-up">
           <div class="support-text">
             <strong>Conteúdo jurídico contínuo para servidores públicos</strong>
-            <p>Acompanhe análises sobre a LC 04/90, decisões judiciais recentes e orientações sobre direitos funcionais no Instagram.</p>
+            <p>Acompanhe análises sobre a legislação dos servidores, decisões judiciais recentes e orientações sobre direitos funcionais no Instagram.</p>
           </div>
           <a href="${siteConfig.instagram}" target="_blank" rel="noopener noreferrer" class="button button-instagram">
             ${Icon({ name: 'instagram', size: 18 })}

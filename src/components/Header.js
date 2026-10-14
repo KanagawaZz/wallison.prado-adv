@@ -9,13 +9,6 @@ export function Header({ navigation, siteConfig, lawyer }) {
             <span class="live-dot" aria-hidden="true"></span>
             <span>Atendimento 100% online para servidores públicos em todo o Mato Grosso</span>
           </div>
-          <div class="announcement-links">
-            <a href="${siteConfig.oabLink}" target="_blank" rel="noopener noreferrer" class="oab-chip" title="Consultar inscrição no Cadastro Nacional dos Advogados">
-              ${Icon({ name: 'scale', size: 13 })}
-              <span>${siteConfig.oabNumber} • Inscrição Regular</span>
-              ${Icon({ name: 'externalLink', size: 12 })}
-            </a>
-          </div>
         </div>
       </div>
 
@@ -26,7 +19,7 @@ export function Header({ navigation, siteConfig, lawyer }) {
           </div>
           <div class="brand-text">
             <strong class="brand-name">${siteConfig.name}</strong>
-            <span class="brand-oab">${lawyer.oab} • Direito Administrativo</span>
+            <span class="brand-oab">Direito Administrativo</span>
           </div>
         </a>
 
@@ -43,7 +36,7 @@ export function Header({ navigation, siteConfig, lawyer }) {
         </div>
 
         <div class="header-action">
-          <a class="button button-header" href="#contato">
+          <a class="button button-header" href="${siteConfig.whatsappLink}" target="_blank" rel="noopener noreferrer">
             <span>Falar com o Advogado</span>
           </a>
         </div>

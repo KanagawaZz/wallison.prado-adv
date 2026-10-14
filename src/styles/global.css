@@ -416,9 +416,15 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
-  gap: 4rem;
+  gap: 3.5rem;
   position: relative;
   z-index: 2;
+  max-width: var(--container-max);
+}
+
+.hero-copy {
+  max-width: 100%;
+  width: 100%;
 }
 
 .hero-mobile-lawyer-badge {
@@ -433,13 +439,26 @@ h1, h2, h3, h4 {
   backdrop-filter: blur(8px);
 }
 
-.hero-mobile-avatar {
-  width: 52px;
-  height: 52px;
+.hero-mobile-avatar-img {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: top;
-  border: 2px solid var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.hero-mobile-avatar-placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--color-accent);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
 }
@@ -508,16 +527,30 @@ h1, h2, h3, h4 {
 }
 
 .hero-lead {
-  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  font-size: clamp(1.1rem, 1.6vw, 1.25rem);
   color: #c0d1e0;
   line-height: 1.7;
   margin-bottom: 2.4rem;
-  max-width: 640px;
+  max-width: 860px;
 }
 
 .hero-lead strong {
   color: #ffffff;
   font-weight: 700;
+}
+
+.hero-law-link {
+  color: var(--color-accent-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(196, 154, 86, 0.45);
+  font-weight: 600;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.hero-law-link:hover {
+  color: #ffffff;
+  text-decoration-color: var(--color-accent-light);
 }
 
 .hero-actions {
@@ -679,7 +712,7 @@ h1, h2, h3, h4 {
 
 .trust-bar-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 }
 
@@ -765,6 +798,12 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+}
+
+@media (min-width: 1101px) {
+  .practice-card:last-child:nth-child(3n + 1) {
+    grid-column: 2;
+  }
 }
 
 .practice-card {
@@ -1424,8 +1463,14 @@ h1, h2, h3, h4 {
 .institutional-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 4rem;
   align-items: center;
+  gap: 3.5rem;
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.institutional-copy {
+  max-width: 100%;
 }
 
 .institutional-title {
@@ -1433,6 +1478,7 @@ h1, h2, h3, h4 {
   font-size: clamp(2.3rem, 3.8vw, 3.5rem);
   margin-block: 1rem 1.2rem;
   line-height: 1.12;
+  max-width: 880px;
 }
 
 .institutional-lead {
@@ -1440,12 +1486,14 @@ h1, h2, h3, h4 {
   color: #b5c7d8;
   line-height: 1.65;
   margin-bottom: 2.2rem;
+  max-width: 880px;
 }
 
 .institutional-pillars-list {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.35rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0;
 }
 
 .pillar-row {
@@ -1618,10 +1666,13 @@ h1, h2, h3, h4 {
 }
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 0.88fr 1.12fr;
-  gap: 4rem;
-  align-items: center;
+  display: block;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.about-copy-column {
+  max-width: 100%;
 }
 
 .about-visual-column {

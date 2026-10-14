@@ -3,11 +3,9 @@ import { Hero } from './components/Hero.js';
 import { TrustBar } from './components/TrustBar.js';
 import { PracticeAreas } from './components/PracticeAreas.js';
 import { Myths } from './components/Myths.js';
-import { HowItWorks } from './components/HowItWorks.js';
 import { InstitutionalPillars } from './components/InstitutionalPillars.js';
 import { About } from './components/About.js';
 import { FAQ } from './components/FAQ.js';
-import { FinalCTA } from './components/FinalCTA.js';
 import { Footer } from './components/Footer.js';
 import { WhatsAppButton } from './components/WhatsAppButton.js';
 
@@ -17,7 +15,6 @@ import { navigation } from './data/navigation.js';
 import { trustBadges } from './data/trustBadges.js';
 import { practiceAreas } from './data/practiceAreas.js';
 import { myths } from './data/myths.js';
-import { steps } from './data/steps.js';
 import { faq } from './data/faq.js';
 
 import { applySeo } from './utils/seo.js';
@@ -36,11 +33,9 @@ app.innerHTML = `
     ${TrustBar({ trustBadges })}
     ${PracticeAreas({ practiceAreas, siteConfig })}
     ${Myths({ myths, siteConfig })}
-    ${HowItWorks({ steps, siteConfig })}
     ${InstitutionalPillars({ siteConfig })}
     ${About({ lawyer, siteConfig })}
     ${FAQ({ faq, siteConfig })}
-    ${FinalCTA({ siteConfig, lawyer })}
   </main>
   ${Footer({ lawyer, siteConfig })}
   ${WhatsAppButton({ siteConfig })}

@@ -1,13 +1,11 @@
 import { Icon } from './Icon.js';
 
-const themisImage = new URL('../assets/themis-justice.jpg', import.meta.url).href;
-
 export function InstitutionalPillars({ siteConfig }) {
   const pillars = [
     {
       icon: 'fileCheck',
-      title: 'Domínio da LC 04/1990 e Legislações Municipais',
-      desc: 'Conhecimento técnico aprofundado do Estatuto dos Servidores de MT e dos planos de carreira das prefeituras, identificando ilegalidades e direitos represados.',
+      title: 'Domínio da Legislação Estadual e Municipal',
+      desc: 'Conhecimento técnico aprofundado do estatuto dos servidores públicos de MT e dos planos de carreira municipais, identificando ilegalidades e direitos represados.',
     },
     {
       icon: 'shield',
@@ -30,7 +28,7 @@ export function InstitutionalPillars({ siteConfig }) {
     <section id="institucional" class="section-block institutional-section">
       <div class="container">
         <div class="institutional-grid">
-          <div class="institutional-copy" data-reveal="fade-right">
+          <div class="institutional-copy" data-reveal="fade-up">
             <div class="eyebrow-chip">
               ${Icon({ name: 'shield', size: 14 })}
               <span>Diferenciais de Atuação</span>
@@ -61,34 +59,28 @@ export function InstitutionalPillars({ siteConfig }) {
                 )
                 .join('')}
             </div>
-
-            <div class="institutional-credo-box">
-              <p class="credo-quote">
-                “Nenhum servidor público deve abrir mão de seus direitos remuneratórios ou da sua estabilidade funcional por receio de retaliação ou desinformação.”
-              </p>
-              <span class="credo-signature">— Dr. Wallison Prado • OAB/MT 31.726</span>
-            </div>
           </div>
 
-          <div class="institutional-visual" data-reveal="fade-left">
-            <div class="themis-frame-3d" data-tilt-3d data-tilt-max="5">
+          <div class="institutional-visual" data-reveal="fade-up">
+            <div class="themis-frame-3d" data-tilt-3d data-tilt-max="6">
               <img 
-                src="${themisImage}" 
-                alt="Símbolo da Justiça e Legalidade no Direito Administrativo" 
-                class="themis-image" 
-                loading="lazy" 
+                src="/images/themis.png" 
+                alt="Escultura da Deusa da Justiça (Têmis) com balança e espada" 
+                class="themis-image"
+                width="410"
+                height="466"
+                loading="lazy"
               />
               <div class="themis-glow" aria-hidden="true"></div>
               <div class="themis-specular-border" aria-hidden="true"></div>
             </div>
-
             <div class="themis-badge-pill">
               <div class="themis-badge-icon">
-                ${Icon({ name: 'shield', size: 16 })}
+                ${Icon({ name: 'scale', size: 18 })}
               </div>
               <div class="themis-badge-text">
-                <strong>Segurança & Rigor Técnico</strong>
-                <small>Defesa Especializada de Servidores em MT</small>
+                <strong>Rigor Técnico & Ética</strong>
+                <small>Balança e espada em defesa do servidor</small>
               </div>
             </div>
           </div>

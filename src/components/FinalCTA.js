@@ -14,7 +14,7 @@ export function FinalCTA({ siteConfig, lawyer }) {
               Proteja sua carreira e seus direitos antes que os prazos prescrevam
             </h2>
             <p class="contact-subtitle">
-              Tire suas dúvidas diretamente com o Dr. Wallison Prado pelo WhatsApp. Atendimento ágil, direto e sem intermediários para servidores estaduais (LC 04/90), municipais e federais em todo o Mato Grosso.
+              Tire suas dúvidas diretamente com o Dr. Wallison Prado pelo WhatsApp. Atendimento ágil, direto e sem intermediários para servidores estaduais, municipais e federais em todo o Mato Grosso.
             </p>
 
             <div class="contact-trust-checklist">
@@ -27,11 +27,6 @@ export function FinalCTA({ siteConfig, lawyer }) {
               <a class="button button-gold contact-main-btn" href="${siteConfig.whatsappLink}" target="_blank" rel="noopener noreferrer">
                 ${Icon({ name: 'chat', size: 20 })}
                 <span>Falar agora com o Dr. Wallison no WhatsApp</span>
-              </a>
-              <a class="button button-glass contact-oab-btn" href="${siteConfig.oabLink}" target="_blank" rel="noopener noreferrer">
-                ${Icon({ name: 'scale', size: 16 })}
-                <span>Consultar OAB/MT 31.726</span>
-                ${Icon({ name: 'externalLink', size: 13 })}
               </a>
             </div>
           </div>

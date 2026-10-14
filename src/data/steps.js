@@ -10,7 +10,7 @@ export const steps = [
   {
     number: '02',
     title: 'Diagnóstico das Leis de MT e Documentos',
-    subtitle: 'Exame minucioso da LC 04/90, do estatuto do seu município e dos contracheques',
+    subtitle: 'Exame minucioso da legislação aplicável, do estatuto do seu município e dos contracheques',
     description:
       'Avaliamos com rigor técnico os seus holerites, portarias e fichas funcionais para identificar ilegalidades, prescrição e a viabilidade jurídica do seu direito, com total transparência e sem promessa de resultado.',
     highlight: 'Diagnóstico jurídico fundamentado',

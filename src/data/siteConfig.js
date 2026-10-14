@@ -20,7 +20,7 @@ export const siteConfig = {
   responseTimeEstimate: 'Retorno ágil e atendimento direto no WhatsApp',
   
   baseUrl: 'https://landing-page-wallison.vercel.app',
-  description: 'Wallison Prado Advocacia (OAB/MT 31.726). Defesa técnica e especializada em Direito Administrativo para servidores públicos estaduais (LC 04/90), municipais e federais em todo o Mato Grosso. Atendimento ágil, ético e 100% online.',
+  description: 'Wallison Prado Advocacia (OAB/MT 31.726). Defesa técnica e especializada em Direito Administrativo para servidores públicos estaduais, municipais e federais em todo o Mato Grosso. Atendimento ágil, ético e 100% online.',
   keywords: [
     'Wallison Prado Advocacia',
     'advogado servidor público Mato Grosso',
@@ -28,7 +28,7 @@ export const siteConfig = {
     'OAB MT 31726',
     'PAD processo administrativo disciplinar MT',
     'progressão funcional servidor público MT',
-    'Lei Complementar 04 90 MT',
+    'estatuto dos servidores MT',
     'adicional insalubridade servidor público MT',
     'licença prêmio aposentadoria servidor MT',
     'advogado servidor público Cuiabá',
