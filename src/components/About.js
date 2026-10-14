@@ -42,7 +42,7 @@ export function About({ lawyer, siteConfig }) {
             </h2>
 
             <div class="about-paragraphs">
-              <p>
+              <p class="about-bio-desktop">
                 O exercício da função pública demanda dedicação diária à sociedade. No entanto, é frequente que o servidor enfrente decisões administrativas unilaterais, atrasos injustificados na concessão de progressões, supressão de adicionais ou notificações de processos disciplinares (PADs).
               </p>
               <p>
@@ -69,12 +69,13 @@ export function About({ lawyer, siteConfig }) {
             </div>
 
             <div class="about-actions-row">
+              <a href="${siteConfig.whatsappLink}" target="_blank" rel="noopener noreferrer" class="button button-primary about-btn-cta">
+                ${Icon({ name: 'chat', size: 18 })}
+                <span>Falar com o Dr. Wallison</span>
+              </a>
               <a href="${siteConfig.instagram}" target="_blank" rel="noopener noreferrer" class="button button-instagram" title="Acompanhar o trabalho no Instagram">
                 ${Icon({ name: 'instagram', size: 18 })}
-                <span>Conhecer perfil no Instagram ${siteConfig.instagramHandle}</span>
-              </a>
-              <a href="#contato" class="button button-outline">
-                <span>Solicitar Atendimento</span>
+                <span>Instagram ${siteConfig.instagramHandle}</span>
               </a>
             </div>
           </div>

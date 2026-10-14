@@ -37,18 +37,18 @@ export function FinalCTA({ siteConfig, lawyer }) {
           </div>
 
           <div class="contact-details-grid">
-            <div class="contact-info-card">
+            <a href="${siteConfig.whatsappLink}" target="_blank" rel="noopener noreferrer" class="contact-info-card contact-info-link" title="Abrir conversa no WhatsApp">
               <div class="info-card-icon">
                 ${Icon({ name: 'phone', size: 18 })}
               </div>
               <div class="info-card-text">
                 <span class="info-label">WhatsApp Institucional</span>
                 <strong>${siteConfig.whatsappDisplay}</strong>
-                <small>Mensagens e videochamadas</small>
+                <small>Retorno ágil e videochamadas</small>
               </div>
-            </div>
+            </a>
 
-            <div class="contact-info-card">
+            <a href="mailto:${siteConfig.email}" class="contact-info-card contact-info-link" title="Enviar e-mail com documentos">
               <div class="info-card-icon">
                 ${Icon({ name: 'mail', size: 18 })}
               </div>
@@ -57,7 +57,7 @@ export function FinalCTA({ siteConfig, lawyer }) {
                 <strong>${siteConfig.email}</strong>
                 <small>Envio de documentos funcionais</small>
               </div>
-            </div>
+            </a>
 
             <div class="contact-info-card">
               <div class="info-card-icon">

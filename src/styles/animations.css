@@ -27,6 +27,14 @@
   will-change: auto;
 }
 
+/* Previne que transformações horizontais causem corte lateral no celular */
+@media (max-width: 768px) {
+  [data-reveal="fade-right"],
+  [data-reveal="fade-left"] {
+    transform: translateY(14px);
+  }
+}
+
 /* Delay escalonado sutil para cartões */
 .practice-card,
 .step-card,

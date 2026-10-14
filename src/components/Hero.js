@@ -7,6 +7,26 @@ export function Hero({ lawyer, siteConfig }) {
       
       <div class="container hero-grid">
         <div class="hero-copy" data-reveal="fade-up">
+          <!-- Identificação integrada otimizada para visualização mobile imediata -->
+          <div class="hero-mobile-lawyer-badge" aria-label="Identificação profissional do Dr. Wallison Prado">
+            <img 
+              src="${lawyer.photo}" 
+              alt="Dr. Wallison Prado - Advogado OAB/MT 31.726" 
+              class="hero-mobile-avatar" 
+              loading="eager" 
+              width="58"
+              height="58"
+            />
+            <div class="hero-mobile-lawyer-info">
+              <div class="hero-mobile-name-row">
+                <span class="live-dot" aria-hidden="true"></span>
+                <strong>Dr. Wallison Prado</strong>
+                <span class="caption-tag">OAB/MT 31.726</span>
+              </div>
+              <span class="hero-mobile-lawyer-role">Especialista em Servidores de MT • 100% Online</span>
+            </div>
+          </div>
+
           <div class="hero-badge-wrap">
             <div class="hero-badge">
               <span class="badge-icon">${Icon({ name: 'scale', size: 14 })}</span>
@@ -28,7 +48,7 @@ export function Hero({ lawyer, siteConfig }) {
               <span>Falar diretamente com o Dr. Wallison</span>
             </a>
 
-            <a class="button button-outline" href="${siteConfig.oabLink}" target="_blank" rel="noopener noreferrer">
+            <a class="button button-outline hero-btn-oab" href="${siteConfig.oabLink}" target="_blank" rel="noopener noreferrer">
               ${Icon({ name: 'scale', size: 16 })}
               <span>Consultar OAB/MT 31.726</span>
             </a>

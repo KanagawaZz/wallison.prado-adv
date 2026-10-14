@@ -37,36 +37,58 @@ export function PracticeAreas({ practiceAreas, siteConfig }) {
                     <p class="card-subtitle">${area.subtitle}</p>
                     <p class="card-description">${area.description}</p>
 
-                    <div class="card-examples-box">
-                      <span class="examples-label">Situações recorrentes:</span>
-                      <ul class="examples-list">
-                        ${area.examples
-                          .map(
-                            (ex) => `
-                              <li>
-                                <span class="check-bullet">${Icon({ name: 'check', size: 12 })}</span>
-                                <span>${ex}</span>
-                              </li>
-                            `
-                          )
-                          .join('')}
-                      </ul>
-                    </div>
-                  </div>
+                    <details class="card-details-collapsible">
+                      <summary class="card-details-trigger" aria-label="Ver situações práticas e esferas de atendimento">
+                        <span class="trigger-text">Ver situações práticas & esferas</span>
+                        <span class="trigger-icon" aria-hidden="true">${Icon({ name: 'chevronDown', size: 14 })}</span>
+                      </summary>
+                      
+                      <div class="card-collapsible-inner">
+                        <div class="card-examples-box">
+                          <span class="examples-label">Situações recorrentes:</span>
+                          <ul class="examples-list">
+                            ${area.examples
+                              .map(
+                                (ex) => `
+                                  <li>
+                                    <span class="check-bullet">${Icon({ name: 'check', size: 12 })}</span>
+                                    <span>${ex}</span>
+                                  </li>
+                                `
+                              )
+                              .join('')}
+                          </ul>
+                        </div>
 
-                  <div class="card-footer">
-                    <div class="card-spheres-wrap">
-                      <span class="spheres-label">Esferas:</span>
-                      <div class="spheres-chips">
-                        ${area.spheres
-                          .map((sphere) => `<span class="sphere-chip">${sphere}</span>`)
-                          .join('')}
+                        <div class="card-footer">
+                          <div class="card-spheres-wrap">
+                            <span class="spheres-label">Esferas:</span>
+                            <div class="spheres-chips">
+                              ${area.spheres
+                                .map((sphere) => `<span class="sphere-chip">${sphere}</span>`)
+                                .join('')}
+                            </div>
+                          </div>
+
+                          <div class="card-nature-badge">
+                            <span class="nature-dot"></span>
+                            <span>Atuação Administrativa & Judicial</span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </details>
 
-                    <div class="card-nature-badge">
-                      <span class="nature-dot"></span>
-                      <span>Atuação Administrativa & Judicial</span>
+                    <div class="card-quick-action">
+                      <a 
+                        href="https://wa.me/556599405845?text=${encodeURIComponent(`Olá, Dr. Wallison. Sou servidor público em MT e preciso de orientação sobre: ${area.title}.`)}" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        class="card-action-link"
+                        title="Tirar dúvida sobre ${area.title}"
+                      >
+                        <span>Consultar sobre este tema</span>
+                        ${Icon({ name: 'arrowRight', size: 14 })}
+                      </a>
                     </div>
                   </div>
                 </article>
