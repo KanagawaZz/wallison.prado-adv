@@ -283,17 +283,42 @@
 
   /* ========================================================================
      BLOCO 1 — APRESENTAÇÃO PRINCIPAL DO ADVOGADO (FOCO EM CONVERSÃO)
-     Retrato executivo + Identificação + Proposta de valor + WhatsApp imediato
+     Losango duplo + Monograma WP + Identificação + Proposta de valor + WhatsApp imediato
      ======================================================================== */
   .hero-section {
-    padding-block: 1.5rem 2rem;
+    min-height: auto;
+    padding-block: 2.5rem 3rem;
   }
 
   .hero-grid {
     display: flex;
     flex-direction: column;
     text-align: center;
-    gap: 1rem;
+    gap: 1.5rem;
+  }
+
+  .hero-monogram-stage {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 0 auto 1.5rem;
+    order: -1;
+    pointer-events: auto;
+  }
+
+  .hero-losango-wrapper {
+    width: 210px;
+    height: 210px;
+  }
+
+  .hero-losango-svg {
+    width: 210px;
+    height: 210px;
+  }
+
+  .hero-monogram-letters {
+    font-size: 2.8rem;
   }
 
   .hero-copy {
@@ -301,73 +326,21 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-  }
-
-  /* Retrato Executivo do Dr. Wallison Prado em Destaque Central */
-  .hero-visual {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0.85rem;
-    order: -1;
-    width: 100%;
-  }
-
-  .profile-frame-3d {
-    width: min(190px, 52vw);
-    aspect-ratio: 0.88;
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    margin-inline: auto;
-    border: 1.5px solid rgba(196, 154, 86, 0.45);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 25px rgba(196, 154, 86, 0.18);
-  }
-
-  .portrait-caption-pill {
-    display: none !important;
-  }
-
-  /* Badge de Identificação Executiva */
-  .hero-mobile-lawyer-badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(184, 155, 94, 0.3);
-    border-radius: var(--radius-lg);
-    padding: 0.6rem 0.95rem;
-    margin-bottom: 0.85rem;
     text-align: center;
   }
 
-  .hero-mobile-avatar {
+  .hero-visual-target {
     display: none;
   }
 
-  .hero-mobile-lawyer-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-    text-align: center;
-  }
-
-  .hero-mobile-name-row {
+  .hero-actions {
     justify-content: center;
+    width: 100%;
   }
 
-  .hero-badge-wrap {
-    margin-bottom: 0.5rem;
-  }
-
-  .hero-badge {
-    margin-inline: auto;
-    font-size: 0.74rem;
-    padding: 0.35rem 0.85rem;
-    gap: 0.45rem;
+  .hero-trust-row {
+    justify-content: center;
+    gap: 0.85rem;
   }
 
   .hero-title {
