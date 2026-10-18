@@ -1,155 +1,306 @@
 /* ==========================================================================
-   ANIMAÇÕES E TRANSIÇÕES SUAVES (300-500ms)
-   Respeita prefers-reduced-motion e diretrizes de sobriedade visual
+   PADRÃO GLOBAL DE ANIMAÇÕES (SEÇÃO 3)
+   - Easing padrão: cubic-bezier(0.22, 1, 0.36, 1)
+   - Duração: entre 0.6s e 1.2s para entradas
+   - Gatilho: 20% do elemento na tela, once: true
+   - Distâncias pequenas: 20 a 40px
+   - Propriedades animadas: transform, opacity, filter
+   - prefers-reduced-motion: fade direto de 0.3s sem movimento
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   PADRÃO DE REVELAÇÃO (3.3 - ENTRADA DE SEÇÕES)
+   -------------------------------------------------------------------------- */
 
 [data-reveal] {
   opacity: 0;
-  transition: opacity 0.45s var(--transition-smooth), transform 0.45s var(--transition-smooth);
-  will-change: opacity, transform;
+  transition: opacity 0.8s var(--ease-standard),
+              transform 0.8s var(--ease-standard),
+              filter 0.8s var(--ease-standard);
+  will-change: opacity, transform, filter;
 }
 
-[data-reveal="fade-up"] {
-  transform: translateY(20px);
+/* Rótulo Dourado (Linha cresce 0.5s, texto surge 0.15s depois) */
+[data-reveal="label"] {
+  transform: translateY(16px);
 }
-
-[data-reveal="fade-right"] {
-  transform: translateX(-24px);
-}
-
-[data-reveal="fade-left"] {
-  transform: translateX(24px);
-}
-
-[data-reveal].is-visible {
+[data-reveal="label"].is-visible {
   opacity: 1;
-  transform: none;
-  will-change: auto;
+  transform: translateY(0);
+}
+[data-reveal="label"]::before {
+  transform: scaleX(0);
+}
+[data-reveal="label"].is-visible::before {
+  transform: scaleX(1);
 }
 
-/* Previne que transformações horizontais causem corte lateral no celular */
+/* Título de Seção (30px subida + blur 8px -> 0 em 0.9s) */
+[data-reveal="title"] {
+  transform: translateY(30px);
+  filter: blur(8px);
+  transition-duration: 0.9s;
+  transition-delay: 0.2s;
+}
+
+[data-reveal="title"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Em celulares (<768px): blur máximo de 4px para preservar performance */
 @media (max-width: 768px) {
-  [data-reveal="fade-right"],
-  [data-reveal="fade-left"] {
-    transform: translateY(14px);
+  [data-reveal="title"] {
+    filter: blur(4px);
+    transform: translateY(20px);
   }
 }
 
-/* Delay escalonado sutil para cartões */
-.practice-card,
-.step-card,
-.myth-depth-card,
-.trust-card {
-  transition-delay: var(--card-delay, var(--step-delay, var(--myth-delay, 0s)));
-}
-
-/* Reflexo Especular de Luz Dinâmico (Efeito 3D Glare discreto) */
-.glare-reflection {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  z-index: 10;
-  mix-blend-mode: overlay;
-}
-
-/* Indicador sutil de atendimento ativo */
-.live-dot,
-.tooltip-status-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #25d366;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.live-dot::after,
-.tooltip-status-dot::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background-color: #25d366;
-  animation: gentle-pulse 2.8s infinite ease-out;
-}
-
-@keyframes gentle-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  70% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
-}
-
-/* Brilho discreto no botão do WhatsApp */
-.whatsapp-pulse-ring {
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(37, 211, 102, 0.25) 0%, transparent 70%);
-  animation: whatsapp-glow 3s infinite ease-in-out;
-  pointer-events: none;
-  z-index: 0;
-}
-
-@keyframes whatsapp-glow {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.15);
-    opacity: 0.6;
-  }
-}
-
-/* Micro-transição de abertura do Acordeão FAQ */
-.faq-chevron-icon {
-  transition: transform 0.3s var(--transition-smooth);
-}
-
-.faq-item[open] .faq-chevron-icon {
-  transform: rotate(180deg);
-}
-
-.faq-answer-wrapper {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s var(--transition-smooth);
-}
-
-.faq-item[open] .faq-answer-wrapper {
-  grid-template-rows: 1fr;
-}
-
-.faq-answer-inner {
+/* Títulos de duas linhas revelados de baixo para cima com máscara de recorte */
+.reveal-line-wrap {
+  display: block;
   overflow: hidden;
 }
 
-/* Desativação respeitosa de movimento (Acessibilidade) */
+.reveal-line {
+  display: block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.8s var(--ease-standard), opacity 0.8s var(--ease-standard);
+}
+
+.is-visible .reveal-line:nth-child(1) {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.is-visible .reveal-line:nth-child(2) {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.3s;
+}
+
+/* Parágrafo de Seção (20px subida, sem blur, 0.7s, delay 0.35s) */
+[data-reveal="paragraph"],
+[data-reveal="lead"] {
+  transform: translateY(20px);
+  transition-duration: 0.7s;
+  transition-delay: 0.35s;
+}
+
+[data-reveal="paragraph"].is-visible,
+[data-reveal="lead"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-up genérico padrão */
+[data-reveal="fade-up"] {
+  transform: translateY(30px);
+  transition-duration: 0.8s;
+}
+
+[data-reveal="fade-up"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Entrada escalonada de filhos (cards, passos, itens) com stagger 0.12s a partir de 0.5s */
+.stagger-container [data-reveal-item] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-standard), transform 0.8s var(--ease-standard);
+  transition-delay: calc(0.5s + (var(--item-index, 0) * 0.12s));
+}
+
+.stagger-container.is-visible [data-reveal-item] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   FEIXE DE LUZ METÁLICA (SHINE DE METAL POLIDO - 3.1 & 3.10)
+   -------------------------------------------------------------------------- */
+
+.shine-track {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-runner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 30%, rgba(230, 201, 138, 0.55) 50%, transparent 70%);
+  mix-blend-mode: screen;
+  transform: translateX(-160%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.shine-runner.animate-pass {
+  animation: metal-shine-pass 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes metal-shine-pass {
+  0% {
+    transform: translateX(-160%);
+  }
+  100% {
+    transform: translateX(260%);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   GLOW RESPIRATÓRIO DO LOSANGO (4S CICLO - QUASE IMPERCEPTÍVEL - 3.1)
+   -------------------------------------------------------------------------- */
+
+@keyframes losango-breathe {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(201, 164, 92, 0.25));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(201, 164, 92, 0.45));
+  }
+}
+
+.losango-glow-active {
+  animation: losango-breathe 4s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   ROTAÇÃO MONUMENTAL DO LOSANGO (CTA FINAL - 120S VIVO - 3.9)
+   -------------------------------------------------------------------------- */
+
+@keyframes slow-spin-monumental {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.monumental-spin {
+  animation: slow-spin-monumental 120s linear infinite;
+  transform-origin: center center;
+}
+
+/* --------------------------------------------------------------------------
+   ANEL PULSANTE DOURADO DO WHATSAPP (3.11)
+   Círculo dourado de 1px que cresce de scale 1 a 1.6 enquanto esmaece (opacity 0.6 -> 0) a cada 3s
+   -------------------------------------------------------------------------- */
+
+.whatsapp-gold-pulse {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 1px solid var(--color-accent);
+  animation: gold-pulse-ring 3s var(--ease-standard) infinite;
+  pointer-events: none;
+}
+
+@keyframes gold-pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70%, 100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   ACORDEÃO SUAVE DO FAQ (3.8 - 0.45S COM ÍCONE + QUE GIRA 45° PARA ×)
+   -------------------------------------------------------------------------- */
+
+.faq-accordion-item {
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  transition: border-color 0.3s var(--ease-standard);
+}
+
+.faq-accordion-item.is-open {
+  border-color: rgba(201, 164, 92, 0.35);
+}
+
+/* Linha dourada de 2px à esquerda que cresce de cima para baixo */
+.faq-accordion-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--color-accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.45s var(--ease-standard);
+}
+
+.faq-accordion-item.is-open::before {
+  transform: scaleY(1);
+}
+
+.faq-icon-cross {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: var(--color-accent);
+  transition: transform 0.45s var(--ease-standard), color 0.3s var(--ease-standard);
+}
+
+.faq-accordion-item.is-open .faq-icon-cross {
+  transform: rotate(45deg);
+}
+
+/* --------------------------------------------------------------------------
+   ACESSIBILIDADE: PREFERS-REDUCED-MOTION
+   -------------------------------------------------------------------------- */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation-duration: 0.3s !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0.3s !important;
     scroll-behavior: auto !important;
+    transform: none !important;
+    filter: none !important;
   }
 
-  [data-reveal] {
+  [data-reveal],
+  [data-reveal="title"],
+  [data-reveal="paragraph"],
+  [data-reveal="fade-up"],
+  .stagger-container [data-reveal-item] {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
+    transition: opacity 0.3s ease !important;
+  }
+
+  .reveal-line {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .eyebrow-chip::before,
+  [data-reveal="label"]::before {
+    transform: scaleX(1) !important;
+  }
+
+  .monumental-spin,
+  .losango-glow-active,
+  .whatsapp-gold-pulse {
+    animation: none !important;
   }
 }
