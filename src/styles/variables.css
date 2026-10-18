@@ -1,37 +1,44 @@
 :root {
   /* ==========================================================================
-     PALETA DE CORES ESTRITA (3 CORES PRINCIPAIS)
+     PALETA DE CORES ESTRITA & CONTRASTE WCAG AA / AAA
      1. Marinho Profundo (#0B1B33)
-     2. Dourado Champanhe (#C9A45C)
-     3. Branco-Gelo (#F3EFE6)
+     2. Dourado Champanhe (#C9A45C & #E6C98A)
+     3. Branco-Gelo (#F3EFE6) & Texto Claro (#C9D1DE)
+     4. Fundo de Cards Escuro Nobre (#10233F)
      ========================================================================== */
   --color-primary: #0B1B33;             /* Fundo marinho escuro nobre */
   --color-primary-dark: #071224;        /* Base ultra escura */
   --color-primary-light: #12284A;       /* Luz difusa / gradiente sutil */
   --color-primary-surface: rgba(18, 40, 74, 0.45);
   
+  --color-card-bg: #10233F;             /* Fundo dos cards escuro (nada de card branco) */
+  --color-card-border: rgba(201, 164, 92, 0.18); /* Borda 1px 18% dourada */
+  --color-card-hover-border: rgba(201, 164, 92, 0.50);
+
   --color-accent: #C9A45C;              /* Dourado champanhe fosco */
+  --color-accent-sub: #E6C98A;          /* Dourado claro para subtítulos em cards */
   --color-accent-light: #D4B26C;        /* Dourado para hover / destaque suave */
   --color-accent-hover: #D4B26C;
   --color-accent-soft: rgba(201, 164, 92, 0.10);
-  --color-accent-border: rgba(201, 164, 92, 0.15); /* Linhas finas a 15% */
-  --color-accent-border-bright: rgba(201, 164, 92, 0.60); /* Borda iluminada hover */
+  --color-accent-border: rgba(201, 164, 92, 0.18);
+  --color-accent-border-bright: rgba(201, 164, 92, 0.60);
   
   --color-bg: #0B1B33;                  /* Fundo principal escuro */
   --color-bg-alt: #071224;              /* Variação profunda */
-  --color-surface: rgba(255, 255, 255, 0.02); /* Superfície sutil para cards */
-  --color-surface-hover: rgba(255, 255, 255, 0.04);
+  --color-surface: #10233F;             /* Superfície dos cards */
   
-  --color-text: #F3EFE6;                /* Branco-gelo para títulos e destaque */
-  --color-text-secondary: #D4D0C7;      /* Texto de apoio e parágrafos */
-  --color-text-muted: #8E99A8;          /* Metadados e notas secundárias */
+  --color-text: #F3EFE6;                /* Branco-gelo para títulos (contraste 14.5:1) */
+  --color-text-secondary: #C9D1DE;      /* Texto corrido e parágrafos (contraste 10.9:1) */
+  --color-text-muted: #9AA8BC;          /* Metadados e notas de apoio (contraste 6.2:1) */
   --color-text-light: #F3EFE6;
   
-  --color-border: rgba(201, 164, 92, 0.15); /* Linha fina de 1px dourada a 15% */
-  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border: rgba(201, 164, 92, 0.18);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
 
   /* ==========================================================================
-     TIPOGRAFIA (MÁXIMO 2 FONTES)
+     TIPOGRAFIA (REGRAS ESTRITAS DE PESO E TAMANHO)
+     - Cormorant Garamond: APENAS em títulos >= 24px (500 nos grandes, 600 nos médios)
+     - Inter: em texto corrido (16-18px, 400), botões e menus (15-16px, 500)
      ========================================================================== */
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -39,31 +46,42 @@
   --font-sans: var(--font-body);
 
   /* ==========================================================================
-     EASINGS & TRANSIÇÕES GLOBAIS
+     ESCALA FIXA DE ESPAÇAMENTO (8, 16, 24, 32, 48, 64, 96, 128px)
      ========================================================================== */
-  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);  /* Padrão global: aterrissagem suave */
-  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);      /* Desenho do losango */
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --space-128: 128px;
+
+  /* Espaçamento entre seções */
+  --section-padding-desktop: 128px;
+  --section-padding-mobile: 80px;
+  --section-padding-y: var(--section-padding-desktop);
+
+  /* ==========================================================================
+     CONTAINER GLOBAL
+     max-width 1240px, margin 0 auto, padding lateral clamp(24px, 6vw, 96px)
+     ========================================================================== */
+  --container-max: 1240px;
+  --container-padding: clamp(24px, 6vw, 96px);
+
+  /* ==========================================================================
+     EASINGS & TRANSIÇÕES
+     ========================================================================== */
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);
   --transition-smooth: var(--ease-standard);
 
   /* ==========================================================================
-     CANTOS (MÁXIMO 8PX - ELEGÂNCIA E CONTENÇÃO)
+     CANTOS (MÁXIMO 8PX)
      ========================================================================== */
   --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px; /* LIMITE MÁXIMO */
   --radius-pill: 9999px; /* Apenas para selos/tags pequenos */
-
-  /* ==========================================================================
-     ESPAÇAMENTO & LAYOUT
-     ========================================================================== */
-  --container-max: 1200px;
-  --section-padding-desktop: clamp(7.5rem, 10vw, 10rem); /* 120px a 160px */
-  --section-padding-mobile: 5rem;                         /* 80px */
-  --section-padding-y: var(--section-padding-desktop);
-
-  /* Sombras contidas */
-  --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.25);
-  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
-  --shadow-hover: 0 14px 40px rgba(0, 0, 0, 0.45);
 }

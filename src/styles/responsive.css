@@ -18,9 +18,10 @@
     gap: 1.25rem;
   }
 
+  .practice-cards-grid,
   .practice-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
+    gap: 24px;
   }
 
   .practice-card:last-child:nth-child(2n + 1) {
@@ -204,14 +205,6 @@
     max-width: 100vw;
     width: 100%;
     position: relative;
-  }
-
-  .container {
-    width: calc(100% - 2rem);
-    max-width: 100%;
-    margin-inline: auto;
-    padding-inline: 0;
-    box-sizing: border-box;
   }
 
   /* Previne botões com texto longo de estourarem a tela */
@@ -455,15 +448,16 @@
     padding-block: 2.25rem;
   }
 
+  .practice-cards-grid,
   .practice-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .practice-card {
-    padding: 1.25rem 1.15rem;
-    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    border-radius: 8px;
   }
 
   .card-top {
@@ -618,37 +612,38 @@
   }
 
   /* ========================================================================
-     OMISSÃO DE SEÇÕES SECUNDÁRIAS NO MOBILE (FOCO TOTAL EM CONVERSÃO)
-     Mantém no mobile apenas os componentes essenciais solicitados:
-     1. Apresentação do advogado (Hero / Sobre)
-     2. O que ele resolve (Áreas de Atuação)
-     3. Informações de contato e agilidade (Canais Oficiais e WhatsApp)
-     ======================================================================== */
-  .myths-section {
-    display: none !important;
-  }
-
-  .institutional-section {
-    display: none !important;
-  }
-
-  .faq-section {
-    display: none !important;
-  }
-
-  /* ========================================================================
      BLOCO 4 — SOBRE O ADVOGADO (AUTORIDADE E CONFIANÇA RÁPIDA)
      ======================================================================== */
   .about-section {
-    padding-block: 2.25rem;
+    padding-block: var(--section-padding-mobile);
   }
 
   .about-grid {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 2rem;
     width: 100%;
     box-sizing: border-box;
+  }
+
+  .about-visual-column {
+    order: -1;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .about-frame-stage {
+    width: 100%;
+    max-width: 320px;
+    margin: 12px auto;
+  }
+
+  .about-gold-offset-frame {
+    top: -12px;
+    left: -12px;
+    right: 12px;
+    bottom: 12px;
   }
 
   .about-copy-column {
@@ -658,22 +653,21 @@
   }
 
   .about-title {
-    font-size: 1.5rem;
-    line-height: 1.22;
-    margin-bottom: 0.65rem;
+    font-size: clamp(1.6rem, 5.5vw, 2.1rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
 
   .about-paragraphs p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-
-  .about-bio-desktop {
-    display: none !important;
+    font-size: 1rem;
+    line-height: 1.65;
   }
 
   .about-values-grid {
-    display: none !important;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
   }
 
   .about-actions-row {

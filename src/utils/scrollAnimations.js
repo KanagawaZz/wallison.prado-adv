@@ -1,12 +1,12 @@
 /**
  * Motor de Revelação e Animações de Scroll
- * Diretriz 3: amount 0.2, once: true, easing cubic-bezier(0.22, 1, 0.36, 1)
+ * Diretriz 3 & 6: amount 0.2, once: true, easing cubic-bezier(0.22, 1, 0.36, 1)
  */
 export function initScrollAnimations() {
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // 1. IntersectionObserver para elementos [data-reveal] e .stagger-container
-  const revealTargets = document.querySelectorAll('[data-reveal], .stagger-container');
+  // 1. IntersectionObserver para elementos de revelação
+  const revealTargets = document.querySelectorAll('[data-reveal], [data-reveal-card], .stagger-container');
 
   if ('IntersectionObserver' in window && !isReducedMotion) {
     const observer = new IntersectionObserver(
@@ -14,24 +14,31 @@ export function initScrollAnimations() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            // Regra Seção 3: dispara uma vez só (once: true). Rolar para cima não reanima.
+            // Remove will-change após animação terminar para máxima nitidez (Regra 7)
+            entry.target.addEventListener(
+              'transitionend',
+              () => {
+                entry.target.style.willChange = 'auto';
+              },
+              { once: true }
+            );
             obs.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.2, // 20% do elemento na tela
+        threshold: 0.15, // 15-20% do elemento na tela
         rootMargin: '0px 0px -40px 0px',
       }
     );
 
     revealTargets.forEach((el) => observer.observe(el));
   } else {
-    // Fallback gracioso para navegadores sem IntersectionObserver ou reduced motion
+    // Fallback gracioso
     revealTargets.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // 2. Header transparente -> Fundo marinho translúcido + blur(14px) após 80px de scroll (3.2)
+  // 2. Header transparente -> Fundo marinho translúcido + blur(12px) após 80px de scroll (3.2 & 7)
   const header = document.querySelector('.site-header');
   if (header) {
     const handleHeaderScroll = () => {
@@ -57,7 +64,36 @@ export function initScrollAnimations() {
     });
   });
 
-  // 4. Acordeão Suave e Exclusivo do FAQ (3.8)
+  // 4. Controle de Visibilidade do Botão Flutuante de WhatsApp (3.11 & Ajuste 2)
+  const floatingWhatsapp = document.querySelector('#floatingWhatsapp');
+  const heroSection = document.querySelector('#inicio');
+  const finalCta = document.querySelector('#contato');
+
+  if (floatingWhatsapp && heroSection) {
+    const checkFloatingVisibility = () => {
+      const scrollY = window.scrollY;
+      const heroThreshold = heroSection.offsetHeight - 120;
+      let nearFinalCta = false;
+
+      if (finalCta) {
+        const ctaRect = finalCta.getBoundingClientRect();
+        if (ctaRect.top < window.innerHeight && ctaRect.bottom > 0) {
+          nearFinalCta = true;
+        }
+      }
+
+      if (scrollY > heroThreshold && !nearFinalCta) {
+        floatingWhatsapp.classList.add('is-visible');
+      } else {
+        floatingWhatsapp.classList.remove('is-visible');
+      }
+    };
+
+    window.addEventListener('scroll', checkFloatingVisibility, { passive: true });
+    checkFloatingVisibility();
+  }
+
+  // 5. Acordeão Suave e Exclusivo do FAQ (3.8)
   const faqItems = document.querySelectorAll('.faq-accordion-item');
   faqItems.forEach((item) => {
     const trigger = item.querySelector('.faq-summary-btn, summary');

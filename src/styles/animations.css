@@ -107,6 +107,98 @@
   transform: translateY(0);
 }
 
+/* --------------------------------------------------------------------------
+   ANIMAÇÕES VINDAS DAS LATERAIS (REGRA 6)
+   - Coluna texto: translateX(-80px -> 0)
+   - Coluna imagem: translateX(80px -> 0)
+   - Mobile: limite de 32px
+   -------------------------------------------------------------------------- */
+
+[data-reveal="from-left"] {
+  transform: translateX(-80px);
+  opacity: 0;
+  filter: blur(6px);
+  transition: opacity 1.0s var(--ease-standard),
+              transform 1.0s var(--ease-standard),
+              filter 1.0s var(--ease-standard);
+}
+
+[data-reveal="from-left"].is-visible,
+.hero-stage-ready [data-reveal="from-left"] {
+  transform: translateX(0);
+  opacity: 1;
+  filter: none;
+}
+
+[data-reveal="from-right"] {
+  transform: translateX(80px);
+  opacity: 0;
+  filter: blur(6px);
+  transition: opacity 1.0s var(--ease-standard),
+              transform 1.0s var(--ease-standard),
+              filter 1.0s var(--ease-standard);
+}
+
+[data-reveal="from-right"].is-visible,
+.hero-stage-ready [data-reveal="from-right"] {
+  transform: translateX(0);
+  opacity: 1;
+  filter: none;
+}
+
+@media (max-width: 768px) {
+  [data-reveal="from-left"] {
+    transform: translateX(-32px);
+    filter: blur(4px);
+  }
+  [data-reveal="from-right"] {
+    transform: translateX(32px);
+    filter: blur(4px);
+  }
+}
+
+/* Cards em Grid com Entrada Direcional (Regra 6) */
+[data-reveal-card] {
+  opacity: 0;
+  transition: opacity 0.85s var(--ease-standard),
+              transform 0.85s var(--ease-standard),
+              filter 0.85s var(--ease-standard);
+  transition-delay: var(--card-row-delay, 0s);
+}
+
+[data-reveal-card="left"] {
+  transform: translateX(-60px);
+  filter: blur(4px);
+}
+
+[data-reveal-card="center"] {
+  transform: translateY(40px);
+  filter: blur(4px);
+}
+
+[data-reveal-card="right"] {
+  transform: translateX(60px);
+  filter: blur(4px);
+}
+
+[data-reveal-card].is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (max-width: 768px) {
+  [data-reveal-card="left"] {
+    transform: translateX(-32px);
+  }
+  [data-reveal-card="center"] {
+    transform: translateY(28px);
+  }
+  [data-reveal-card="right"] {
+    transform: translateX(32px);
+  }
+}
+
 /* Entrada escalonada de filhos (cards, passos, itens) com stagger 0.12s a partir de 0.5s */
 .stagger-container [data-reveal-item] {
   opacity: 0;

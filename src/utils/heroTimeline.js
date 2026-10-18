@@ -11,12 +11,12 @@
  */
 export function initHeroTimeline() {
   const heroSection = document.querySelector('#inicio');
-  const monogramStage = document.querySelector('#heroMonogramStage');
+  const monogramStage = document.querySelector('#heroStageComposition') || document.querySelector('#heroMonogramStage');
   const losangoWrapper = document.querySelector('#heroLosangoWrapper');
   const shineBeam = document.querySelector('#heroShineBeam');
   const header = document.querySelector('.site-header');
 
-  if (!heroSection || !monogramStage) return;
+  if (!heroSection) return;
 
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
