@@ -221,9 +221,9 @@
     max-width: 100%;
   }
 
-  /* Espaçamento Global das Seções */
+  /* Espaçamento Global das Seções (80px no mobile) */
   .section-block {
-    padding-block: 2.25rem;
+    padding-block: var(--section-padding-mobile);
   }
 
   .section-header {

@@ -1,46 +1,69 @@
 :root {
-  /* Paleta Nobre e Institucional - Conforme Diretrizes da OAB */
-  --color-primary: #0B1B33;           /* Azul-marinho profundo como cor principal */
-  --color-primary-dark: #071224;      /* Azul-marinho ultra escuro */
-  --color-primary-light: #162a4a;     /* Tom intermediário elegante */
-  --color-primary-soft: rgba(11, 27, 51, 0.05);
+  /* ==========================================================================
+     PALETA DE CORES ESTRITA (3 CORES PRINCIPAIS)
+     1. Marinho Profundo (#0B1B33)
+     2. Dourado Champanhe (#C9A45C)
+     3. Branco-Gelo (#F3EFE6)
+     ========================================================================== */
+  --color-primary: #0B1B33;             /* Fundo marinho escuro nobre */
+  --color-primary-dark: #071224;        /* Base ultra escura */
+  --color-primary-light: #12284A;       /* Luz difusa / gradiente sutil */
+  --color-primary-surface: rgba(18, 40, 74, 0.45);
+  
+  --color-accent: #C9A45C;              /* Dourado champanhe fosco */
+  --color-accent-light: #D4B26C;        /* Dourado para hover / destaque suave */
+  --color-accent-hover: #D4B26C;
+  --color-accent-soft: rgba(201, 164, 92, 0.10);
+  --color-accent-border: rgba(201, 164, 92, 0.15); /* Linhas finas a 15% */
+  --color-accent-border-bright: rgba(201, 164, 92, 0.60); /* Borda iluminada hover */
+  
+  --color-bg: #0B1B33;                  /* Fundo principal escuro */
+  --color-bg-alt: #071224;              /* Variação profunda */
+  --color-surface: rgba(255, 255, 255, 0.02); /* Superfície sutil para cards */
+  --color-surface-hover: rgba(255, 255, 255, 0.04);
+  
+  --color-text: #F3EFE6;                /* Branco-gelo para títulos e destaque */
+  --color-text-secondary: #D4D0C7;      /* Texto de apoio e parágrafos */
+  --color-text-muted: #8E99A8;          /* Metadados e notas secundárias */
+  --color-text-light: #F3EFE6;
+  
+  --color-border: rgba(201, 164, 92, 0.15); /* Linha fina de 1px dourada a 15% */
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
 
-  --color-accent: #B89B5E;            /* Dourado champanhe fosco apenas em detalhes */
-  --color-accent-hover: #a3874b;      /* Dourado escurecido para hover */
-  --color-accent-light: #cfb77f;      /* Dourado claro para linhas finas */
-  --color-accent-soft: rgba(184, 155, 94, 0.10);
-  --color-accent-border: rgba(184, 155, 94, 0.35);
-
-  --color-bg: #F7F4EE;                /* Off-white quente como fundo */
-  --color-bg-alt: #EFEBE1;            /* Off-white secundário */
-  --color-surface: #FFFFFF;           /* Superfície limpa para cards */
-  --color-surface-subtle: #FAF8F4;
-
-  --color-text: #1A202C;              /* Grafite escuro para máxima legibilidade */
-  --color-text-secondary: #4A5568;    /* Grafite médio para parágrafos */
-  --color-text-muted: #718096;        /* Grafite suave para notas secundárias */
-  --color-text-light: #F7F4EE;
-
-  --color-border: rgba(11, 27, 51, 0.10);  /* Borda sutil de 1px */
-  --color-border-subtle: rgba(11, 27, 51, 0.06);
-
-  /* Tipografia */
-  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  /* ==========================================================================
+     TIPOGRAFIA (MÁXIMO 2 FONTES)
+     ========================================================================== */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
 
-  /* Efeitos e Sombras Leves */
-  --shadow-subtle: 0 2px 8px rgba(11, 27, 51, 0.04);
-  --shadow-card: 0 8px 24px rgba(11, 27, 51, 0.06);
-  --shadow-hover: 0 12px 32px rgba(11, 27, 51, 0.10);
+  /* ==========================================================================
+     EASINGS & TRANSIÇÕES GLOBAIS
+     ========================================================================== */
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);  /* Padrão global: aterrissagem suave */
+  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);      /* Desenho do losango */
+  --transition-smooth: var(--ease-standard);
 
-  /* Cantos suaves (8-12px) */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
-  --radius-pill: 9999px;
+  /* ==========================================================================
+     CANTOS (MÁXIMO 8PX - ELEGÂNCIA E CONTENÇÃO)
+     ========================================================================== */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px; /* LIMITE MÁXIMO */
+  --radius-pill: 9999px; /* Apenas para selos/tags pequenos */
 
-  /* Layout */
+  /* ==========================================================================
+     ESPAÇAMENTO & LAYOUT
+     ========================================================================== */
   --container-max: 1200px;
-  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --section-padding-desktop: clamp(7.5rem, 10vw, 10rem); /* 120px a 160px */
+  --section-padding-mobile: 5rem;                         /* 80px */
+  --section-padding-y: var(--section-padding-desktop);
+
+  /* Sombras contidas */
+  --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 14px 40px rgba(0, 0, 0, 0.45);
 }
