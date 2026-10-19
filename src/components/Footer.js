@@ -10,20 +10,24 @@ export function Footer({ lawyer, siteConfig }) {
           <div class="footer-monogram-brand">
             <span class="footer-monogram">WP</span>
             <div>
-              <strong class="footer-title">${siteConfig.name}</strong>
-              <p class="footer-subtitle">Defesa de Servidores Públicos</p>
+              <strong class="footer-title">Dr. Wallison Prado</strong>
+              <p class="footer-subtitle">
+                <a href="${siteConfig.oabLink}" target="_blank" rel="noopener noreferrer" class="footer-oab-link">
+                  OAB/MT 31.726 • Consultar no CNA ${Icon({ name: 'externalLink', size: 12 })}
+                </a>
+              </p>
             </div>
           </div>
-          <p class="footer-bio-summary">
+          <p class="footer-bio-summary desktop-only">
             Atuação técnica, combativa e ética dedicada à proteção das prerrogativas funcionais de servidores públicos municipais, estaduais e federais em todo o Mato Grosso.
           </p>
-          <div class="footer-lgpd-note">
+          <div class="footer-lgpd-note desktop-only">
             <span class="lgpd-icon">${Icon({ name: 'shield', size: 14 })}</span>
             <p><strong>Privacidade (LGPD):</strong> Os dados enviados por WhatsApp ou e-mail são utilizados exclusivamente para fins de contato e análise prévia da situação funcional.</p>
           </div>
         </div>
 
-        <div class="footer-nav-col">
+        <div class="footer-nav-col desktop-only">
           <span class="footer-heading">Navegação</span>
           <ul class="footer-links-list">
             <li><a href="#inicio">Início</a></li>
@@ -35,7 +39,7 @@ export function Footer({ lawyer, siteConfig }) {
           </ul>
         </div>
 
-        <div class="footer-contact-col">
+        <div class="footer-contact-col desktop-only">
           <span class="footer-heading">Canais Oficiais</span>
           <div class="footer-contact-items">
             <a href="${siteConfig.whatsappLink}" target="_blank" rel="noopener noreferrer" class="footer-contact-link">
@@ -58,7 +62,7 @@ export function Footer({ lawyer, siteConfig }) {
         </div>
       </div>
 
-      <div class="container footer-legal-notice-box">
+      <div class="container footer-legal-notice-box desktop-only">
         <div class="legal-badge">
           ${Icon({ name: 'scale', size: 15 })}
           <span>Nota de Conformidade Ética OAB</span>
@@ -70,7 +74,7 @@ export function Footer({ lawyer, siteConfig }) {
 
       <div class="container footer-bottom-row">
         <p>© ${currentYear} ${siteConfig.name}. Todos os direitos reservados.</p>
-        <div class="footer-bottom-badges">
+        <div class="footer-bottom-badges desktop-only">
           <span>Atendimento 100% Online em todo o Mato Grosso</span>
         </div>
       </div>

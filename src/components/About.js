@@ -8,30 +8,38 @@ export function About({ lawyer, siteConfig }) {
       <div class="container">
         <!-- Linha Superior: Themis e Perfil lado a lado perfeitamente balanceados -->
         <div class="about-top-grid">
-          <!-- Coluna Visual: Imagem Themis com Moldura Dupla Dourada Deslocada 16px -->
+          <!-- Coluna Visual: Foto no Mobile / Themis no Desktop -->
           <div class="about-visual-column" data-reveal="from-left">
             <div class="about-frame-stage">
-              <!-- Moldura Dourada Traseira Deslocada 16px -->
-              <div class="about-gold-offset-frame" aria-hidden="true">
+              <!-- Moldura Dourada Traseira Deslocada 16px (Desktop) -->
+              <div class="about-gold-offset-frame desktop-only" aria-hidden="true">
                 <svg class="about-gold-offset-svg" width="100%" height="100%" style="position: absolute; inset: 0; overflow: visible;" aria-hidden="true">
                   <rect class="about-light-rect" x="0" y="0" width="100%" height="100%" rx="12" pathLength="1000" fill="none" stroke="#B88B2E" stroke-width="1.5" stroke-linecap="round" />
                 </svg>
               </div>
               
-              <!-- Moldura Principal com Estátua da Themis -->
+              <!-- Moldura Principal -->
               <div class="about-photo-wrapper">
                 <img 
                   src="/images/themis.png" 
                   alt="Escultura da Deusa da Justiça (Themis) com balança e espada"
-                  class="about-portrait-img"
+                  class="about-portrait-img desktop-only"
                   width="440"
                   height="480"
                   loading="lazy"
                 />
+                <img 
+                  src="/images/wallison-prado.jpg" 
+                  alt="Dr. Wallison Prado - Advogado Especialista em Servidores Públicos em MT"
+                  class="about-portrait-img mobile-only about-mobile-avatar"
+                  width="140"
+                  height="160"
+                  loading="lazy"
+                />
               </div>
 
-              <!-- Selo Institucional sobre a imagem -->
-              <div class="about-photo-badge">
+              <!-- Selo Institucional sobre a imagem (Desktop) -->
+              <div class="about-photo-badge desktop-only">
                 <span class="badge-dot" aria-hidden="true"></span>
                 <strong>Símbolo da Justiça</strong>
                 <small>Precisão Técnica & Ética</small>
@@ -43,19 +51,24 @@ export function About({ lawyer, siteConfig }) {
           <div class="about-copy-column" data-reveal="from-right">
             <div class="about-header-meta">
               <span class="eyebrow-chip" data-reveal="label">
-                Perfil Profissional
+                <span class="desktop-only">Perfil Profissional</span>
+                <span class="mobile-only">Sobre o Advogado</span>
               </span>
               <h2 class="about-title" data-reveal="title">
-                Advocacia dedicada à defesa dos servidores públicos em todo o Mato Grosso.
+                <span class="desktop-only">Advocacia dedicada à defesa dos servidores públicos em todo o Mato Grosso.</span>
+                <span class="mobile-only">Dr. Wallison Prado • OAB/MT 31.726</span>
               </h2>
             </div>
 
             <div class="about-paragraphs" data-reveal="paragraph">
-              <p>
+              <p class="desktop-only">
                 O exercício da função pública demanda dedicação diária à sociedade. No entanto, é frequente que o servidor enfrente decisões administrativas unilaterais, atrasos injustificados na concessão de progressões, supressão de adicionais ou notificações de processos disciplinares (PADs).
               </p>
-              <p>
+              <p class="desktop-only">
                 Atuo com foco técnico e vigilante na proteção das prerrogativas funcionais de quem serve ao público: unindo interpretação criteriosa do estatuto dos servidores estaduais e municipais ao compromisso de transparência, comunicação direta e atendimento ágil em todo o estado de Mato Grosso.
+              </p>
+              <p class="mobile-only about-mobile-summary">
+                Advocacia combativa em Direito Administrativo, dedicada a anular punições ilegais, destravar carreiras e proteger os direitos de quem serve ao público em Mato Grosso.
               </p>
             </div>
 
@@ -64,7 +77,7 @@ export function About({ lawyer, siteConfig }) {
                 ${Icon({ name: 'chat', size: 18 })}
                 <span>Falar com o Dr. Wallison</span>
               </a>
-              <a href="${siteConfig.instagram}" target="_blank" rel="noopener noreferrer" class="button button-outline about-btn-instagram" title="Acompanhar o trabalho no Instagram">
+              <a href="${siteConfig.instagram}" target="_blank" rel="noopener noreferrer" class="button button-outline about-btn-instagram desktop-only" title="Acompanhar o trabalho no Instagram">
                 ${Icon({ name: 'instagram', size: 18 })}
                 <span>Instagram ${siteConfig.instagramHandle}</span>
               </a>
@@ -72,8 +85,8 @@ export function About({ lawyer, siteConfig }) {
           </div>
         </div>
 
-        <!-- Linha Inferior: 4 Cards com Molduras Horizontais preenchendo toda a largura -->
-        <div class="about-pillars-container" data-reveal="fade-up">
+        <!-- Linha Inferior: 4 Cards (Apenas Desktop) -->
+        <div class="about-pillars-container desktop-only" data-reveal="fade-up">
           <div class="about-pillars-header">
             <span class="about-pillars-subtitle">Pilares da Atuação Profissional</span>
           </div>

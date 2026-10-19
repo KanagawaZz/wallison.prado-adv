@@ -8,9 +8,9 @@ export const siteConfig = {
   regionCoverage: 'Atendimento 100% online em Cuiabá e todo o interior de Mato Grosso',
   
   // Contatos oficiais
-  whatsappNumber: '{{WHATSAPP}}',
-  whatsappDisplay: '{{WHATSAPP}}',
-  whatsappLink: 'https://wa.me/{{WHATSAPP}}?text=Ol%C3%A1%2C%20Dr.%20Wallison.%20Sou%20servidor%20p%C3%BAblico%20em%20MT%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o%20sobre%20a%20minha%20situa%C3%A7%C3%A3o%20funcional.',
+  whatsappNumber: '556599405845',
+  whatsappDisplay: '(65) 9940-5845',
+  whatsappLink: 'https://wa.me/556599405845?text=Ol%C3%A1%2C%20Dr.%20Wallison.%20Sou%20servidor%20p%C3%BAblico%20em%20MT%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o%20sobre%20a%20minha%20situa%C3%A7%C3%A3o%20funcional.',
   instagram: 'https://www.instagram.com/wallison.prado',
   instagramHandle: '@wallison.prado',
   email: 'adv.wallisonprado@gmail.com',

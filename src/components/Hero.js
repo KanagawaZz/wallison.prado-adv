@@ -15,18 +15,32 @@ export function Hero({ lawyer, siteConfig }) {
         <div class="hero-grid">
           <!-- Coluna Esquerda (1.1fr): Mensagem & Conversão -->
           <div class="hero-copy" id="heroCopy" data-reveal="from-left">
-            <div class="hero-label-wrap">
+            <div class="hero-mobile-lawyer-header mobile-only">
+              <strong class="hero-mobile-name">Dr. Wallison Prado</strong>
+              <span class="hero-mobile-oab">OAB/MT 31.726</span>
+            </div>
+
+            <div class="hero-label-wrap desktop-only">
               <span class="hero-eyebrow-line" aria-hidden="true"></span>
               <span class="hero-gold-label">MATO GROSSO • ATENDIMENTO 100% ONLINE</span>
             </div>
 
             <h1 class="hero-title" id="heroMainTitle">
-              Atuação técnica nos seus direitos como servidor público em Mato Grosso
+              <span class="desktop-only">Atuação técnica nos seus direitos como servidor público em Mato Grosso</span>
+              <span class="mobile-only">Advogado de servidores públicos de MT</span>
             </h1>
 
-            <p class="hero-lead" id="heroLeadText">
+            <p class="hero-lead desktop-only" id="heroLeadText">
               Atuação combativa para servidores estaduais, municipais e federais. Destrave progressões retidas, defenda-se em PADs e recupere adicionais com atendimento 100% online e suporte técnico especializado.
             </p>
+
+            <div class="hero-mobile-tags mobile-only" aria-label="Especialidades">
+              <span class="hero-mobile-tag">PAD</span>
+              <span class="tag-bullet">•</span>
+              <span class="hero-mobile-tag">Progressões</span>
+              <span class="tag-bullet">•</span>
+              <span class="hero-mobile-tag">Licença-prêmio</span>
+            </div>
 
             <div class="hero-actions" id="heroActionButtons">
               <a 
@@ -37,11 +51,12 @@ export function Hero({ lawyer, siteConfig }) {
                 id="heroWhatsappCta"
               >
                 ${Icon({ name: 'chat', size: 18 })}
-                <span>Falar diretamente com o Dr. Wallison</span>
+                <span class="desktop-only">Falar diretamente com o Dr. Wallison</span>
+                <span class="mobile-only">Falar no WhatsApp</span>
               </a>
 
               <a 
-                class="button button-outline hero-btn-oab" 
+                class="button button-outline hero-btn-oab desktop-only" 
                 href="${siteConfig.oabLink}" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -51,7 +66,11 @@ export function Hero({ lawyer, siteConfig }) {
               </a>
             </div>
 
-            <div class="hero-trust-row" aria-label="Garantias do atendimento">
+            <p class="hero-mobile-subtext mobile-only">
+              Atendimento online em todo o MT • Primeira conversa gratuita
+            </p>
+
+            <div class="hero-trust-row desktop-only" aria-label="Garantias do atendimento">
               <div class="trust-pill">
                 <span class="pill-check">${Icon({ name: 'shield', size: 14 })}</span>
                 <span>Atuação Especializada</span>
@@ -149,7 +168,7 @@ export function Hero({ lawyer, siteConfig }) {
                 />
                 
                 <!-- Selo de Assinatura Monograma WP sobreposto elegantemente -->
-                <div class="hero-portrait-seal">
+                <div class="hero-portrait-seal desktop-only">
                   <span class="seal-wp">WP</span>
                   <div class="seal-meta">
                     <strong>Dr. Wallison Prado</strong>

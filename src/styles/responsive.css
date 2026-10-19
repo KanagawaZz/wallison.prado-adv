@@ -168,12 +168,17 @@
    Zero corte lateral (overflow-x corrigido), sem repetições cansativas
    ========================================================================== */
 @media (max-width: 768px) {
-  /* Blindagem contra rolagem lateral e quebra de margem */
+  /* Blindagem contra rolagem lateral e margens */
   html, body {
     overflow-x: hidden !important;
     max-width: 100vw;
     width: 100%;
     position: relative;
+  }
+
+  /* Espaço na base do body para a barra fixa de WhatsApp não cobrir o conteúdo (Regra 3) */
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
   }
 
   /* Previne botões com texto longo de estourarem a tela */
@@ -183,96 +188,167 @@
     max-width: 100%;
   }
 
-  /* Espaçamento Global das Seções (80px no mobile) */
+  /* Regras de Tipografia Mobile: Fonte mínima de 16px nos textos e parágrafos curtos (Regra 4) */
+  p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    max-width: 100% !important;
+  }
+
+  /* Títulos com no máximo 2 linhas (Regra 4) */
+  h1, h2, h3, .section-title, .contact-title {
+    line-height: 1.25 !important;
+    max-width: 100% !important;
+  }
+
+  /* Espaçamento Global das Seções */
   .section-block {
-    padding-block: var(--section-padding-mobile);
+    padding-block: 2rem;
   }
 
   .section-header {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
   }
 
   .section-header h2 {
-    font-size: clamp(1.7rem, 6vw, 2.15rem);
-    margin-block: 0.45rem 0.65rem;
+    font-size: clamp(1.4rem, 5.5vw, 1.75rem);
+    margin-block: 0.35rem 0.5rem;
   }
 
   .section-subheading {
-    font-size: 0.92rem;
-    line-height: 1.48;
+    font-size: 16px;
+    line-height: 1.5;
   }
 
   /* ========================================================================
-     CABEÇALHO MOBILE ENXUTO (NÃO FIXO, LIBERA 140PX DA TELA)
+     ANIMAÇÕES MOBILE: FADE + 16px DE SUBIDA (REGRA 5)
      ======================================================================== */
-
-  .site-header {
-    position: relative; /* Deixa de ser fixo no celular para não cobrir o conteúdo */
-    box-shadow: none;
+  [data-reveal],
+  [data-reveal="from-left"],
+  [data-reveal="from-right"],
+  [data-reveal="fade-up"] {
+    transform: translateY(16px) !important;
+    opacity: 0 !important;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out !important;
   }
 
-  .nav-container {
-    display: none; /* Oculta barra horizontal com 7 links que ocupava espaço no celular */
+  [data-reveal].is-visible,
+  [data-reveal="from-left"].is-visible,
+  [data-reveal="from-right"].is-visible,
+  [data-reveal="fade-up"].is-visible {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
+  /* ========================================================================
+     ORDEM DAS SEÇÕES NO MOBILE (REGRA 2)
+     1. Hero -> 2. Atuação -> 3. Como funciona -> 4. Sobre -> 5. Dúvidas -> 6. Contato
+     ======================================================================== */
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #inicio { order: 1; }
+  #atuacao { order: 2; }
+  #como-funciona { order: 3; }
+  #sobre { order: 4; }
+  #duvidas { order: 5; }
+  #contato { order: 6; }
+
+  /* ========================================================================
+     CABEÇALHO MOBILE ENXUTO
+     ======================================================================== */
+  .site-header {
+    position: relative;
+    box-shadow: none;
+    min-height: 52px;
   }
 
   .header-inner {
-    min-height: 54px;
-    padding-block: 0.5rem;
+    min-height: 52px;
+    padding-block: 0.4rem;
   }
 
   .brand-monogram {
-    width: 36px;
-    height: 36px;
-    font-size: 1.05rem;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
   }
 
   .brand-name {
-    font-size: 0.94rem;
+    font-size: 0.92rem;
   }
 
   .brand-oab {
-    font-size: 0.66rem;
+    font-size: 0.65rem;
   }
 
-  .header-action .button-header {
-    min-height: 38px;
-    padding: 0.4rem 0.85rem;
-    font-size: 0.8rem;
+  .nav-container,
+  .header-action {
+    display: none !important;
   }
 
   /* ========================================================================
-     BLOCO 1 — APRESENTAÇÃO PRINCIPAL DO ADVOGADO (FOCO EM CONVERSÃO)
-     Losango duplo + Monograma WP + Identificação + Proposta de valor + WhatsApp imediato
+     1. PRIMEIRA TELA NO MOBILE (390x844 SEM ROLAR - REGRA 1)
+     Foto ~120px + Nome + Uma linha do que faz + 3 tags + Botão total + micro-linha
      ======================================================================== */
   .hero-section {
     min-height: auto;
-    padding-block: 2.5rem 3rem;
+    padding-block: 0.65rem 1rem;
+    overflow: visible;
+  }
+
+  .hero-container {
+    padding-inline: 16px;
   }
 
   .hero-grid {
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
-    gap: 1.5rem;
+    gap: 0.4rem;
   }
 
   .hero-visual-col {
     order: -1;
     width: 100%;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 0.35rem;
     display: flex;
     justify-content: center;
   }
 
+  /* Palco Visual de ~120px com Losango Proporcional */
   .hero-stage-composition {
-    max-width: clamp(280px, 78vw, 360px);
-    width: 100%;
-    margin-inline: auto;
+    width: 115px;
+    height: 115px;
+    max-width: 115px;
+    max-height: 115px;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero-portrait-card {
-    width: 86%;
+    width: 80px;
+    height: 92px;
     aspect-ratio: 0.86;
+    border-radius: 12px;
+    border: 1.5px solid rgba(244, 239, 230, 0.7);
+    box-shadow: 
+      0 0 0 1px rgba(244, 239, 230, 0.2),
+      0 12px 28px -6px rgba(0, 0, 0, 0.85);
+  }
+
+  .hero-frame-inner-border {
+    inset: 5px;
+    border-radius: 8px;
+    border: 1px solid rgba(244, 239, 230, 0.35);
   }
 
   .hero-losango-wrapper {
@@ -285,11 +361,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .hero-losango-svg {
-    width: 100%;
-    height: 100%;
+    pointer-events: none;
   }
 
   .hero-copy {
@@ -298,469 +370,457 @@
     align-items: center;
     width: 100%;
     text-align: center;
-  }
-
-  .hero-actions {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .hero-trust-row {
-    justify-content: center;
-    gap: 0.85rem;
-  }
-
-  .hero-title {
-    font-size: clamp(1.75rem, 6vw, 2.15rem);
-    line-height: 1.15;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.02em;
-    text-align: center;
-  }
-
-  .hero-lead {
-    font-size: 0.92rem;
-    line-height: 1.5;
-    margin-bottom: 1.25rem;
-    margin-inline: auto;
-    color: #c4d5e5;
-    text-align: center;
-    max-width: 520px;
-  }
-
-  /* Ações do Hero: Destaque total ao WhatsApp */
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.65rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .hero-actions .button {
-    width: 100%;
-  }
-
-  .hero-btn-main {
-    min-height: 52px;
-    font-size: 0.98rem;
-    font-weight: 700;
-    box-shadow: 0 4px 20px rgba(11, 27, 51, 0.55);
-  }
-
-  .hero-btn-oab {
-    min-height: 44px;
-    font-size: 0.82rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.16);
-    color: #d1dfed;
-  }
-
-  .hero-trust-row {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem 0.85rem;
-    padding-top: 0.85rem;
-  }
-
-  /* ========================================================================
-     BLOCO 2 — BARRA DE CREDENCIAIS (GRADE 2x2 COMPACTA)
-     ======================================================================== */
-  .trust-bar-section {
-    margin-top: 0;
-    padding-block: 0.85rem 1.25rem;
-  }
-
-  .trust-bar-grid {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-  }
-
-  .trust-card {
-    padding: 0.85rem 0.75rem;
-    border-radius: var(--radius-md);
-  }
-
-  .trust-icon-box {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    border-radius: 10px;
-    margin-bottom: 0.45rem;
-  }
-
-  .trust-tag {
-    font-size: 0.65rem;
-    margin-bottom: 0.15rem;
-  }
-
-  .trust-title {
-    font-size: 0.88rem;
-    margin-bottom: 0.2rem;
-    line-height: 1.25;
-  }
-
-  .trust-desc {
-    font-size: 0.75rem;
-    line-height: 1.35;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    margin-bottom: 0.35rem;
-  }
-
-  .trust-link {
-    font-size: 0.74rem;
     gap: 0.3rem;
   }
 
+  /* Identificação Direta: Nome e OAB */
+  .hero-mobile-lawyer-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+
+  .hero-mobile-name {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .hero-mobile-oab {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  /* Uma linha sobre o que faz (máx. 60 caracteres) */
+  .hero-title {
+    font-size: 1.05rem !important; /* ~17px */
+    font-weight: 500;
+    line-height: 1.3 !important;
+    color: #E2EAF4;
+    margin: 0 0 2px !important;
+    letter-spacing: -0.01em;
+    max-width: 320px;
+    text-align: center;
+  }
+
+  /* 3 tags curtas do que resolve: PAD • Progressões • Licença-prêmio */
+  .hero-mobile-tags {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-block: 4px 8px;
+  }
+
+  .hero-mobile-tag {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 12px;
+    background: rgba(220, 164, 44, 0.12);
+    border: 1px solid rgba(220, 164, 44, 0.32);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #FCE28A;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-mobile-tags .tag-bullet {
+    color: rgba(220, 164, 44, 0.5);
+    font-size: 0.7rem;
+  }
+
+  /* Botão principal de largura total */
+  .hero-actions {
+    width: 100%;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-btn-main {
+    width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 18px rgba(11, 27, 51, 0.6);
+  }
+
+  /* Uma linha pequena embaixo do botão */
+  .hero-mobile-subtext {
+    font-size: 0.75rem !important;
+    color: #8DA4B8 !important;
+    margin-top: 4px !important;
+    margin-bottom: 0 !important;
+    text-align: center;
+    line-height: 1.3 !important;
+  }
+
   /* ========================================================================
-     BLOCO 3 — ÁREAS DE ATUAÇÃO (ESCANEÁVEIS, CONCISAS E EXPANSÍVEIS)
+     2. "O QUE EU RESOLVO" — LISTA COMPACTA (REGRA 2)
      ======================================================================== */
   .practice-section {
-    padding-block: 2.25rem;
+    padding-block: 2rem;
   }
 
   .practice-cards-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
   }
 
   .practice-card {
-    padding: 28px 24px;
-    border-radius: 8px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #0B1B33;
+    border: 1px solid rgba(220, 164, 44, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .practice-card-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .practice-card-icon-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 6px;
+    background: rgba(220, 164, 44, 0.15);
+    color: var(--color-accent);
+  }
+
+  .practice-card-title {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: 1.25 !important;
+  }
+
+  .practice-card-subtitle {
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+    color: #C9D1DE;
+    margin: 0;
+  }
+
+  .practice-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .practice-card-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
   }
 
   /* ========================================================================
-     BLOCO 4 — SOBRE O ADVOGADO (AUTORIDADE E CONFIANÇA RÁPIDA)
+     3. "COMO FUNCIONA" — 3 PASSOS EM 1 LINHA CADA (REGRA 2)
+     ======================================================================== */
+  .steps-section {
+    padding-block: 2rem;
+  }
+
+  .steps-container {
+    margin-bottom: 0;
+  }
+
+  .steps-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .step-card {
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #0B1B33;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .step-card .step-title {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: 1.35 !important;
+  }
+
+  /* ========================================================================
+     4. "SOBRE O ADVOGADO" — FOTO PEQUENA + 3 LINHAS DE TEXTO (REGRA 2)
      ======================================================================== */
   .about-section {
-    padding-block: var(--section-padding-mobile);
+    padding-block: 2rem;
   }
 
   .about-top-grid {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .about-visual-column {
-    order: -1;
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-    gap: 1.5rem;
-  }
-
-  .about-frame-stage {
-    width: 100%;
-    max-width: 320px;
-    margin: 12px auto;
-  }
-
-  .about-gold-offset-frame {
-    top: 10px;
-    left: 10px;
-    right: -10px;
-    bottom: -10px;
-  }
-
-  .about-copy-column {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  .about-title {
-    font-size: clamp(1.6rem, 5.5vw, 2.1rem);
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-
-  .about-paragraphs p {
-    font-size: 1rem;
-    line-height: 1.65;
-  }
-
-  .about-pillars-container {
-    padding-top: 16px;
-    width: 100%;
-  }
-
-  .about-pillars-header {
-    margin-bottom: 18px;
-    gap: 12px;
-  }
-
-  .about-pillars-header::before,
-  .about-pillars-header::after {
-    max-width: 40px;
-  }
-
-  .about-horizontal-cards-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+    align-items: center;
+    text-align: center;
     gap: 14px;
     width: 100%;
   }
 
-  .about-framed-card {
-    padding: 18px 16px;
+  .about-visual-column {
+    order: -1;
+    width: auto;
+    margin: 0 auto;
   }
 
-  .card-framed-title {
-    min-height: auto;
-    font-size: 1rem;
+  .about-photo-wrapper {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(244, 239, 230, 0.65);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
   }
 
-  .card-framed-desc {
-    font-size: 0.88rem;
-    line-height: 1.52;
+  .about-portrait-img.about-mobile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .about-copy-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .about-title {
+    font-size: 1.3rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .about-mobile-summary {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    color: #C9D1DE;
+    margin: 0 0 14px !important;
+    text-align: center;
+    max-width: 330px;
   }
 
   .about-actions-row {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
-    margin-top: 1.15rem;
-    width: 100%;
   }
 
   .about-actions-row .button {
     width: 100%;
-    min-height: 50px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    box-sizing: border-box;
+    height: 48px;
+    min-height: 48px;
+    font-size: 16px;
+    font-weight: 600;
   }
 
   /* ========================================================================
-     BLOCO 5 — COMO FUNCIONA O ATENDIMENTO
+     5. DÚVIDAS — 4 PERGUNTAS MAIS IMPORTANTES (REGRA 2)
      ======================================================================== */
-  .steps-section {
-    padding-block: var(--section-padding-mobile);
+  .faq-section {
+    padding-block: 2rem;
   }
 
-  .steps-container {
-    margin-bottom: 2rem;
-  }
-
-  .steps-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .step-card {
-    padding: 1.6rem 1.4rem;
-  }
-
-  .steps-action-bar {
+  .faq-accordion-container {
+    display: flex;
     flex-direction: column;
-    text-align: center;
-    gap: 1.25rem;
-    padding: 1.5rem 1.2rem;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .faq-item {
+    border-radius: 8px;
+    background: #0B1B33;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .faq-summary {
+    padding: 12px 14px;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  .faq-answer-inner {
+    padding: 0 14px 14px;
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    color: #C9D1DE;
   }
 
   /* ========================================================================
-     BLOCO 7 — CONTATO FINAL E CONVERSÃO DECISIVA
+     6. CTA FINAL + RODAPÉ ENXUTO (REGRA 2)
      ======================================================================== */
   .contact-section {
-    padding-block: 2.25rem;
+    padding-block: 2rem;
   }
 
   .contact-card-box {
-    padding: 1.75rem 1.15rem;
-    border-radius: var(--radius-lg);
-  }
-
-  .contact-title {
-    font-size: clamp(1.6rem, 5.5vw, 1.95rem);
-    line-height: 1.18;
-    margin-block: 0.65rem;
-  }
-
-  .contact-subtitle {
-    font-size: 0.88rem;
-    line-height: 1.48;
-    margin-bottom: 1.15rem;
-  }
-
-  .contact-trust-checklist {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
-    font-size: 0.8rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .contact-primary-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-    width: 100%;
-  }
-
-  .contact-primary-actions .button {
-    width: 100%;
-  }
-
-  .contact-main-btn {
-    min-height: 52px;
-    font-size: 0.96rem;
-    font-weight: 700;
-  }
-
-  .contact-details-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-    padding-block: 1.25rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .contact-info-card {
-    padding: 0.75rem 0.85rem;
-    border-radius: var(--radius-sm);
-    gap: 0.75rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .info-card-icon {
-    width: 34px;
-    height: 34px;
-    min-width: 34px;
-    border-radius: 8px;
-  }
-
-  .info-label {
-    font-size: 0.65rem;
-    margin-bottom: 0.15rem;
-  }
-
-  .contact-info-card strong {
-    font-size: 0.84rem;
-    line-height: 1.25;
-  }
-
-  .contact-info-card small {
-    display: none;
-  }
-
-  /* Rodapé Mobile — Informações de Contato Rápidas e Acessíveis */
-  .site-footer {
-    padding-block: 2.5rem 1.85rem;
-  }
-
-  .footer-top-row {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-    padding-bottom: 1.75rem;
-  }
-
-  .footer-nav-col {
-    display: none !important;
-  }
-
-  .footer-contact-items {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    width: 100%;
-  }
-
-  .footer-contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(184, 155, 94, 0.28);
-    padding: 0.85rem 1.15rem;
-    border-radius: var(--radius-md);
-    color: #ffffff;
-    font-size: 0.94rem;
-    font-weight: 600;
-    text-decoration: none;
-    min-height: 48px;
-    box-sizing: border-box;
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-
-  .footer-contact-link:active {
-    background: rgba(184, 155, 94, 0.2);
-    border-color: var(--color-accent);
-  }
-
-  .footer-bottom-row {
-    flex-direction: column;
-    gap: 0.65rem;
+    padding: 22px 16px;
+    border-radius: 12px;
     text-align: center;
   }
 
-  /* WhatsApp Flutuante com Toque Confortável */
+  .contact-title {
+    font-size: 1.35rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .contact-subtitle {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .contact-main-btn {
+    width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+  }
+
+  /* Rodapé Enxuto Mobile */
+  .site-footer {
+    padding-block: 20px calc(20px + 64px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-top-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer-monogram-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 0;
+  }
+
+  .footer-title {
+    font-size: 1.15rem;
+    color: #FFFFFF;
+  }
+
+  .footer-subtitle a {
+    color: var(--color-accent);
+    font-size: 0.88rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .footer-bottom-row {
+    padding-top: 12px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: #7A8E9F;
+  }
+
+  /* ========================================================================
+     3. CONTATO SEMPRE À MÃO: BARRA FIXA NA BASE (REGRA 3)
+     Altura 64px + padding safe-area + largura total
+     ======================================================================== */
   .floating-whatsapp-container {
-    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-    right: 1rem;
-    z-index: 999;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: calc(64px + env(safe-area-inset-bottom, 0px));
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px));
+    background: rgba(11, 27, 51, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(220, 164, 44, 0.4);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+    box-sizing: border-box;
+  }
+
+  .floating-whatsapp-container.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .floating-whatsapp-btn {
-    width: 56px;
-    height: 56px;
-    min-width: 56px;
-    min-height: 56px;
-    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45);
-  }
-}
-
-/* ==========================================================================
-   4. TELAS COMPACTAS (até 390px / 360px)
-   ========================================================================== */
-@media (max-width: 390px) {
-  .container {
-    width: calc(100% - 1.25rem);
-  }
-
-  .hero-title {
-    font-size: 1.75rem;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    background: #25D366;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
   }
 
-  .brand-name {
-    font-size: 0.88rem;
-  }
-
-  .trust-bar-grid {
-    gap: 0.5rem;
-  }
-
-  .trust-card {
-    padding: 0.75rem 0.65rem;
-  }
-
-  .trust-title {
-    font-size: 0.84rem;
-  }
-
-  .section-header h2 {
-    font-size: 1.6rem;
-  }
-}
-
-/* Animação suave para expansão dos detalhes */
-@keyframes fadeInDetails {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .floating-whatsapp-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
   }
 }

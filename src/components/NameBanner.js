@@ -8,7 +8,7 @@ import { Icon } from './Icon.js';
  */
 export function NameBanner({ lawyer, siteConfig }) {
   return `
-    <section class="name-banner-section" aria-label="Assinatura Institucional">
+    <section class="name-banner-section desktop-only" aria-label="Assinatura Institucional">
       <div class="container name-banner-container" data-reveal="fade-up">
         <div class="name-banner-content">
           <span class="name-banner-subtag" data-reveal="label">

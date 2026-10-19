@@ -9,8 +9,11 @@ export function FAQ({ faq, siteConfig }) {
             ${Icon({ name: 'alertCircle', size: 14 })}
             <span>Dúvidas Frequentes</span>
           </div>
-          <h2>Perguntas frequentes sobre o atendimento</h2>
-          <p class="section-subheading">
+          <h2>
+            <span class="desktop-only">Perguntas frequentes sobre o atendimento</span>
+            <span class="mobile-only">Dúvidas Frequentes</span>
+          </h2>
+          <p class="section-subheading desktop-only">
             Esclarecimentos objetivos sobre o procedimento de atendimento online, documentação e prazos em Direito Administrativo.
           </p>
         </div>
@@ -19,7 +22,7 @@ export function FAQ({ faq, siteConfig }) {
           ${faq
             .map(
               (item, index) => `
-                <details class="faq-item" ${index === 0 ? 'open' : ''}>
+                <details class="faq-item ${index >= 4 ? 'desktop-only' : ''}" ${index === 0 ? 'open' : ''}>
                   <summary class="faq-summary">
                     <span class="faq-question-text">${item.question}</span>
                     <span class="faq-chevron-icon" aria-hidden="true">
@@ -37,7 +40,7 @@ export function FAQ({ faq, siteConfig }) {
             .join('')}
         </div>
 
-        <div class="faq-support-box" data-reveal="fade-up">
+        <div class="faq-support-box desktop-only" data-reveal="fade-up">
           <div class="support-text">
             <strong>Conteúdo jurídico contínuo para servidores públicos</strong>
             <p>Acompanhe análises sobre a legislação dos servidores, decisões judiciais recentes e orientações sobre direitos funcionais no Instagram.</p>

@@ -98,8 +98,8 @@ export function initHeroTimeline() {
     window.removeEventListener('click', handleUserInterruption);
   };
 
-  // Caso já tenha visto na sessão ou prefira movimento reduzido, pula direto
-  if (alreadySeen || isReducedMotion) {
+  // Caso já tenha visto na sessão, prefira movimento reduzido ou esteja no celular, pula direto
+  if (alreadySeen || isReducedMotion || isMobile) {
     skipToFinalState();
     return;
   }

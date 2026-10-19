@@ -67,17 +67,22 @@ export function initScrollAnimations() {
     });
   });
 
-  // 4. Controle de Visibilidade do Botão Flutuante de WhatsApp (3.11 & Ajuste 2)
+  // 4. Controle de Visibilidade do Botão Flutuante / Barra Fixa de WhatsApp
   const floatingWhatsapp = document.querySelector('#floatingWhatsapp');
-  const heroSection = document.querySelector('#inicio');
+  const heroBtn = document.querySelector('#heroWhatsappCta');
   const finalCta = document.querySelector('#contato');
 
-  if (floatingWhatsapp && heroSection) {
+  if (floatingWhatsapp) {
     const checkFloatingVisibility = () => {
-      const scrollY = window.scrollY;
-      const heroThreshold = heroSection.offsetHeight - 120;
-      let nearFinalCta = false;
+      let heroBtnPassed = false;
+      if (heroBtn) {
+        const btnRect = heroBtn.getBoundingClientRect();
+        heroBtnPassed = btnRect.bottom <= 0;
+      } else {
+        heroBtnPassed = window.scrollY > 400;
+      }
 
+      let nearFinalCta = false;
       if (finalCta) {
         const ctaRect = finalCta.getBoundingClientRect();
         if (ctaRect.top < window.innerHeight && ctaRect.bottom > 0) {
@@ -85,7 +90,7 @@ export function initScrollAnimations() {
         }
       }
 
-      if (scrollY > heroThreshold && !nearFinalCta) {
+      if (heroBtnPassed && !nearFinalCta) {
         floatingWhatsapp.classList.add('is-visible');
       } else {
         floatingWhatsapp.classList.remove('is-visible');
@@ -93,6 +98,7 @@ export function initScrollAnimations() {
     };
 
     window.addEventListener('scroll', checkFloatingVisibility, { passive: true });
+    window.addEventListener('resize', checkFloatingVisibility, { passive: true });
     checkFloatingVisibility();
   }
 

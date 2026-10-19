@@ -102,9 +102,12 @@ async function capture() {
     ];
 
     const sections = [
-      { id: 'inicio', name: 'hero', offset: 0 },
-      { id: 'sobre', name: 'sobre', offset: -40 },
-      { id: 'atuacao', name: 'atuacao', offset: -40 },
+      { id: 'inicio', name: 'hero' },
+      { id: 'sobre', name: 'sobre' },
+      { selector: '.about-pillars-container', name: 'sobre_cards' },
+      { id: 'atuacao', name: 'atuacao' },
+      { id: 'como-funciona', name: 'como_funciona' },
+      { id: 'duvidas', name: 'faq' },
     ];
 
     for (const vp of viewports) {
@@ -139,6 +142,29 @@ async function capture() {
         `,
       });
 
+      if (vp.name === '390px') {
+        // 1. Primeira tela sem rolar (exact 390x844 above-the-fold)
+        await pageCdp.send('Runtime.evaluate', {
+          expression: `window.scrollTo(0, 0);`,
+        });
+        await sleep(300);
+        const { data: firstScreenData } = await pageCdp.send('Page.captureScreenshot', {
+          format: 'png',
+        });
+        const firstScreenPath = path.join(outputDir, 'hero_390px.png');
+        fs.writeFileSync(firstScreenPath, Buffer.from(firstScreenData, 'base64'));
+        console.log(`Saved above-the-fold first screen: ${firstScreenPath}`);
+
+        // 2. Página inteira no mobile (full page screenshot)
+        const { data: fullPageData } = await pageCdp.send('Page.captureScreenshot', {
+          format: 'png',
+          captureBeyondViewport: true,
+        });
+        const fullPagePath = path.join(outputDir, 'full_390px.png');
+        fs.writeFileSync(fullPagePath, Buffer.from(fullPageData, 'base64'));
+        console.log(`Saved full mobile page: ${fullPagePath}`);
+      }
+
       for (const sec of sections) {
         console.log(`Capturing ${sec.name} at ${vp.name}...`);
         
@@ -146,7 +172,8 @@ async function capture() {
         const scrollResult = await pageCdp.send('Runtime.evaluate', {
           expression: `
             (() => {
-              const target = document.querySelector('#${sec.id}');
+              const sel = ${JSON.stringify(sec.selector || '#' + sec.id)};
+              const target = document.querySelector(sel);
               if (target) {
                 target.scrollIntoView({ behavior: 'instant', block: 'start' });
                 return { found: true, y: window.scrollY };
