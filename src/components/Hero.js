@@ -100,8 +100,6 @@ export function Hero({ lawyer, siteConfig }) {
                   aria-hidden="true"
                   shape-rendering="geometricPrecision"
                 >
-                  <!-- Círculo Guia Central Sutil (Geometria Sagrada) -->
-                  <circle cx="160" cy="160" r="100" fill="none" stroke="rgba(220, 164, 44, 0.22)" stroke-width="0.8" stroke-dasharray="4 6" />
 
                   <!-- Contorno Externo (traço a 0.0s com pontas salientes) -->
                   <path 
