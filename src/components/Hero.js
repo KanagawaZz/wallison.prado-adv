@@ -4,11 +4,10 @@ export function Hero({ lawyer, siteConfig }) {
   return `
     <section id="inicio" class="hero-section">
       <div class="hero-ambient-glow" aria-hidden="true"></div>
-      <div class="hero-monogram" aria-hidden="true">WP</div>
-      <div class="hero-geometry" aria-hidden="true">
-        <span class="geo-circle"></span>
-        <span class="geo-diagonal"></span>
-      </div>
+      <svg class="hero-frame" aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <rect class="hero-frame-line" x="0.5" y="0.5" width="99" height="99" pathLength="100" vector-effect="non-scaling-stroke" />
+        <rect class="hero-frame-spark" x="0.5" y="0.5" width="99" height="99" pathLength="100" vector-effect="non-scaling-stroke" />
+      </svg>
 
       <div class="container hero-grid">
         <div class="hero-copy">

@@ -2455,59 +2455,40 @@ h1, h2, h3, h4 {
   background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(3, 8, 15, 0.55) 100%);
 }
 
-/* Monograma WP gigante em traço dourado (marca d'água) */
-.hero-monogram {
+/* Moldura elegante do hero — fio dourado com fagulha de luz em percurso */
+.hero-frame {
   position: absolute;
-  top: 50%;
-  right: -4%;
-  transform: translateY(-52%) rotate(-6deg);
-  font-family: var(--font-display);
-  font-size: clamp(18rem, 42vw, 40rem);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(196, 154, 86, 0.16);
+  inset: 1.5rem;
+  width: calc(100% - 3rem);
+  height: calc(100% - 3rem);
   pointer-events: none;
-  user-select: none;
-  z-index: 0;
+  z-index: 1;
+  overflow: visible;
 }
 
-/* Geometria em traço fino: círculo concêntrico e diagonal dourada */
-.hero-geometry {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+.hero-frame rect {
+  fill: none;
+  stroke-width: 1px;
 }
 
-.geo-circle {
-  position: absolute;
-  top: 50%;
-  right: 6%;
-  width: min(46rem, 70vw);
-  aspect-ratio: 1;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  border: 1px solid rgba(196, 154, 86, 0.18);
+.hero-frame-line {
+  stroke: rgba(196, 154, 86, 0.22);
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
 }
 
-.geo-circle::before {
-  content: '';
-  position: absolute;
-  inset: 3.5rem;
-  border-radius: 50%;
-  border: 1px solid rgba(196, 154, 86, 0.09);
+.hero-frame-spark {
+  stroke: rgba(230, 201, 135, 0.85);
+  stroke-dasharray: 4 96;
+  filter: drop-shadow(0 0 6px rgba(196, 154, 86, 0.75));
 }
 
-.geo-diagonal {
-  position: absolute;
-  top: -20%;
-  left: 50%;
-  width: 1px;
-  height: 140%;
-  background: linear-gradient(180deg, transparent, rgba(196, 154, 86, 0.35), transparent);
-  transform: rotate(38deg);
+@media (max-width: 768px) {
+  .hero-frame {
+    inset: 0.75rem;
+    width: calc(100% - 1.5rem);
+    height: calc(100% - 1.5rem);
+  }
 }
 
 /* --- CTA principal em ouro (identidade própria, texto marinho) --- */
