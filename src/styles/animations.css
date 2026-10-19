@@ -299,3 +299,53 @@
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   ENTRADA CÊNICA DO MONOGRAMA E DA GEOMETRIA DO HERO
+   ========================================================================== */
+
+.hero-monogram {
+  animation:
+    monogram-enter 1.6s var(--transition-smooth) 0.3s both,
+    monogram-drift 16s ease-in-out 2.2s infinite alternate;
+}
+
+@keyframes monogram-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-52%) rotate(-6deg) scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-52%) rotate(-6deg) scale(1);
+  }
+}
+
+@keyframes monogram-drift {
+  from { transform: translateY(-52%) rotate(-6deg); }
+  to { transform: translateY(-54%) rotate(-4.5deg); }
+}
+
+.geo-circle {
+  animation: geo-enter 1.4s var(--transition-smooth) 0.9s both;
+}
+
+@keyframes geo-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.geo-diagonal {
+  animation: geo-line 1.6s var(--transition-smooth) 1.1s both;
+}
+
+@keyframes geo-line {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

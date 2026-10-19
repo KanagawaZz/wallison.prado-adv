@@ -4,6 +4,11 @@ export function Hero({ lawyer, siteConfig }) {
   return `
     <section id="inicio" class="hero-section">
       <div class="hero-ambient-glow" aria-hidden="true"></div>
+      <div class="hero-monogram" aria-hidden="true">WP</div>
+      <div class="hero-geometry" aria-hidden="true">
+        <span class="geo-circle"></span>
+        <span class="geo-diagonal"></span>
+      </div>
 
       <div class="container hero-grid">
         <div class="hero-copy">
