@@ -251,11 +251,12 @@
   }
 
   #inicio { order: 1; }
-  #atuacao { order: 2; }
-  #como-funciona { order: 3; }
-  #sobre { order: 4; }
-  #duvidas { order: 5; }
-  #contato { order: 6; }
+  #destaques { order: 2; }
+  #atuacao { order: 3; }
+  #como-funciona { order: 4; }
+  #sobre { order: 5; }
+  #duvidas { order: 6; }
+  #contato { order: 7; }
 
   /* ========================================================================
      CABEÇALHO MOBILE ENXUTO
@@ -471,71 +472,174 @@
   }
 
   /* ========================================================================
-     2. "O QUE EU RESOLVO" — LISTA COMPACTA (REGRA 2)
+     DESTAQUES — CARDS COMPACTOS EM LINHA (REDUÇÃO VERTICAL)
+     ======================================================================== */
+  .trust-bar-section {
+    margin-top: 0 !important;
+    padding-block: 1rem 1.25rem;
+  }
+
+  .trust-bar-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .trust-card {
+    padding: 10px 12px !important;
+    border-radius: 8px !important;
+    background: #0B1B33 !important;
+    border: 1px solid rgba(220, 164, 44, 0.25) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+    transform: none !important;
+  }
+
+  .trust-icon-box {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    border-radius: 6px !important;
+    background: rgba(220, 164, 44, 0.15) !important;
+    color: var(--color-accent) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 0 !important;
+  }
+
+  .trust-icon-box svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .trust-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left;
+  }
+
+  .trust-title {
+    font-size: 0.92rem !important;
+    font-weight: 600 !important;
+    color: #FFFFFF !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+  }
+
+  .trust-desc {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+    color: #9FB2C8 !important;
+    margin: 0 !important;
+    flex-grow: 0 !important;
+  }
+
+  /* ========================================================================
+     2. "O QUE EU RESOLVO" — CARDS COMPACTOS
      ======================================================================== */
   .practice-section {
-    padding-block: 2rem;
+    padding-block: 1.75rem;
   }
 
   .practice-cards-grid {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
   }
 
   .practice-card {
-    padding: 14px 16px;
-    border-radius: 10px;
-    background: #0B1B33;
-    border: 1px solid rgba(220, 164, 44, 0.25);
+    padding: 10px 12px !important;
+    border-radius: 8px !important;
+    background: #0B1B33 !important;
+    border: 1px solid rgba(220, 164, 44, 0.25) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+
+  .practice-card-header {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+  }
+
+  .practice-card-number {
+    font-size: 0.85rem;
+    line-height: 1;
+    color: var(--color-accent);
+  }
+
+  .practice-card-label {
+    font-size: 0.68rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #8DA4B8;
   }
 
   .practice-card-title-row {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
   }
 
   .practice-card-icon-pill {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
-    border-radius: 6px;
-    background: rgba(220, 164, 44, 0.15);
-    color: var(--color-accent);
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    border-radius: 5px !important;
+    background: rgba(220, 164, 44, 0.15) !important;
+    color: var(--color-accent) !important;
+  }
+
+  .practice-card-icon-pill svg {
+    width: 12px;
+    height: 12px;
   }
 
   .practice-card-title {
-    font-size: 1rem !important;
+    font-size: 0.92rem !important;
     font-weight: 600 !important;
-    color: #FFFFFF;
-    margin: 0;
+    color: #FFFFFF !important;
+    margin: 0 !important;
     line-height: 1.25 !important;
   }
 
   .practice-card-subtitle {
-    font-size: 0.85rem !important;
-    line-height: 1.4 !important;
-    color: #C9D1DE;
-    margin: 0;
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+    color: #FCE28A !important;
+    margin: 0 !important;
+  }
+
+  .practice-card-description {
+    font-size: 0.74rem !important;
+    line-height: 1.35 !important;
+    color: #9FB2C8 !important;
+    margin: 0 !important;
   }
 
   .practice-card-footer {
     display: flex;
     justify-content: flex-end;
-    padding-top: 6px;
+    padding-top: 4px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .practice-card-link {
-    font-size: 0.82rem;
+    font-size: 0.76rem !important;
     font-weight: 600;
     color: var(--color-accent);
     display: inline-flex;
@@ -545,10 +649,10 @@
   }
 
   /* ========================================================================
-     3. "COMO FUNCIONA" — 3 PASSOS EM 1 LINHA CADA (REGRA 2)
+     3. "COMO FUNCIONA" — 3 PASSOS COMPACTOS (HORIZONTAL ROW)
      ======================================================================== */
   .steps-section {
-    padding-block: 2rem;
+    padding-block: 1.75rem;
   }
 
   .steps-container {
@@ -556,32 +660,73 @@
   }
 
   .steps-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
   }
 
   .step-card {
-    padding: 12px 14px;
-    border-radius: 8px;
-    background: #0B1B33;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 12px !important;
+    border-radius: 8px !important;
+    background: #0B1B33 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .step-card-header {
+    margin-bottom: 0 !important;
+  }
+
+  .step-badge {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    border-radius: 6px !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 0 !important;
+    background: rgba(220, 164, 44, 0.15) !important;
+    color: #FCE28A !important;
+    -webkit-text-fill-color: #FCE28A !important;
+    border: 1px solid rgba(220, 164, 44, 0.35) !important;
+    box-shadow: none !important;
+  }
+
+  .step-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left;
   }
 
   .step-card .step-title {
-    font-size: 0.95rem !important;
+    font-size: 0.9rem !important;
     font-weight: 600 !important;
-    color: #FFFFFF;
-    margin: 0;
+    color: #FFFFFF !important;
+    margin: 0 !important;
+    line-height: 1.25 !important;
+  }
+
+  .step-card .step-description {
+    font-size: 0.76rem !important;
     line-height: 1.35 !important;
+    color: #9FB2C8 !important;
+    margin: 0 !important;
   }
 
   /* ========================================================================
-     4. "SOBRE O ADVOGADO" — FOTO PEQUENA + 3 LINHAS DE TEXTO (REGRA 2)
+     4. "SOBRE O ADVOGADO" E CARDS DE PILARES COMPACTOS
      ======================================================================== */
   .about-section {
-    padding-block: 2rem;
+    padding-block: 1.75rem;
   }
 
   .about-top-grid {
@@ -600,8 +745,8 @@
   }
 
   .about-photo-wrapper {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid rgba(244, 239, 230, 0.65);
@@ -625,33 +770,108 @@
   }
 
   .about-title {
-    font-size: 1.3rem !important;
+    font-size: 1.25rem !important;
     line-height: 1.25 !important;
     margin-bottom: 6px;
     text-align: center;
   }
 
-  .about-mobile-summary {
-    font-size: 16px !important;
-    line-height: 1.5 !important;
+  .about-paragraphs p {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
     color: #C9D1DE;
-    margin: 0 0 14px !important;
+    margin: 0 0 10px !important;
     text-align: center;
-    max-width: 330px;
   }
 
   .about-actions-row {
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
   }
 
   .about-actions-row .button {
     width: 100%;
-    height: 48px;
-    min-height: 48px;
-    font-size: 16px;
+    height: 44px;
+    min-height: 44px;
+    font-size: 15px;
     font-weight: 600;
+  }
+
+  /* Pilares da Atuação Profissional (Cards Compactos 2x2) */
+  .about-pillars-container {
+    margin-top: 1.25rem;
+    width: 100%;
+  }
+
+  .about-horizontal-cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .about-framed-card {
+    padding: 8px 10px !important;
+    border-radius: 8px !important;
+    background: #FFFFFF !important;
+    border: 1px solid rgba(184, 139, 46, 0.35) !important;
+    box-shadow: 0 4px 12px rgba(11, 27, 51, 0.05) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+
+  .about-framed-card::before {
+    inset: 2px !important;
+    border-radius: 6px !important;
+  }
+
+  .about-framed-card .card-top-row {
+    margin-bottom: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .about-framed-card .card-icon-emblem {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    border-radius: 5px !important;
+    background: rgba(229, 195, 120, 0.25) !important;
+    border: 1px solid rgba(184, 139, 46, 0.4) !important;
+    box-shadow: none !important;
+  }
+
+  .about-framed-card .card-icon-emblem svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .about-framed-card .card-pillar-number {
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+  }
+
+  .about-framed-card .card-framed-title {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    color: #0B1B33 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 3px !important;
+    min-height: auto !important;
+  }
+
+  .about-framed-card .card-framed-desc {
+    font-size: 0.7rem !important;
+    line-height: 1.3 !important;
+    color: #4A5D74 !important;
+    margin: 0 !important;
   }
 
   /* ========================================================================
@@ -721,6 +941,38 @@
     min-height: 48px !important;
     font-size: 16px !important;
     font-weight: 600 !important;
+  }
+
+  .contact-details-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-top: 1.25rem !important;
+  }
+
+  .contact-info-card {
+    padding: 8px 12px !important;
+    border-radius: 8px !important;
+    gap: 10px !important;
+  }
+
+  .contact-info-card .info-card-icon {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+  }
+
+  .contact-info-card .info-label {
+    font-size: 0.68rem !important;
+  }
+
+  .contact-info-card strong {
+    font-size: 0.85rem !important;
+  }
+
+  .contact-info-card small {
+    font-size: 0.7rem !important;
   }
 
   /* Rodapé Enxuto Mobile */

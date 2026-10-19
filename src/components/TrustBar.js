@@ -2,7 +2,7 @@ import { Icon } from './Icon.js';
 
 export function TrustBar({ trustBadges }) {
   return `
-    <section class="trust-bar-section" aria-label="Destaques">
+    <section class="trust-bar-section" id="destaques" aria-label="Destaques">
       <div class="container">
         <div class="trust-bar-grid" data-reveal="fade-up">
           ${trustBadges

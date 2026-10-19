@@ -103,6 +103,7 @@ async function capture() {
 
     const sections = [
       { id: 'inicio', name: 'hero' },
+      { id: 'destaques', name: 'destaques' },
       { id: 'sobre', name: 'sobre' },
       { selector: '.about-pillars-container', name: 'sobre_cards' },
       { id: 'atuacao', name: 'atuacao' },
