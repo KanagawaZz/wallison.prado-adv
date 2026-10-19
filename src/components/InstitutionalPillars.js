@@ -64,12 +64,13 @@ export function InstitutionalPillars({ siteConfig }) {
           <div class="institutional-visual" data-reveal="fade-up">
             <div class="themis-frame-3d" data-tilt-3d data-tilt-max="6">
               <img 
-                src="/images/themis.png" 
+                src="/images/themis.webp" 
                 alt="Escultura da Deusa da Justiça (Têmis) com balança e espada" 
                 class="themis-image"
                 width="410"
                 height="466"
                 loading="lazy"
+                decoding="async"
               />
               <div class="themis-glow" aria-hidden="true"></div>
               <div class="themis-specular-border" aria-hidden="true"></div>

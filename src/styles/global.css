@@ -2368,3 +2368,240 @@ h1, h2, h3, h4 {
 .floating-whatsapp-btn:hover {
   transform: scale(1.08);
 }
+
+/* ==========================================================================
+   PARA QUEM (AUDIÊNCIA)
+   ========================================================================== */
+
+.section-muted {
+  background: var(--color-bg-alt);
+}
+
+.section-header.align-left {
+  margin-inline: 0;
+  text-align: left;
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-accent-hover);
+}
+
+.check-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem 1.35rem;
+  box-shadow: var(--shadow-subtle);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.check-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--color-accent-border);
+}
+
+.check-item p {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.check-badge {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-border);
+  color: var(--color-accent-hover);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   ELEVAÇÃO VISUAL — HERO CÊNICO, CTA OURO E RITMO DE SEÇÕES
+   ========================================================================== */
+
+/* --- Hero: palco mais profundo e cênico --- */
+.hero-section {
+  background:
+    radial-gradient(1100px 620px at 78% 18%, rgba(196, 154, 86, 0.1) 0%, transparent 60%),
+    radial-gradient(900px 700px at 12% 88%, rgba(22, 42, 74, 0.55) 0%, transparent 65%),
+    linear-gradient(180deg, #050c17 0%, #0d1e2e 62%, #081522 100%);
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(3, 8, 15, 0.55) 100%);
+}
+
+/* Monograma WP gigante em traço dourado (marca d'água) */
+.hero-monogram {
+  position: absolute;
+  top: 50%;
+  right: -4%;
+  transform: translateY(-52%) rotate(-6deg);
+  font-family: var(--font-display);
+  font-size: clamp(18rem, 42vw, 40rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(196, 154, 86, 0.16);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Geometria em traço fino: círculo concêntrico e diagonal dourada */
+.hero-geometry {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.geo-circle {
+  position: absolute;
+  top: 50%;
+  right: 6%;
+  width: min(46rem, 70vw);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 1px solid rgba(196, 154, 86, 0.18);
+}
+
+.geo-circle::before {
+  content: '';
+  position: absolute;
+  inset: 3.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 154, 86, 0.09);
+}
+
+.geo-diagonal {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 1px;
+  height: 140%;
+  background: linear-gradient(180deg, transparent, rgba(196, 154, 86, 0.35), transparent);
+  transform: rotate(38deg);
+}
+
+/* --- CTA principal em ouro (identidade própria, texto marinho) --- */
+.button-primary,
+.button-gold {
+  background: linear-gradient(135deg, #d4b26a 0%, #a5813c 100%);
+  color: #0b1b33;
+  border: 1px solid rgba(196, 154, 86, 0.7);
+  box-shadow: 0 6px 20px rgba(196, 154, 86, 0.28);
+}
+
+.button-primary:hover,
+.button-gold:hover {
+  background: linear-gradient(135deg, #e0c07c 0%, #b28d45 100%);
+  border-color: #d4b26a;
+  color: #0b1b33;
+  box-shadow: 0 10px 28px rgba(196, 154, 86, 0.4);
+  transform: translateY(-2px);
+}
+
+/* --- Fio dourado que desperta nos cartões (hover) --- */
+.practice-card,
+.step-card,
+.trust-card,
+.check-item {
+  position: relative;
+}
+
+.practice-card::before,
+.step-card::before,
+.myth-depth-card::before,
+.trust-card::before,
+.check-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #c9a961, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.45s var(--transition-smooth);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.practice-card:hover::before,
+.step-card:hover::before,
+.myth-depth-card:hover::before,
+.trust-card:hover::before,
+.check-item:hover::before {
+  transform: scaleX(1);
+}
+
+/* --- Mitos & Verdades: faixa em azul profundo para ritmo de leitura --- */
+.myths-section {
+  background:
+    radial-gradient(800px 500px at 85% 10%, rgba(196, 154, 86, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #091520 0%, #0b1a29 100%);
+}
+
+.myths-section .section-header h2 {
+  color: #f7f4ee;
+}
+
+.myths-section .section-subheading {
+  color: rgba(247, 244, 238, 0.72);
+}
+
+.myths-section .callout-inner {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(196, 154, 86, 0.28);
+}
+
+.myths-section .callout-text p {
+  color: rgba(247, 244, 238, 0.75);
+}
+
+.myths-section .link-subtle {
+  color: #cfb77f;
+}
+
+/* --- Fio de progresso de leitura no topo --- */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #c9a961, #e6c987);
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 200;
+  pointer-events: none;
+}

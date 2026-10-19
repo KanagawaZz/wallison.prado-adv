@@ -53,4 +53,18 @@ export function initScrollAnimations() {
       profileFrame.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)';
     });
   }
+
+  // Fio dourado de progresso de leitura no topo da página
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress-bar';
+  progressBar.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(progressBar);
+
+  const updateProgress = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+  };
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
 }

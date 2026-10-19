@@ -4,11 +4,11 @@ export function TrustBar({ trustBadges }) {
   return `
     <section class="trust-bar-section" aria-label="Compromissos e credenciais">
       <div class="container">
-        <div class="trust-bar-grid" data-reveal="fade-up">
+        <div class="trust-bar-grid">
           ${trustBadges
             .map(
-              (badge) => `
-                <div class="trust-card">
+              (badge, index) => `
+                <div class="trust-card" data-reveal="fade-up" style="--card-delay: ${index * 0.08}s">
                   <div class="trust-icon-box">
                     ${Icon({ name: badge.icon, size: 24 })}
                   </div>
@@ -29,7 +29,7 @@ export function TrustBar({ trustBadges }) {
                     }
                   </div>
                 </div>
-              `
+              `,
             )
             .join('')}
         </div>
