@@ -49,6 +49,14 @@ app.innerHTML = `
   ${WhatsAppButton({ siteConfig })}
 `;
 
+// Respeita a preferência de movimento reduzido: pausa o vídeo de fundo do hero
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('video.hero-bg-video').forEach((video) => {
+    video.removeAttribute('autoplay');
+    video.pause();
+  });
+}
+
 // Inicializa as animações de scroll e interatividade
 initScrollAnimations();
 init3DEffects();

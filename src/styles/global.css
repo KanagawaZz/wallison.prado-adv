@@ -2580,6 +2580,34 @@ h1, h2, h3, h4 {
   color: #cfb77f;
 }
 
+/* --- Vídeo cinematográfico de fundo do hero --- */
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  filter: saturate(0.85) brightness(0.9);
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(1100px 620px at 78% 18%, rgba(196, 154, 86, 0.1) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(5, 12, 23, 0.78) 0%, rgba(5, 12, 23, 0.5) 45%, rgba(5, 12, 23, 0.88) 100%);
+}
+
+.hero-section .hero-grid {
+  position: relative;
+  z-index: 2;
+}
+
 /* --- Retirada suave do hero ao rolar (esconde sob a barra superior) --- */
 .hero-grid {
   will-change: transform, opacity;

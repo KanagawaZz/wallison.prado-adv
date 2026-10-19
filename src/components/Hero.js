@@ -3,6 +3,10 @@ import { Icon } from './Icon.js';
 export function Hero({ lawyer, siteConfig }) {
   return `
     <section id="inicio" class="hero-section">
+      <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+        <source src="/videos/law-firm-hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-video-overlay" aria-hidden="true"></div>
       <div class="hero-ambient-glow" aria-hidden="true"></div>
 
       <div class="container hero-grid">
