@@ -2592,6 +2592,11 @@ h1, h2, h3, h4 {
   color: #cfb77f;
 }
 
+/* --- Retirada suave do hero ao rolar (esconde sob a barra superior) --- */
+.hero-grid {
+  will-change: transform, opacity;
+}
+
 /* --- Fio de progresso de leitura no topo --- */
 .scroll-progress-bar {
   position: fixed;

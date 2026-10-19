@@ -54,6 +54,26 @@ export function initScrollAnimations() {
     });
   }
 
+  // Retirada do Hero ao rolar — o conteúdo sobe e se esconde sob a barra superior
+  const heroGrid = document.querySelector('.hero-grid');
+  if (heroGrid) {
+    let heroTicking = false;
+    const updateHeroExit = () => {
+      const y = window.scrollY;
+      const limit = window.innerHeight * 0.7;
+      const fade = Math.min(1, Math.max(0, 1 - y / limit));
+      heroGrid.style.opacity = fade.toFixed(3);
+      heroGrid.style.transform = `translateY(${(-y * 0.28).toFixed(1)}px)`;
+      heroTicking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!heroTicking) {
+        heroTicking = true;
+        requestAnimationFrame(updateHeroExit);
+      }
+    }, { passive: true });
+  }
+
   // Fio dourado de progresso de leitura no topo da página
   const progressBar = document.createElement('div');
   progressBar.className = 'scroll-progress-bar';
