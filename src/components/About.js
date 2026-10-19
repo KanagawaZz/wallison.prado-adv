@@ -1,21 +1,28 @@
 import { Icon } from './Icon.js';
 
 export function About({ lawyer, siteConfig }) {
+  const valueIcons = ['scale', 'shield', 'clock', 'chat'];
+
   return `
     <section id="sobre" class="section-block about-section">
       <div class="container">
-        <div class="about-grid">
-          <!-- Coluna Visual: Foto com Moldura Dupla Dourada Deslocada 16px (Regra 3.4) -->
+        <!-- Linha Superior: Themis e Perfil lado a lado perfeitamente balanceados -->
+        <div class="about-top-grid">
+          <!-- Coluna Visual: Imagem Themis com Moldura Dupla Dourada Deslocada 16px -->
           <div class="about-visual-column" data-reveal="from-left">
             <div class="about-frame-stage">
               <!-- Moldura Dourada Traseira Deslocada 16px -->
-              <div class="about-gold-offset-frame" aria-hidden="true"></div>
+              <div class="about-gold-offset-frame" aria-hidden="true">
+                <svg class="about-gold-offset-svg" width="100%" height="100%" style="position: absolute; inset: 0; overflow: visible;" aria-hidden="true">
+                  <rect class="about-light-rect" x="0" y="0" width="100%" height="100%" rx="12" pathLength="1000" fill="none" stroke="#B88B2E" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </div>
               
-              <!-- Moldura Principal com Efeito de Cortina (clip-path) -->
+              <!-- Moldura Principal com Estátua da Themis -->
               <div class="about-photo-wrapper">
                 <img 
-                  src="/images/wallison-prado.jpg" 
-                  alt="Dr. Wallison Prado - Advogado Especialista em Servidores Públicos em MT"
+                  src="/images/themis.png" 
+                  alt="Escultura da Deusa da Justiça (Themis) com balança e espada"
                   class="about-portrait-img"
                   width="440"
                   height="480"
@@ -23,16 +30,16 @@ export function About({ lawyer, siteConfig }) {
                 />
               </div>
 
-              <!-- Selo OAB Institucional Discreto -->
+              <!-- Selo Institucional sobre a imagem -->
               <div class="about-photo-badge">
                 <span class="badge-dot" aria-hidden="true"></span>
-                <strong>Dr. Wallison Prado</strong>
-                <small>OAB/MT 31.726</small>
+                <strong>Símbolo da Justiça</strong>
+                <small>Precisão Técnica & Ética</small>
               </div>
             </div>
           </div>
 
-          <!-- Coluna Textual: Perfil Profissional e Valores -->
+          <!-- Coluna Textual: Perfil Profissional -->
           <div class="about-copy-column" data-reveal="from-right">
             <div class="about-header-meta">
               <span class="eyebrow-chip" data-reveal="label">
@@ -48,26 +55,8 @@ export function About({ lawyer, siteConfig }) {
                 O exercício da função pública demanda dedicação diária à sociedade. No entanto, é frequente que o servidor enfrente decisões administrativas unilaterais, atrasos injustificados na concessão de progressões, supressão de adicionais ou notificações de processos disciplinares (PADs).
               </p>
               <p>
-                Atuo com foco combativo e técnico na proteção das prerrogativas funcionais de quem serve ao público: unindo rigor na interpretação do estatuto dos servidores estaduais e municipais ao compromisso de transparência, comunicação direta e atendimento 100% digital em todo o estado de Mato Grosso.
+                Atuo com foco técnico e vigilante na proteção das prerrogativas funcionais de quem serve ao público: unindo interpretação criteriosa do estatuto dos servidores estaduais e municipais ao compromisso de transparência, comunicação direta e atendimento ágil em todo o estado de Mato Grosso.
               </p>
-            </div>
-
-            <div class="about-values-grid">
-              ${lawyer.values
-                .map(
-                  (val) => `
-                    <div class="about-value-item">
-                      <div class="about-value-icon">
-                        ${Icon({ name: 'check', size: 14 })}
-                      </div>
-                      <div class="about-value-texts">
-                        <strong>${val.title}</strong>
-                        <p>${val.desc}</p>
-                      </div>
-                    </div>
-                  `
-                )
-                .join('')}
             </div>
 
             <div class="about-actions-row">
@@ -80,6 +69,32 @@ export function About({ lawyer, siteConfig }) {
                 <span>Instagram ${siteConfig.instagramHandle}</span>
               </a>
             </div>
+          </div>
+        </div>
+
+        <!-- Linha Inferior: 4 Cards com Molduras Horizontais preenchendo toda a largura -->
+        <div class="about-pillars-container" data-reveal="fade-up">
+          <div class="about-pillars-header">
+            <span class="about-pillars-subtitle">Pilares da Atuação Profissional</span>
+          </div>
+
+          <div class="about-horizontal-cards-grid">
+            ${lawyer.values
+              .map(
+                (val, idx) => `
+                  <article class="about-framed-card" style="--pillar-delay: ${idx * 0.1}s">
+                    <div class="card-top-row">
+                      <div class="card-icon-emblem">
+                        ${Icon({ name: valueIcons[idx] || 'check', size: 18 })}
+                      </div>
+                      <span class="card-pillar-number">0${idx + 1}</span>
+                    </div>
+                    <h3 class="card-framed-title">${val.title}</h3>
+                    <p class="card-framed-desc">${val.desc}</p>
+                  </article>
+                `
+              )
+              .join('')}
           </div>
         </div>
       </div>

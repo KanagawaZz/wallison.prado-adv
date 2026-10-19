@@ -42,7 +42,7 @@ export function PracticeAreas({ practiceAreas, siteConfig }) {
 
                   <div class="practice-card-footer">
                     <a 
-                      href="https://wa.me/556599405845?text=${encodeURIComponent(`Olá, Dr. Wallison. Sou servidor público em MT e gostaria de uma orientação sobre: ${area.title}.`)}" 
+                      href="https://wa.me/{{WHATSAPP}}?text=${encodeURIComponent(`Olá, Dr. Wallison. Sou servidor público em MT e gostaria de uma orientação sobre: ${area.title}.`)}" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       class="practice-card-link"

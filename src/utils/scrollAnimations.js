@@ -5,16 +5,15 @@
 export function initScrollAnimations() {
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // 1. IntersectionObserver para elementos de revelação
+  // 1. IntersectionObserver para elementos de revelação bidirecionais (rolagem de cima pra baixo e de baixo pra cima)
   const revealTargets = document.querySelectorAll('[data-reveal], [data-reveal-card], .stagger-container');
 
   if ('IntersectionObserver' in window && !isReducedMotion) {
     const observer = new IntersectionObserver(
-      (entries, obs) => {
+      (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            // Remove will-change após animação terminar para máxima nitidez (Regra 7)
             entry.target.addEventListener(
               'transitionend',
               () => {
@@ -22,13 +21,17 @@ export function initScrollAnimations() {
               },
               { once: true }
             );
-            obs.unobserve(entry.target);
+          } else {
+            // Quando o elemento sai completamente da tela (seja rolando para baixo ou para cima),
+            // removemos is-visible para que ele re-anime suavemente ao retornar
+            entry.target.classList.remove('is-visible');
+            entry.target.style.willChange = 'opacity, transform, filter';
           }
         });
       },
       {
-        threshold: 0.15, // 15-20% do elemento na tela
-        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.12, // 12% do elemento visível na tela
+        rootMargin: '-20px 0px -20px 0px', // Equilibrado para entrada por cima e por baixo
       }
     );
 
@@ -126,3 +129,33 @@ export function initScrollAnimations() {
     });
   });
 }
+
+/**
+ * 6. Animação de Luz na Moldura do Sobre (dispara ao entrar na viewport)
+ */
+export function initAboutLight() {
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isReducedMotion) return;
+
+  const aboutSection = document.querySelector('#sobre');
+  if (!aboutSection) return;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            aboutSection.classList.add('about-light-active');
+          } else {
+            aboutSection.classList.remove('about-light-active');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(aboutSection);
+  } else {
+    aboutSection.classList.add('about-light-active');
+  }
+}
+

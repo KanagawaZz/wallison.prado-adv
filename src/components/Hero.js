@@ -73,7 +73,7 @@ export function Hero({ lawyer, siteConfig }) {
               <!-- Halo / Brasão Vetorial do Duplo Losango (Traçado 1.2px) -->
               <div class="hero-losango-wrapper" id="heroLosangoWrapper">
                 <!-- Feixe de luz metálico no losango (Shine a 120deg) -->
-                <div class="hero-shine-beam" id="heroShineBeam" aria-hidden="true"></div>
+  
 
                 <svg 
                   class="hero-losango-svg" 
@@ -81,13 +81,16 @@ export function Hero({ lawyer, siteConfig }) {
                   aria-hidden="true"
                   shape-rendering="geometricPrecision"
                 >
+                  <!-- Círculo Guia Central Sutil (Geometria Sagrada) -->
+                  <circle cx="160" cy="160" r="100" fill="none" stroke="rgba(220, 164, 44, 0.22)" stroke-width="0.8" stroke-dasharray="4 6" />
+
                   <!-- Contorno Externo (traço a 0.0s com pontas salientes) -->
                   <path 
                     class="losango-path-outer" 
                     d="M 160 26 L 294 160 L 160 294 L 26 160 Z" 
                     pathLength="1000"
                     fill="none" 
-                    stroke="#C9A45C" 
+                    stroke="#DCA42C" 
                     stroke-width="1.2"
                     stroke-linecap="square"
                     vector-effect="non-scaling-stroke"
@@ -98,22 +101,50 @@ export function Hero({ lawyer, siteConfig }) {
                     d="M 160 40 L 40 160 L 160 280 L 280 160 Z" 
                     pathLength="1000"
                     fill="none" 
-                    stroke="#C9A45C" 
+                    stroke="#DCA42C" 
                     stroke-width="1.2"
                     stroke-linecap="square"
+                    vector-effect="non-scaling-stroke"
+                  />
+                  <!-- Feixe de Luz - Contorno Externo (Sentido Horário) -->
+                  <path 
+                    class="losango-light-path outer" 
+                    d="M 160 26 L 294 160 L 160 294 L 26 160 Z" 
+                    pathLength="1000"
+                    fill="none" 
+                    stroke="#FCE28A" 
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                    vector-effect="non-scaling-stroke"
+                  />
+                  <!-- Feixe de Luz - Contorno Interno (Sentido Anti-horário) -->
+                  <path 
+                    class="losango-light-path inner" 
+                    d="M 160 40 L 40 160 L 160 280 L 280 160 Z" 
+                    pathLength="1000"
+                    fill="none" 
+                    stroke="#FCE28A" 
+                    stroke-width="1.4"
+                    stroke-linecap="round"
                     vector-effect="non-scaling-stroke"
                   />
                 </svg>
               </div>
 
-              <!-- Retrato Executivo do Dr. Wallison Prado integrado ao centro -->
+              <!-- Retrato Executivo do Dr. Wallison Prado integrado ao centro com moldura em linhas nobres -->
               <div class="hero-portrait-card" id="heroPortraitCard">
+                <!-- Moldura Interna Fina em Linhas de Joalheria (Passe-partout) -->
+                <div class="hero-frame-inner-border" aria-hidden="true"></div>
+
+                <!-- Reflexo Acetinado Superior de Cristal -->
+                <div class="hero-frame-glass-sheen" aria-hidden="true"></div>
+
                 <img 
                   src="/images/wallison-prado.jpg" 
                   alt="Dr. Wallison Prado - Advogado Especialista em Servidores Públicos em MT"
                   class="hero-portrait-image"
-                  width="360"
-                  height="400"
+                  width="440"
+                  height="500"
                   loading="eager"
                 />
                 

@@ -40,13 +40,13 @@
   transform: translateY(30px);
   filter: blur(8px);
   transition-duration: 0.9s;
-  transition-delay: 0.2s;
 }
 
 [data-reveal="title"].is-visible {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0);
+  transition-delay: 0.15s;
 }
 
 /* Em celulares (<768px): blur máximo de 4px para preservar performance */
@@ -57,43 +57,18 @@
   }
 }
 
-/* Títulos de duas linhas revelados de baixo para cima com máscara de recorte */
-.reveal-line-wrap {
-  display: block;
-  overflow: hidden;
-}
-
-.reveal-line {
-  display: block;
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 0.8s var(--ease-standard), opacity 0.8s var(--ease-standard);
-}
-
-.is-visible .reveal-line:nth-child(1) {
-  transform: translateY(0);
-  opacity: 1;
-  transition-delay: 0.2s;
-}
-
-.is-visible .reveal-line:nth-child(2) {
-  transform: translateY(0);
-  opacity: 1;
-  transition-delay: 0.3s;
-}
-
-/* Parágrafo de Seção (20px subida, sem blur, 0.7s, delay 0.35s) */
+/* Parágrafo de Seção (20px subida, sem blur, 0.7s) */
 [data-reveal="paragraph"],
 [data-reveal="lead"] {
   transform: translateY(20px);
   transition-duration: 0.7s;
-  transition-delay: 0.35s;
 }
 
 [data-reveal="paragraph"].is-visible,
 [data-reveal="lead"].is-visible {
   opacity: 1;
   transform: translateY(0);
+  transition-delay: 0.25s;
 }
 
 /* Fade-up genérico padrão */
@@ -123,8 +98,7 @@
               filter 1.0s var(--ease-standard);
 }
 
-[data-reveal="from-left"].is-visible,
-.hero-stage-ready [data-reveal="from-left"] {
+[data-reveal="from-left"].is-visible {
   transform: translateX(0);
   opacity: 1;
   filter: none;
@@ -139,8 +113,7 @@
               filter 1.0s var(--ease-standard);
 }
 
-[data-reveal="from-right"].is-visible,
-.hero-stage-ready [data-reveal="from-right"] {
+[data-reveal="from-right"].is-visible {
   transform: translateX(0);
   opacity: 1;
   filter: none;
@@ -163,7 +136,6 @@
   transition: opacity 0.85s var(--ease-standard),
               transform 0.85s var(--ease-standard),
               filter 0.85s var(--ease-standard);
-  transition-delay: var(--card-row-delay, 0s);
 }
 
 [data-reveal-card="left"] {
@@ -185,6 +157,7 @@
   opacity: 1;
   transform: none;
   filter: none;
+  transition-delay: var(--card-row-delay, 0s);
 }
 
 @media (max-width: 768px) {
@@ -210,32 +183,6 @@
 .stagger-container.is-visible [data-reveal-item] {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* --------------------------------------------------------------------------
-   FEIXE DE LUZ METÁLICA (SHINE DE METAL POLIDO - 3.1 & 3.10)
-   -------------------------------------------------------------------------- */
-
-.shine-track {
-  position: relative;
-  overflow: hidden;
-}
-
-.shine-runner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent 30%, rgba(230, 201, 138, 0.55) 50%, transparent 70%);
-  mix-blend-mode: screen;
-  transform: translateX(-160%);
-  pointer-events: none;
-  z-index: 5;
-}
-
-.shine-runner.animate-pass {
-  animation: metal-shine-pass 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes metal-shine-pass {
@@ -275,11 +222,6 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.monumental-spin {
-  animation: slow-spin-monumental 120s linear infinite;
-  transform-origin: center center;
 }
 
 /* --------------------------------------------------------------------------
@@ -339,20 +281,6 @@
   transform: scaleY(1);
 }
 
-.faq-icon-cross {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  color: var(--color-accent);
-  transition: transform 0.45s var(--ease-standard), color 0.3s var(--ease-standard);
-}
-
-.faq-accordion-item.is-open .faq-icon-cross {
-  transform: rotate(45deg);
-}
-
 /* --------------------------------------------------------------------------
    ACESSIBILIDADE: PREFERS-REDUCED-MOTION
    -------------------------------------------------------------------------- */
@@ -380,19 +308,13 @@
     transition: opacity 0.3s ease !important;
   }
 
-  .reveal-line {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
   .eyebrow-chip::before,
   [data-reveal="label"]::before {
     transform: scaleX(1) !important;
   }
 
-  .monumental-spin,
   .losango-glow-active,
-  .whatsapp-gold-pulse {
+.whatsapp-gold-pulse {
     animation: none !important;
   }
 }

@@ -8,32 +8,26 @@
      ========================================================================== */
   --color-primary: #0B1B33;             /* Fundo marinho escuro nobre */
   --color-primary-dark: #071224;        /* Base ultra escura */
-  --color-primary-light: #12284A;       /* Luz difusa / gradiente sutil */
-  --color-primary-surface: rgba(18, 40, 74, 0.45);
   
   --color-card-bg: #10233F;             /* Fundo dos cards escuro (nada de card branco) */
   --color-card-border: rgba(201, 164, 92, 0.18); /* Borda 1px 18% dourada */
-  --color-card-hover-border: rgba(201, 164, 92, 0.50);
 
-  --color-accent: #C9A45C;              /* Dourado champanhe fosco */
-  --color-accent-sub: #E6C98A;          /* Dourado claro para subtítulos em cards */
-  --color-accent-light: #D4B26C;        /* Dourado para hover / destaque suave */
-  --color-accent-hover: #D4B26C;
-  --color-accent-soft: rgba(201, 164, 92, 0.10);
-  --color-accent-border: rgba(201, 164, 92, 0.18);
-  --color-accent-border-bright: rgba(201, 164, 92, 0.60);
+  --color-accent: #DCA42C;              /* Ouro nobre radiante e aquecido */
+  --color-accent-sub: #F0C455;          /* Ouro acetinado de joalheria */
+  --color-accent-light: #F7D26D;        /* Luz dourada para hover / destaque */
+  --color-accent-hover: #FCE28A;        /* Brilho dourado intenso (sem tom prateado) */
+  --color-accent-soft: rgba(220, 164, 44, 0.16);
+  --color-accent-border: rgba(220, 164, 44, 0.38);
+  
+  /* Gradientes metálicos enriquecidos em ouro autêntico ("brilho de ouro puro 18k") */
+  --gold-metallic-gradient: linear-gradient(135deg, #FDE38C 0%, #E2B23E 25%, #B38116 52%, #F9DA7A 78%, #D4A024 100%);
   
   --color-bg: #0B1B33;                  /* Fundo principal escuro */
-  --color-bg-alt: #071224;              /* Variação profunda */
-  --color-surface: #10233F;             /* Superfície dos cards */
   
   --color-text: #F3EFE6;                /* Branco-gelo para títulos (contraste 14.5:1) */
   --color-text-secondary: #C9D1DE;      /* Texto corrido e parágrafos (contraste 10.9:1) */
-  --color-text-muted: #9AA8BC;          /* Metadados e notas de apoio (contraste 6.2:1) */
-  --color-text-light: #F3EFE6;
   
   --color-border: rgba(201, 164, 92, 0.18);
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
 
   /* ==========================================================================
      TIPOGRAFIA (REGRAS ESTRITAS DE PESO E TAMANHO)
@@ -42,24 +36,23 @@
      ========================================================================== */
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: var(--font-display);
-  --font-sans: var(--font-body);
 
   /* ==========================================================================
      ESCALA FIXA DE ESPAÇAMENTO (8, 16, 24, 32, 48, 64, 96, 128px)
      ========================================================================== */
-  --space-8: 8px;
   --space-16: 16px;
   --space-24: 24px;
-  --space-32: 32px;
   --space-48: 48px;
-  --space-64: 64px;
-  --space-96: 96px;
-  --space-128: 128px;
 
-  /* Espaçamento entre seções */
-  --section-padding-desktop: 128px;
-  --section-padding-mobile: 80px;
+  /* ==========================================================================
+     PALETA DE CAMADAS CLARAS (MARFIM, BRANCO & DOURADO NOBRE)
+     ========================================================================== */
+  --color-light-gold: #9E6B08;           /* Ouro nobre profundo com alto contraste AA (4.6:1) */
+  --color-light-gold-metallic: linear-gradient(135deg, #C28E1D 0%, #8A5F08 55%, #B58418 100%);
+
+  /* Espaçamento entre seções: 56px desktop (112px visível), 36px mobile (72px visível) */
+  --section-padding-desktop: 56px;
+  --section-padding-mobile: 36px;
   --section-padding-y: var(--section-padding-desktop);
 
   /* ==========================================================================
@@ -73,13 +66,10 @@
      EASINGS & TRANSIÇÕES
      ========================================================================== */
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);
-  --transition-smooth: var(--ease-standard);
 
   /* ==========================================================================
      CANTOS (MÁXIMO 8PX)
      ========================================================================== */
-  --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px; /* LIMITE MÁXIMO */

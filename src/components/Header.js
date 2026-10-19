@@ -3,15 +3,6 @@ import { Icon } from './Icon.js';
 export function Header({ navigation, siteConfig, lawyer }) {
   return `
     <header class="site-header" id="top">
-      <div class="top-announcement-bar">
-        <div class="container announcement-inner">
-          <div class="announcement-item">
-            <span class="live-dot" aria-hidden="true"></span>
-            <span>Atendimento 100% online para servidores públicos em todo o Mato Grosso</span>
-          </div>
-        </div>
-      </div>
-
       <div class="container header-inner">
         <a href="#inicio" class="brand" aria-label="Ir para o início da página">
           <div class="brand-monogram">
@@ -19,7 +10,7 @@ export function Header({ navigation, siteConfig, lawyer }) {
           </div>
           <div class="brand-text">
             <strong class="brand-name">${siteConfig.name}</strong>
-            <span class="brand-oab">Direito Administrativo</span>
+            <span class="brand-oab">Direito Administrativo • OAB/MT 31.726</span>
           </div>
         </a>
 
