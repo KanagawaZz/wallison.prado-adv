@@ -4,10 +4,6 @@ export function Hero({ lawyer, siteConfig }) {
   return `
     <section id="inicio" class="hero-section">
       <div class="hero-ambient-glow" aria-hidden="true"></div>
-      <svg class="hero-frame" aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <rect class="hero-frame-line" x="0.5" y="0.5" width="99" height="99" pathLength="100" vector-effect="non-scaling-stroke" />
-        <rect class="hero-frame-spark" x="0.5" y="0.5" width="99" height="99" pathLength="100" vector-effect="non-scaling-stroke" />
-      </svg>
 
       <div class="container hero-grid">
         <div class="hero-copy">
@@ -79,7 +75,12 @@ export function Hero({ lawyer, siteConfig }) {
         <div class="hero-visual">
           <div class="hero-portrait-stage">
             <div class="ambient-backlight-3d" aria-hidden="true"></div>
-            <div class="profile-frame-3d" data-tilt-3d data-tilt-max="6">
+            <div class="portrait-frame-wrap">
+              <svg class="hero-frame" aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <rect class="hero-frame-line" x="0.5" y="0.5" width="99" height="99" pathLength="100" vector-effect="non-scaling-stroke" />
+                <rect class="hero-frame-spark" x="0.5" y="0.5" width="99" height="99" pathLength="100" vector-effect="non-scaling-stroke" />
+              </svg>
+              <div class="profile-frame-3d" data-tilt-3d data-tilt-max="6">
               <img
                 src="/images/wallison-prado.webp"
                 alt="Dr. Wallison Prado - Advogado Especialista em Servidores Públicos em MT"
@@ -91,6 +92,7 @@ export function Hero({ lawyer, siteConfig }) {
                 decoding="async"
               />
               <div class="frame-specular-border" aria-hidden="true"></div>
+              </div>
             </div>
             <div class="portrait-caption-pill">
               <div class="caption-status">
