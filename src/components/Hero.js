@@ -4,18 +4,19 @@ export function Hero({ lawyer, siteConfig }) {
   return `
     <section id="inicio" class="hero-section">
       <div class="hero-ambient-glow" aria-hidden="true"></div>
-      
+
       <div class="container hero-grid">
-        <div class="hero-copy" data-reveal="fade-up">
+        <div class="hero-copy">
           <!-- Identificação integrada otimizada para visualização mobile imediata -->
           <div class="hero-mobile-lawyer-badge" aria-label="Identificação profissional do Dr. Wallison Prado">
             <div class="hero-mobile-avatar">
-              <img 
-                src="/images/wallison-prado.jpg" 
-                alt="Dr. Wallison Prado" 
+              <img
+                src="/images/wallison-prado.webp"
+                alt="Dr. Wallison Prado"
                 class="hero-mobile-avatar-img"
-                width="44" 
+                width="44"
                 height="44"
+                loading="eager"
               />
             </div>
             <div class="hero-mobile-lawyer-info">
@@ -71,17 +72,19 @@ export function Hero({ lawyer, siteConfig }) {
           </div>
         </div>
 
-        <div class="hero-visual" data-reveal="fade-up">
+        <div class="hero-visual">
           <div class="hero-portrait-stage">
             <div class="ambient-backlight-3d" aria-hidden="true"></div>
             <div class="profile-frame-3d" data-tilt-3d data-tilt-max="6">
-              <img 
-                src="/images/wallison-prado.jpg" 
+              <img
+                src="/images/wallison-prado.webp"
                 alt="Dr. Wallison Prado - Advogado Especialista em Servidores Públicos em MT"
                 class="profile-image"
                 width="390"
                 height="443"
                 loading="eager"
+                fetchpriority="high"
+                decoding="async"
               />
               <div class="frame-specular-border" aria-hidden="true"></div>
             </div>

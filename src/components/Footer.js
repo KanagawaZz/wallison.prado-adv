@@ -4,7 +4,7 @@ export function Footer({ lawyer, siteConfig }) {
   const currentYear = new Date().getFullYear();
 
   return `
-    <footer class="site-footer" id="contato">
+    <footer class="site-footer">
       <div class="container footer-top-row">
         <div class="footer-brand-col">
           <div class="footer-monogram-brand">
@@ -28,6 +28,7 @@ export function Footer({ lawyer, siteConfig }) {
           <ul class="footer-links-list">
             <li><a href="#inicio">Início</a></li>
             <li><a href="#atuacao">Áreas de Atuação</a></li>
+            <li><a href="#como-funciona">Como Funciona</a></li>
             <li><a href="#mitos">Mitos & Verdades</a></li>
             <li><a href="#sobre">Sobre o Advogado</a></li>
             <li><a href="#duvidas">Dúvidas Frequentes</a></li>

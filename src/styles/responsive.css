@@ -927,3 +927,18 @@
     transform: translateY(0);
   }
 }
+
+/* ==========================================================================
+   PARA QUEM (AUDIÊNCIA) — empilhamento no mobile
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .check-list {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header.align-left {
+    text-align: center;
+    margin-inline: auto;
+  }
+}

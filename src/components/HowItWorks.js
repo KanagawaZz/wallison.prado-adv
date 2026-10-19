@@ -15,8 +15,8 @@ export function HowItWorks({ steps, siteConfig }) {
           </p>
         </div>
 
-        <div class="steps-container">
-          <div class="steps-progress-line" aria-hidden="true"></div>
+        <div class="steps-container" data-reveal="fade-up">
+          <div class="steps-progress-line" data-reveal="fade-up" aria-hidden="true"></div>
           
           <div class="steps-grid">
             ${steps
