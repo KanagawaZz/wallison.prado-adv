@@ -1,26 +1,17 @@
 export const steps = [
   {
     number: '01',
-    title: 'Contato Seguro pelo WhatsApp',
-    subtitle: 'Atendimento direto com o advogado com retorno ágil',
-    description:
-      'Você entra em contato explicando o seu cargo, órgão e o problema funcional enfrentado. A conversa é direta com o Dr. Wallison, com orientação clara desde o primeiro momento.',
-    highlight: 'Comunicação direta com o advogado',
+    title: 'Você me chama no WhatsApp',
+    description: 'Conte em poucas palavras o seu cargo, o órgão e o que está acontecendo.',
   },
   {
     number: '02',
-    title: 'Diagnóstico das Leis de MT e Documentos',
-    subtitle: 'Exame minucioso da legislação aplicável, do estatuto do seu município e dos contracheques',
-    description:
-      'Avaliamos com rigor técnico os seus holerites, portarias e fichas funcionais para identificar ilegalidades, prescrição e a viabilidade jurídica do seu direito, com total transparência e sem promessa de resultado.',
-    highlight: 'Diagnóstico jurídico fundamentado',
+    title: 'Analiso seus documentos',
+    description: 'Contracheques, portarias e ficha funcional mostram o que a lei prevê e o que pode ter ficado para trás. Explico o que encontrei com franqueza, inclusive quando não há o que fazer.',
   },
   {
     number: '03',
-    title: 'Atuação 100% Digital em Qualquer Cidade de MT',
-    subtitle: 'Assinatura eletrônica no celular, sem necessidade de deslocamento',
-    description:
-      'Atendemos servidores de Cuiabá e de todo o interior de Mato Grosso. A procuração e os documentos são assinados digitalmente pelo celular. Você acompanha cada movimentação com relatórios periódicos.',
-    highlight: 'Assinatura digital e comodidade total',
+    title: 'Você decide como seguir',
+    description: 'Se fizer sentido seguir, procuração e contrato são assinados pelo celular, e informo cada andamento relevante.',
   },
 ];

@@ -6,9 +6,9 @@ export function About({ lawyer, siteConfig }) {
   return `
     <section id="sobre" class="section-block about-section">
       <div class="container">
-        <!-- Linha Superior: Themis e Perfil lado a lado perfeitamente balanceados -->
+        <!-- Linha Superior: Themis e Perfil -->
         <div class="about-top-grid">
-          <!-- Coluna Visual: Foto no Mobile / Themis no Desktop -->
+          <!-- Coluna Visual -->
           <div class="about-visual-column" data-reveal="from-left">
             <div class="about-frame-stage">
               <!-- Moldura Dourada Traseira Deslocada 16px (Desktop) -->
@@ -30,7 +30,7 @@ export function About({ lawyer, siteConfig }) {
                 />
                 <img 
                   src="/images/wallison-prado.jpg" 
-                  alt="Dr. Wallison Prado - Advogado Especialista em Servidores Públicos em MT"
+                  alt="Dr. Wallison Prado, advogado"
                   class="about-portrait-img mobile-only about-mobile-avatar"
                   width="140"
                   height="160"
@@ -50,25 +50,18 @@ export function About({ lawyer, siteConfig }) {
           <!-- Coluna Textual: Perfil Profissional -->
           <div class="about-copy-column" data-reveal="from-right">
             <div class="about-header-meta">
-              <span class="eyebrow-chip" data-reveal="label">
-                <span class="desktop-only">Perfil Profissional</span>
-                <span class="mobile-only">Sobre o Advogado</span>
-              </span>
+              <span class="eyebrow-chip" data-reveal="label">SOBRE</span>
               <h2 class="about-title" data-reveal="title">
-                <span class="desktop-only">Advocacia dedicada à defesa dos servidores públicos em todo o Mato Grosso.</span>
-                <span class="mobile-only">Dr. Wallison Prado • OAB/MT 31.726</span>
+                Quem serve ao público também precisa de quem o defenda.
               </h2>
             </div>
 
             <div class="about-paragraphs" data-reveal="paragraph">
-              <p class="desktop-only">
-                O exercício da função pública demanda dedicação diária à sociedade. No entanto, é frequente que o servidor enfrente decisões administrativas unilaterais, atrasos injustificados na concessão de progressões, supressão de adicionais ou notificações de processos disciplinares (PADs).
+              <p>
+                Sou o Wallison Prado e atuo na defesa de servidores públicos em Mato Grosso, em situações que vão de um processo disciplinar inesperado a uma progressão que nunca saiu do papel.
               </p>
-              <p class="desktop-only">
-                Atuo com foco técnico e vigilante na proteção das prerrogativas funcionais de quem serve ao público: unindo interpretação criteriosa do estatuto dos servidores estaduais e municipais ao compromisso de transparência, comunicação direta e atendimento ágil em todo o estado de Mato Grosso.
-              </p>
-              <p class="mobile-only about-mobile-summary">
-                Advocacia combativa em Direito Administrativo, dedicada a anular punições ilegais, destravar carreiras e proteger os direitos de quem serve ao público em Mato Grosso.
+              <p>
+                Sei que, para o servidor, buscar um direito costuma vir acompanhado de receio: da chefia, dos colegas, de complicar a carreira. Por isso, meu trabalho começa explicando com calma o que a lei prevê para o seu caso, quais caminhos existem e os riscos de cada um.
               </p>
             </div>
 
@@ -77,20 +70,16 @@ export function About({ lawyer, siteConfig }) {
                 ${Icon({ name: 'chat', size: 18 })}
                 <span>Falar com o Dr. Wallison</span>
               </a>
-              <a href="${siteConfig.instagram}" target="_blank" rel="noopener noreferrer" class="button button-outline about-btn-instagram desktop-only" title="Acompanhar o trabalho no Instagram">
+              <a href="${siteConfig.instagram}" target="_blank" rel="noopener noreferrer" class="button button-outline about-btn-instagram" title="Acompanhar no Instagram">
                 ${Icon({ name: 'instagram', size: 18 })}
-                <span>Instagram ${siteConfig.instagramHandle}</span>
+                <span>Instagram</span>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Linha Inferior: 4 Cards (Apenas Desktop) -->
-        <div class="about-pillars-container desktop-only" data-reveal="fade-up">
-          <div class="about-pillars-header">
-            <span class="about-pillars-subtitle">Pilares da Atuação Profissional</span>
-          </div>
-
+        <!-- Linha Inferior: 4 Cards de Pilares -->
+        <div class="about-pillars-container" data-reveal="fade-up">
           <div class="about-horizontal-cards-grid">
             ${lawyer.values
               .map(

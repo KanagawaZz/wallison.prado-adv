@@ -6,15 +6,13 @@ export function PracticeAreas({ practiceAreas, siteConfig }) {
       <div class="container">
         <div class="section-header" data-reveal="fade-up">
           <span class="eyebrow-chip" data-reveal="label">
-            <span class="desktop-only">Áreas de Atuação Especializada</span>
-            <span class="mobile-only">O que eu resolvo</span>
+            ÁREAS DE ATUAÇÃO
           </span>
           <h2 class="section-title" data-reveal="title">
-            <span class="desktop-only">Demandas frequentes de servidores públicos em Mato Grosso</span>
-            <span class="mobile-only">Demandas que resolvo para servidores de MT</span>
+            As situações que mais chegam até mim
           </h2>
-          <p class="section-subheading desktop-only" data-reveal="paragraph">
-            Atuação técnica para combater arbitrariedades, destravar direitos de carreira e recuperar valores retidos nas esferas <strong>Estadual, Municipal e Federal</strong>.
+          <p class="section-subheading" data-reveal="paragraph">
+            Se o seu caso for diferente destes, vale conversar mesmo assim.
           </p>
         </div>
 
@@ -31,7 +29,7 @@ export function PracticeAreas({ practiceAreas, siteConfig }) {
                   data-reveal-card="${colPos}" 
                   style="--card-row-delay: ${rowIndex * 0.12 + (index % 3) * 0.08}s;"
                 >
-                  <div class="practice-card-header desktop-only">
+                  <div class="practice-card-header">
                     <span class="practice-card-number">${numberStr}</span>
                     <span class="practice-card-label">${area.tag}</span>
                   </div>
@@ -42,7 +40,7 @@ export function PracticeAreas({ practiceAreas, siteConfig }) {
                       <h3 class="practice-card-title">${area.title}</h3>
                     </div>
                     <p class="practice-card-subtitle">${area.subtitle}</p>
-                    <p class="practice-card-description desktop-only">${area.description}</p>
+                    <p class="practice-card-description">${area.description}</p>
                   </div>
 
                   <div class="practice-card-footer">
@@ -51,10 +49,9 @@ export function PracticeAreas({ practiceAreas, siteConfig }) {
                       target="_blank" 
                       rel="noopener noreferrer" 
                       class="practice-card-link"
-                      title="Consultar sobre ${area.title}"
+                      title="Conversar sobre ${area.title}"
                     >
-                      <span>Consultar sobre este tema</span>
-                      ${Icon({ name: 'arrowRight', size: 14 })}
+                      <span>Conversar sobre isso &rarr;</span>
                     </a>
                   </div>
                 </article>
