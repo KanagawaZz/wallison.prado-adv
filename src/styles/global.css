@@ -339,7 +339,8 @@ p {
   border-bottom: 1px solid transparent;
   transition: background-color 0.4s var(--ease-standard),
               backdrop-filter 0.4s var(--ease-standard),
-              border-color 0.4s var(--ease-standard);
+              border-color 0.4s var(--ease-standard),
+              opacity 1.8s var(--ease-standard);
 }
 
 .site-header.is-scrolled {
@@ -519,17 +520,124 @@ p {
   z-index: 2;
 }
 
+/* Filme de identidade de fundo (abertura em tela cheia → fundo do conteúdo) */
+.hero-video-layer {
+  position: absolute;
+  inset: -72px 0 0; /* sobe por trás do header transparente: filme em tela cheia */
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Véu marinho que garante a leitura do texto; mais denso à esquerda, onde fica a copy */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(11, 27, 51, 0.86) 0%, rgba(11, 27, 51, 0.66) 40%, rgba(11, 27, 51, 0.3) 72%, rgba(11, 27, 51, 0.42) 100%),
+    linear-gradient(to bottom, rgba(11, 27, 51, 0.25) 0%, transparent 30%);
+  opacity: 0;
+  transition: opacity 2.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-section:not(.hero-video-wait) .hero-video-overlay {
+  opacity: 1;
+}
+
+/* Com o vídeo ativo, o próprio filme entrega o monograma e a atmosfera */
+.hero-has-video .hero-ambient-glow,
+.hero-has-video .hero-watermark-monogram {
+  display: none;
+}
+
+/* Enquanto o filme roda, o conteúdo fica oculto (sem ocupar foco nem cliques) */
+.hero-grid {
+  transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-section.hero-video-wait .hero-grid {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.site-header.header-intro-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .hero-ambient-glow {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 900px;
-  height: 900px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(18, 40, 74, 0.8) 0%, rgba(11, 27, 51, 0) 70%);
+  inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 1;
+  background: 
+    radial-gradient(ellipse 60% 55% at 75% 42%, rgba(201, 164, 92, 0.16) 0%, rgba(18, 40, 74, 0.5) 45%, transparent 75%),
+    radial-gradient(ellipse 55% 55% at 22% 35%, rgba(18, 40, 74, 0.75) 0%, transparent 65%),
+    radial-gradient(circle at 50% 100%, rgba(7, 15, 30, 0.95) 0%, transparent 50%);
+  animation: hero-ambient-pulse 9s ease-in-out infinite alternate;
+}
+
+@keyframes hero-ambient-pulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+/* Feixe de Luz Anamórfico Cinematográfico */
+.hero-anamorphic-beam {
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 180%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(252, 226, 138, 0.04) 47%,
+    rgba(220, 164, 44, 0.08) 50%,
+    rgba(252, 226, 138, 0.04) 53%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.hero-intro-running .hero-anamorphic-beam {
+  animation: hero-beam-sweep 2.6s cubic-bezier(0.16, 1, 0.3, 1) 1.6s forwards;
+}
+
+@keyframes hero-beam-sweep {
+  0% {
+    transform: translateX(-40%) rotate(-5deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(45%) rotate(-5deg);
+    opacity: 0;
+  }
 }
 
 .hero-container {
@@ -673,6 +781,31 @@ p {
   width: 100%;
 }
 
+/* Monograma Monumental WP em Marca d'Água 3D de Fundo */
+.hero-watermark-monogram {
+  position: absolute;
+  top: 50%;
+  right: -8%;
+  transform: translateY(-50%);
+  width: clamp(480px, 48vw, 680px);
+  max-width: 720px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.38;
+  filter: drop-shadow(0 0 50px rgba(220, 164, 44, 0.28));
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-monogram-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
 .hero-stage-composition {
   position: relative;
   width: 100%;
@@ -718,7 +851,7 @@ p {
 }
 
 .hero-intro-running .losango-path-outer {
-  animation: draw-outer 1.4s var(--ease-standard) forwards;
+  animation: draw-outer 2.4s var(--ease-standard) 0.6s both;
 }
 
 .losango-path-inner {
@@ -729,7 +862,7 @@ p {
 }
 
 .hero-intro-running .losango-path-inner {
-  animation: draw-inner 1.2s var(--ease-standard) 0.2s forwards;
+  animation: draw-inner 2.2s var(--ease-standard) 0.9s both;
 }
 
 @keyframes draw-outer {
@@ -752,9 +885,9 @@ p {
   overflow: hidden;
   border: 1.5px solid rgba(244, 239, 230, 0.65);
   box-shadow: 
-    0 0 0 1px rgba(244, 239, 230, 0.2),
-    0 24px 60px -15px rgba(0, 0, 0, 0.85), 
-    0 0 35px rgba(244, 239, 230, 0.12),
+    0 0 0 1px rgba(244, 239, 230, 0.25),
+    0 24px 60px -15px rgba(0, 0, 0, 0.88), 
+    0 0 45px rgba(201, 164, 92, 0.22),
     inset 0 0 30px rgba(11, 27, 51, 0.4);
   background: #0B1B33;
   transition: transform 0.4s var(--ease-standard), box-shadow 0.4s var(--ease-standard), border-color 0.4s var(--ease-standard);
@@ -937,6 +1070,182 @@ p {
 /* Caixa com nome para abertura cinematográfica */
 .hero-intro-name-box {
   display: none;
+}
+
+/* ==========================================================================
+   HERO CINEMATOGRÁFICO - SEQUÊNCIA DE ABERTURA EM ATÉ 2.0s
+   Curva nobre de alta grife: cubic-bezier(0.16, 1, 0.3, 1)
+   ========================================================================== */
+
+.hero-section.hero-intro-running .hero-eyebrow-line {
+  transform-origin: left center;
+  animation: hero-line-cinematic 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.hero-section.hero-intro-running .hero-gold-label {
+  animation: hero-fade-cinematic 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.hero-section.hero-intro-running .hero-title {
+  animation: hero-title-cinematic 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+
+.hero-section.hero-intro-running .hero-lead {
+  animation: hero-lead-cinematic 1.6s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
+}
+
+.hero-section.hero-intro-running .hero-actions {
+  animation: hero-actions-cinematic 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.7s both;
+}
+
+.hero-section.hero-intro-running .hero-trust-row {
+  animation: hero-trust-cinematic 1.4s cubic-bezier(0.16, 1, 0.3, 1) 2.1s both;
+}
+
+.hero-section.hero-intro-running .hero-watermark-monogram {
+  animation: hero-monogram-cinematic 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.hero-section.hero-intro-running .hero-portrait-card {
+  animation: hero-portrait-cinematic 2s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+}
+
+/* Keyframes da Sequência Cinematográfica (<= 2s) */
+@keyframes hero-line-cinematic {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-fade-cinematic {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-title-cinematic {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-lead-cinematic {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-actions-cinematic {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-trust-cinematic {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-monogram-cinematic {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scale(1.06);
+  }
+  100% {
+    opacity: 0.38;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+@keyframes hero-portrait-cinematic {
+  0% {
+    opacity: 0;
+    transform: scale(1.035) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Estado Final / Skip Rápido / Acessibilidade */
+.hero-section.hero-stage-ready .hero-eyebrow-line,
+.hero-section.hero-stage-ready .hero-gold-label,
+.hero-section.hero-stage-ready .hero-title,
+.hero-section.hero-stage-ready .hero-lead,
+.hero-section.hero-stage-ready .hero-actions,
+.hero-section.hero-stage-ready .hero-trust-row,
+.hero-section.hero-stage-ready .hero-portrait-card,
+.hero-section.hero-skip-fast .hero-eyebrow-line,
+.hero-section.hero-skip-fast .hero-gold-label,
+.hero-section.hero-skip-fast .hero-title,
+.hero-section.hero-skip-fast .hero-lead,
+.hero-section.hero-skip-fast .hero-actions,
+.hero-section.hero-skip-fast .hero-trust-row,
+.hero-section.hero-skip-fast .hero-portrait-card {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.hero-section.hero-stage-ready .hero-watermark-monogram,
+.hero-section.hero-skip-fast .hero-watermark-monogram {
+  opacity: 0.38;
+  transform: translateY(-50%) scale(1);
+  animation: none;
+}
+
+/* Suporte Estrito a Movimento Reduzido (prefers-reduced-motion) */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section *,
+  .hero-ambient-glow,
+  .hero-anamorphic-beam,
+  .hero-watermark-monogram,
+  .hero-portrait-card,
+  .losango-path-outer,
+  .losango-path-inner,
+  .losango-light-path {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+  }
+  .hero-watermark-monogram {
+    opacity: 0.14 !important;
+    transform: translateY(-50%) !important;
+  }
 }
 
 /* ==========================================================================

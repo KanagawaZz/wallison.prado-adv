@@ -2,9 +2,24 @@ import { Icon } from './Icon.js';
 
 export function Hero({ lawyer, siteConfig }) {
   return `
-    <section id="inicio" class="hero-section hero-intro-active">
-      <!-- Luz difusa azul-marinho no fundo (#12284A) -->
+    <section id="inicio" class="hero-section hero-intro-active hero-has-video hero-video-wait">
+      <!-- Filme de identidade WP: roda sozinho e depois fica de fundo sob o conteúdo -->
+      <div class="hero-video-layer" aria-hidden="true">
+        <video
+          class="hero-video"
+          id="heroVideo"
+          src="/videos/hero-film.mp4"
+          muted
+          playsinline
+          preload="auto"
+          disablepictureinpicture
+        ></video>
+        <div class="hero-video-overlay"></div>
+      </div>
+
+      <!-- Iluminação atmosférica cinematográfica em camadas (Azul Ébano + Âmbar de Estúdio) -->
       <div class="hero-ambient-glow" aria-hidden="true"></div>
+      <div class="hero-anamorphic-beam" aria-hidden="true"></div>
 
       <div class="container hero-container">
         <div class="hero-grid">
@@ -74,8 +89,36 @@ export function Hero({ lawyer, siteConfig }) {
             </div>
           </div>
 
-          <!-- Coluna Direita: Palco Visual com Foto do Dr. Wallison + Losango Dourado + Monograma -->
+          <!-- Coluna Direita: Palco Visual com Foto do Dr. Wallison + Losango Dourado + Monograma Monumental -->
           <div class="hero-visual-col" id="heroVisualCol" data-reveal="from-right">
+            <!-- Monograma Monumental WP em Marca d'Água 3D de Fundo -->
+            <div class="hero-watermark-monogram" aria-hidden="true">
+              <svg class="hero-monogram-svg" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="wpGradGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FCE28A" stop-opacity="0.65" />
+                    <stop offset="45%" stop-color="#C5A880" stop-opacity="0.4" />
+                    <stop offset="100%" stop-color="#9E7D47" stop-opacity="0.15" />
+                  </linearGradient>
+                  <linearGradient id="wpGradStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FCE28A" stop-opacity="0.85" />
+                    <stop offset="50%" stop-color="#DCA42C" stop-opacity="0.55" />
+                    <stop offset="100%" stop-color="#B38116" stop-opacity="0.25" />
+                  </linearGradient>
+                  <filter id="wpMonogramGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="6" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                </defs>
+                <!-- Moldura Losango Sutil de Profundidade -->
+                <path d="M 260 40 L 460 260 L 260 480 L 60 260 Z" fill="none" stroke="url(#wpGradStroke)" stroke-width="1.2" opacity="0.35" />
+                <path d="M 260 62 L 438 260 L 260 458 L 82 260 Z" fill="none" stroke="url(#wpGradStroke)" stroke-width="0.8" opacity="0.2" />
+                <!-- Letras W e P Entrelaçadas com Alta Tipografia Serifada -->
+                <text x="215" y="295" font-family="'Cormorant Garamond', Georgia, serif" font-size="240" font-weight="400" font-style="italic" fill="url(#wpGradGold)" stroke="url(#wpGradStroke)" stroke-width="1" text-anchor="middle" dominant-baseline="central" filter="url(#wpMonogramGlow)">W</text>
+                <text x="325" y="270" font-family="'Cormorant Garamond', Georgia, serif" font-size="270" font-weight="600" fill="url(#wpGradGold)" stroke="url(#wpGradStroke)" stroke-width="1.2" text-anchor="middle" dominant-baseline="central" filter="url(#wpMonogramGlow)">P</text>
+              </svg>
+            </div>
+
             <div class="hero-stage-composition" id="heroStageComposition">
               <!-- Halo / Brasão Vetorial do Duplo Losango (Traçado 1.2px) -->
               <div class="hero-losango-wrapper" id="heroLosangoWrapper">
@@ -132,7 +175,7 @@ export function Hero({ lawyer, siteConfig }) {
                 </svg>
               </div>
 
-              <!-- Retrato do Dr. Wallison Prado -->
+              <!-- Retrato do Dr. Wallison Prado com Iluminação de Cinema -->
               <div class="hero-portrait-card" id="heroPortraitCard">
                 <div class="hero-frame-inner-border" aria-hidden="true"></div>
                 <div class="hero-frame-glass-sheen" aria-hidden="true"></div>

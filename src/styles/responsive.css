@@ -365,6 +365,33 @@
     pointer-events: none;
   }
 
+  /* Monograma e Feixes no Mobile: discretos e sem sobreposição */
+  .hero-watermark-monogram {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%) scale(0.6);
+    width: 220px;
+    height: 220px;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-anamorphic-beam {
+    display: none;
+  }
+
+  /* Conteúdo centralizado no mobile: véu uniforme sobre o filme */
+  .hero-video-layer {
+    top: -52px; /* altura do header mobile */
+  }
+
+  .hero-video-overlay {
+    background: rgba(11, 27, 51, 0.64);
+  }
+
   .hero-copy {
     display: flex;
     flex-direction: column;

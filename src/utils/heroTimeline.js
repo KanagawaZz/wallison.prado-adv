@@ -1,20 +1,25 @@
 /**
- * Controlador da Linha do Tempo e Efeitos do Hero (~3.5s)
- * - 0.0s a 1.6s: Desenho duplo do losango em SVG
- * - 0.9s a 1.9s: Monograma "WP" entra em foco
- * - 1.4s a 2.2s: "WALLISON PRADO" surge + linha de 60px
- * - 2.2s a 2.6s: Pausa contemplativa (0.4s)
- * - 2.6s a 3.5s: Transição suave do monograma para a direita e entrada dos textos e header
- * - 3.5s a 4.7s: Primeiro feixe de brilho (shine)
- * - Estado contínuo: Shine a cada 7s, glow respirando a cada 4s, tilt 3D e parallax
+ * Controlador da Linha do Tempo e Efeitos do Hero
+ * - Filme de identidade WP roda sozinho em tela cheia (conteúdo e header ocultos)
+ * - Aos VIDEO_REVEAL_AT s do filme (emblema WP formado) o véu sobe e o conteúdo entra por cima:
+ *   - +0.0s a 3.5s: textos, retrato e losango entram lentamente em sequência
+ *   - +1.5s: glow do losango | +3.0s: primeiro shine | +3.8s: estado final
+ * - O filme termina congelado no emblema, como fundo do hero
+ * - Estado contínuo: Shine a cada 8s, tilt 3D e parallax
  * - Interrupção: Pula para o estado final ao rolar, clicar ou teclar.
+ * - Sem vídeo (erro, autoplay bloqueado ou rede lenta): conteúdo entra na hora.
  */
+const VIDEO_REVEAL_AT = 4.5; // segundo do filme em que o conteúdo começa a aparecer
+const VIDEO_START_TIMEOUT = 2500; // se o filme não começar até aqui (ms), revela sem ele
+const VIDEO_SPEED = 1.15; // velocidade do filme (1 = normal)
+
 export function initHeroTimeline() {
   const heroSection = document.querySelector('#inicio');
   const monogramStage = document.querySelector('#heroStageComposition') || document.querySelector('#heroMonogramStage');
   const losangoWrapper = document.querySelector('#heroLosangoWrapper');
   const shineBeam = document.querySelector('#heroShineBeam');
   const header = document.querySelector('.site-header');
+  const video = document.querySelector('#heroVideo');
 
   if (!heroSection) return;
 
@@ -23,6 +28,7 @@ export function initHeroTimeline() {
   const alreadySeen = sessionStorage.getItem('wp_hero_seen') === 'true';
 
   let isComplete = false;
+  let isRevealed = false;
   let shineTimer = null;
   const timeouts = [];
 
@@ -46,13 +52,21 @@ export function initHeroTimeline() {
     shineBeam.classList.add('animate-shine');
   };
 
+  // Tira o conteúdo e o header da espera do filme (o véu e o fade entram via CSS)
+  const endVideoWait = () => {
+    isRevealed = true;
+    heroSection.classList.remove('hero-video-wait');
+    if (header) {
+      header.classList.remove('header-intro-hidden');
+    }
+  };
+
   // Transição rápida para o estado final (0.6s)
   const skipToFinalState = () => {
     if (isComplete) return;
     isComplete = true;
     clearAllTimeouts();
-
-    sessionStorage.setItem('wp_hero_seen', 'true');
+    endVideoWait();
 
     heroSection.classList.add('hero-skip-fast');
     heroSection.classList.remove('hero-intro-active');
@@ -98,60 +112,95 @@ export function initHeroTimeline() {
     window.removeEventListener('click', handleUserInterruption);
   };
 
-  // Caso já tenha visto na sessão, prefira movimento reduzido ou esteja no celular, pula direto
-  if (alreadySeen || isReducedMotion || isMobile) {
+  // Sequência Cronometrada Cinematográfica do conteúdo sobre o filme (Duração total ~3.8s)
+  const startRevealSequence = () => {
+    if (isRevealed || isComplete) return;
+    endVideoWait();
+
+    // 0.0s: Inicia a coreografia (hero-intro-running)
+    heroSection.classList.add('hero-intro-running');
+
+    // 1.5s: Losango ganha ativação do glow sutil
+    addTimeout(() => {
+      if (isComplete) return;
+      if (losangoWrapper) {
+        losangoWrapper.classList.add('losango-glow-active');
+      }
+    }, 1500);
+
+    // 3.0s: Feixe de brilho metálico percorre a moldura
+    addTimeout(() => {
+      if (isComplete) return;
+      triggerShinePass();
+    }, 3000);
+
+    // 3.8s: Conclusão da abertura (depois da última animação, a dos diferenciais, em 3.5s)
+    addTimeout(() => {
+      if (isComplete) return;
+      isComplete = true;
+      heroSection.classList.remove('hero-intro-active');
+      heroSection.classList.add('hero-stage-ready');
+      if (header) {
+        header.classList.add('header-revealed');
+      }
+      cleanupInterruptionListeners();
+      shineTimer = setInterval(triggerShinePass, 8000);
+    }, 3800);
+  };
+
+  // Sem o filme, devolve o monograma e o glow originais do hero
+  const dropVideo = () => {
+    heroSection.classList.remove('hero-has-video');
+    startRevealSequence();
+  };
+
+  // Respeita estritamente se o usuário prefere movimento reduzido: sem filme, emblema final parado
+  if (isReducedMotion) {
+    if (video) {
+      const showFinalFrame = () => {
+        video.currentTime = Math.max(video.duration - 0.05, 0);
+      };
+      if (video.readyState >= 1) showFinalFrame();
+      else video.addEventListener('loadedmetadata', showFinalFrame, { once: true });
+    }
     skipToFinalState();
     return;
   }
 
-  // Registra ouvintes para interrupção voluntária do usuário
+  // Registra ouvintes para interrupção voluntária do usuário (scroll, click, touch)
   setupInterruptionListeners();
 
-  // Início da Sequência Cronometrada
-  // 0.0s: Estado inicial ativo (hero-intro-active já inserido no HTML)
-  heroSection.classList.add('hero-intro-running');
-
-  // 0.9s: Monograma entra em foco
-  addTimeout(() => {
-    if (isComplete) return;
-    heroSection.classList.add('hero-step-monogram');
-  }, 900);
-
-  // 1.4s: Nome WALLISON PRADO surge abaixo
-  addTimeout(() => {
-    if (isComplete) return;
-    heroSection.classList.add('hero-step-name');
-  }, 1400);
-
-  // 2.2s a 2.6s: Pausa contemplativa
-
-  // 2.6s: Transição para o layout do Hero (monograma desliza, textos entram)
-  addTimeout(() => {
-    if (isComplete) return;
-    heroSection.classList.remove('hero-intro-active');
-    heroSection.classList.add('hero-stage-ready');
+  if (!video) {
+    startRevealSequence();
+  } else {
     if (header) {
-      header.classList.add('header-revealed');
+      header.classList.add('header-intro-hidden');
     }
-    if (losangoWrapper) {
-      losangoWrapper.classList.add('losango-glow-active');
+
+    // Conteúdo entra quando o emblema WP se forma (ou no fim do filme)
+    const handleVideoTime = () => {
+      if (video.currentTime < VIDEO_REVEAL_AT) return;
+      video.removeEventListener('timeupdate', handleVideoTime);
+      startRevealSequence();
+    };
+    video.addEventListener('timeupdate', handleVideoTime);
+    video.addEventListener('ended', startRevealSequence, { once: true });
+    video.addEventListener('error', dropVideo, { once: true });
+
+    video.defaultPlaybackRate = VIDEO_SPEED;
+    video.playbackRate = VIDEO_SPEED;
+
+    // Autoplay bloqueado (ex.: modo economia de energia): revela com o 1º frame de fundo
+    const playAttempt = video.play();
+    if (playAttempt) {
+      playAttempt.catch(startRevealSequence);
     }
-  }, 2600);
 
-  // 3.5s: Primeiro feixe de luz metálico no losango
-  addTimeout(() => {
-    if (isComplete) return;
-    triggerShinePass();
-  }, 3500);
-
-  // 4.7s: Fim da abertura formal, inicia repetição do shine a cada 7s
-  addTimeout(() => {
-    if (isComplete) return;
-    isComplete = true;
-    sessionStorage.setItem('wp_hero_seen', 'true');
-    cleanupInterruptionListeners();
-    shineTimer = setInterval(triggerShinePass, 7000);
-  }, 4700);
+    // Rede lenta: não segura o visitante esperando o filme carregar
+    addTimeout(() => {
+      if (video.currentTime < 0.1) startRevealSequence();
+    }, VIDEO_START_TIMEOUT);
+  }
 
   // --------------------------------------------------------------------------
   // INTERATIVIDADES CONTÍNUAS NO DESKTOP (Sem rodar em mobile < 768px)
