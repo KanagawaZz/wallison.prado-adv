@@ -47,8 +47,8 @@
   /* ==========================================================================
      PALETA DE CAMADAS CLARAS (MARFIM, BRANCO & DOURADO NOBRE)
      ========================================================================== */
-  --color-light-gold: #9E6B08;           /* Ouro nobre profundo com alto contraste AA (4.6:1) */
-  --color-light-gold-metallic: linear-gradient(135deg, #C28E1D 0%, #8A5F08 55%, #B58418 100%);
+  --color-light-gold: #8A5F08;           /* Ouro nobre profundo com contraste AA (5.6:1 no branco, 4.9:1 no creme) */
+  --color-light-gold-metallic: linear-gradient(135deg, #8E6210 0%, #6F4C05 55%, #85600E 100%); /* todas as paradas >= 4.5:1 no creme */
 
   /* Espaçamento entre seções: 56px desktop (112px visível), 36px mobile (72px visível) */
   --section-padding-desktop: 56px;

@@ -806,7 +806,7 @@
   .about-paragraphs p {
     font-size: 15px !important;
     line-height: 1.45 !important;
-    color: #C9D1DE;
+    color: #2C3E55; /* seção tem fundo creme: mesma cor do desktop (10:1) */
     margin: 0 0 10px !important;
     text-align: center;
   }
@@ -886,7 +886,7 @@
   }
 
   .about-framed-card .card-framed-title {
-    font-size: 0.8rem !important;
+    font-size: 0.92rem !important;
     font-weight: 600 !important;
     color: #0B1B33 !important;
     line-height: 1.2 !important;
@@ -895,9 +895,9 @@
   }
 
   .about-framed-card .card-framed-desc {
-    font-size: 0.7rem !important;
-    line-height: 1.3 !important;
-    color: #4A5D74 !important;
+    font-size: 0.82rem !important;
+    line-height: 1.4 !important;
+    color: #3E4F64 !important;
     margin: 0 !important;
   }
 
