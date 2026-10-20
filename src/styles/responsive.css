@@ -321,12 +321,12 @@
     justify-content: center;
   }
 
-  /* Palco Visual de ~120px com Losango Proporcional */
+  /* Palco Visual de ~145px com Losango Proporcional */
   .hero-stage-composition {
-    width: 115px;
-    height: 115px;
-    max-width: 115px;
-    max-height: 115px;
+    width: 145px;
+    height: 145px;
+    max-width: 145px;
+    max-height: 145px;
     aspect-ratio: 1;
     margin: 0 auto;
     position: relative;
@@ -336,8 +336,8 @@
   }
 
   .hero-portrait-card {
-    width: 80px;
-    height: 92px;
+    width: 100px;
+    height: 116px;
     aspect-ratio: 0.86;
     border-radius: 12px;
     border: 1.5px solid rgba(244, 239, 230, 0.7);
