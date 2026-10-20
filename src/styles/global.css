@@ -2291,8 +2291,10 @@ p {
 
 .contact-details-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.4rem;
+  /* Cada contato ocupa a largura do próprio texto, distribuídos com respiro uniforme */
+  grid-template-columns: repeat(3, max-content);
+  justify-content: space-between;
+  gap: 1.4rem 2.5rem;
   padding-block: 2.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -2347,6 +2349,7 @@ p {
   font-size: 1.05rem;
   color: #ffffff;
   line-height: 1.3;
+  white-space: nowrap; /* telefone, e-mail e horário nunca quebram no meio */
 }
 
 .info-card-text small {
