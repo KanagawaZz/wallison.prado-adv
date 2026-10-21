@@ -33,7 +33,7 @@ app.innerHTML = `
   <main>
     ${Hero({ lawyer, siteConfig })}
     ${TrustBar({ trustBadges })}
-    ${About({ siteConfig })}
+    ${About()}
     ${PracticeAreas({ practiceAreas, siteConfig })}
     ${HowItWorks({ steps, siteConfig })}
     ${FAQ({ faq, siteConfig })}

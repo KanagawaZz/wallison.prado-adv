@@ -39,10 +39,6 @@ export function Footer({ siteConfig }) {
         <div class="footer-contact-col">
           <span class="footer-heading">Contato</span>
           <div class="footer-contact-items">
-            <a href="${siteConfig.whatsappLink}" target="_blank" rel="noopener noreferrer" class="footer-contact-link">
-              ${Icon({ name: 'chat', size: 16 })}
-              <span>${siteConfig.whatsappDisplay}</span>
-            </a>
             <a href="mailto:${siteConfig.email}" class="footer-contact-link">
               ${Icon({ name: 'mail', size: 16 })}
               <span>adv.wallisonprado@gmail.com</span>

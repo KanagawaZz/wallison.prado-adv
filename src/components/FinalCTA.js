@@ -29,7 +29,7 @@ export function FinalCTA({ siteConfig }) {
           </div>
 
           <div class="contact-details-grid">
-            <a href="${siteConfig.whatsappLink}" target="_blank" rel="noopener noreferrer" class="contact-info-card contact-info-link" title="Abrir conversa no WhatsApp">
+            <div class="contact-info-card">
               <div class="info-card-icon">
                 ${Icon({ name: 'phone', size: 18 })}
               </div>
@@ -37,7 +37,7 @@ export function FinalCTA({ siteConfig }) {
                 <span class="info-label">WhatsApp</span>
                 <strong>${siteConfig.whatsappDisplay}</strong>
               </div>
-            </a>
+            </div>
 
             <a href="mailto:${siteConfig.email}" class="contact-info-card contact-info-link" title="Enviar e-mail">
               <div class="info-card-icon">

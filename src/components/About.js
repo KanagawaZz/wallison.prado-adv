@@ -1,6 +1,4 @@
-import { Icon } from './Icon.js';
-
-export function About({ siteConfig }) {
+export function About() {
   return `
     <section id="sobre" class="section-block about-section">
       <div class="container">
@@ -27,13 +25,6 @@ export function About({ siteConfig }) {
             <div class="about-signature" aria-label="Assinatura de Wallison Prado">
               <span class="about-signature-script" aria-hidden="true">Wallison Prado</span>
               <span class="about-signature-role">Advogado</span>
-            </div>
-
-            <div class="about-actions-row">
-              <a href="${siteConfig.whatsappLink}" target="_blank" rel="noopener noreferrer" class="button button-primary about-btn-cta">
-                ${Icon({ name: 'chat', size: 18 })}
-                <span>Falar com o Dr. Wallison</span>
-              </a>
             </div>
           </div>
         </div>
