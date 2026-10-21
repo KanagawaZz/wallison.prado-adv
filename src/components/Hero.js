@@ -194,7 +194,7 @@ export function Hero({ lawyer, siteConfig }) {
                   <span class="seal-wp">WP</span>
                   <div class="seal-meta">
                     <strong>Dr. Wallison Prado</strong>
-                    <small>OAB/MT 31.726</small>
+                    <small>Advogado</small>
                   </div>
                 </div>
               </div>

@@ -2458,9 +2458,22 @@ p {
 }
 
 .footer-subtitle {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+/* Registro OAB discreto no rodapé */
+.footer-oab-link {
+  color: #7A8E9F;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-oab-link:hover,
+.footer-oab-link:focus-visible {
   color: var(--color-accent-light);
-  font-weight: 600;
 }
 
 .footer-bio-summary {

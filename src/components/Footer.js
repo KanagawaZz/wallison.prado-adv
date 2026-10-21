@@ -11,7 +11,7 @@ export function Footer({ siteConfig }) {
               <strong class="footer-title">Dr. Wallison Prado</strong>
               <p class="footer-subtitle">
                 <a href="${siteConfig.oabLink}" target="_blank" rel="noopener noreferrer" class="footer-oab-link">
-                  OAB/MT 31.726 • Consultar no CNA ${Icon({ name: 'externalLink', size: 12 })}
+                  ${siteConfig.oabNumber}
                 </a>
               </p>
             </div>

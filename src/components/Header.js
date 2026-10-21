@@ -10,7 +10,7 @@ export function Header({ navigation, siteConfig, lawyer }) {
           </div>
           <div class="brand-text">
             <strong class="brand-name">${siteConfig.name}</strong>
-            <span class="brand-oab">Direito Administrativo • OAB/MT 31.726</span>
+            <span class="brand-oab">Direito Administrativo</span>
           </div>
         </a>
 
