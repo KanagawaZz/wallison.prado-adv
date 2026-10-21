@@ -954,6 +954,28 @@
     text-align: center;
   }
 
+  /* Texto centralizado: Themis centralizada e véu uniforme */
+  .contact-themis-veil::before {
+    background-position: center 30%;
+    background-size: cover;
+    opacity: 0.5;
+  }
+
+  .contact-themis-veil::after {
+    background:
+      repeating-linear-gradient(45deg, rgba(13, 30, 46, 0.35) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(-45deg, rgba(13, 30, 46, 0.35) 0 1px, transparent 1px 3px),
+      linear-gradient(180deg, rgba(13, 30, 46, 0.8) 0%, rgba(9, 22, 34, 0.9) 100%);
+  }
+
+  .about-signature {
+    margin-bottom: 20px;
+  }
+
+  .about-signature-script {
+    font-size: 2.2rem;
+  }
+
   .contact-title {
     font-size: 1.35rem !important;
     line-height: 1.25 !important;

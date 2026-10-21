@@ -4,42 +4,9 @@ export function About({ siteConfig }) {
   return `
     <section id="sobre" class="section-block about-section">
       <div class="container">
-        <!-- Linha Superior: Themis e Perfil -->
+        <!-- Perfil em texto, centralizado e assinado (o rosto já aparece no hero) -->
         <div class="about-top-grid">
-          <!-- Coluna Visual -->
-          <div class="about-visual-column" data-reveal="from-left">
-            <div class="about-frame-stage">
-              <!-- Moldura Dourada Traseira Deslocada 16px (Desktop) -->
-              <div class="about-gold-offset-frame desktop-only" aria-hidden="true">
-                <svg class="about-gold-offset-svg" width="100%" height="100%" style="position: absolute; inset: 0; overflow: visible;" aria-hidden="true">
-                  <rect class="about-light-rect" x="0" y="0" width="100%" height="100%" rx="12" pathLength="1000" fill="none" stroke="#B88B2E" stroke-width="1.5" stroke-linecap="round" />
-                </svg>
-              </div>
-              
-              <!-- Moldura Principal -->
-              <div class="about-photo-wrapper">
-                <img
-                  src="/images/wallison-prado.jpg"
-                  alt="Dr. Wallison Prado, advogado, em seu escritório"
-                  class="about-portrait-img desktop-only"
-                  width="440"
-                  height="480"
-                  loading="lazy"
-                />
-                <img 
-                  src="/images/wallison-prado.jpg" 
-                  alt="Dr. Wallison Prado, advogado"
-                  class="about-portrait-img mobile-only about-mobile-avatar"
-                  width="140"
-                  height="160"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- Coluna Textual: Perfil Profissional -->
-          <div class="about-copy-column" data-reveal="from-right">
+          <div class="about-copy-column" data-reveal="fade-up">
             <div class="about-header-meta">
               <span class="eyebrow-chip" data-reveal="label">SOBRE</span>
               <h2 class="about-title" data-reveal="title">
@@ -54,6 +21,12 @@ export function About({ siteConfig }) {
               <p>
                 Sei que, para o servidor, buscar um direito costuma vir acompanhado de receio: da chefia, dos colegas, de complicar a carreira. Por isso, meu trabalho começa explicando com calma o que a lei prevê para o seu caso, quais caminhos existem e os riscos de cada um.
               </p>
+            </div>
+
+            <!-- Assinatura de exemplo em fonte manuscrita: trocar pela imagem da assinatura real antes de publicar -->
+            <div class="about-signature" aria-label="Assinatura de Wallison Prado">
+              <span class="about-signature-script" aria-hidden="true">Wallison Prado</span>
+              <span class="about-signature-role">Advogado</span>
             </div>
 
             <div class="about-actions-row">

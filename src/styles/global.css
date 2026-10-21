@@ -1750,12 +1750,50 @@ p {
   border-bottom: 1px solid rgba(184, 142, 60, 0.25);
 }
 
+/* Coluna única centralizada, em tom de carta */
 .about-top-grid {
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.about-top-grid .about-copy-column {
   align-items: center;
-  gap: 64px;
-  margin-bottom: 52px;
+}
+
+.about-top-grid .about-actions-row {
+  justify-content: center;
+}
+
+/* Assinatura ao fim do texto */
+.about-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.about-signature-script {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(2.4rem, 3.6vw, 3rem);
+  line-height: 1.1;
+  color: #0B1B33;
+  transform: rotate(-3deg);
+}
+
+.about-signature-role {
+  margin-top: 6px;
+  padding-top: 8px;
+  min-width: 180px;
+  border-top: 1px solid rgba(184, 142, 60, 0.45);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6B5A3A;
 }
 
 /* Coluna Visual (Foto Themis com Moldura Dupla Dourada) */
@@ -2262,6 +2300,39 @@ p {
   border: 1px solid rgba(196, 154, 86, 0.35);
   position: relative;
   overflow: hidden;
+}
+
+/* Themis ao fundo, sob um véu fino na cor do cartão */
+.contact-themis-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.contact-themis-veil::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: url('/images/themis.png') right -2% center / auto 118% no-repeat;
+  filter: blur(1.5px) grayscale(0.35);
+  opacity: 0.55;
+}
+
+/* Trama do tecido + véu mais denso onde fica o texto */
+.contact-themis-veil::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(45deg, rgba(13, 30, 46, 0.35) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(-45deg, rgba(13, 30, 46, 0.35) 0 1px, transparent 1px 3px),
+    linear-gradient(90deg, #0d1e2e 0%, rgba(13, 30, 46, 0.95) 45%, rgba(9, 22, 34, 0.7) 75%, rgba(9, 22, 34, 0.94) 100%);
+}
+
+.contact-card-box > :not(.contact-themis-veil) {
+  position: relative;
+  z-index: 1;
 }
 
 .contact-header-content {

@@ -5,6 +5,7 @@ export function FinalCTA({ siteConfig }) {
     <section id="contato" class="section-block contact-section">
       <div class="container">
         <div class="contact-card-box" data-reveal="fade-up">
+          <div class="contact-themis-veil" aria-hidden="true"></div>
           <div class="contact-header-content">
             <h2 class="contact-title">
               Vamos conversar sobre a sua situação?
