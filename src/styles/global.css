@@ -2316,7 +2316,7 @@ p {
   inset: -8px;
   background: url('/images/themis.png') right -2% center / auto 118% no-repeat;
   filter: blur(1.5px) grayscale(0.35);
-  opacity: 0.55;
+  opacity: 0.75;
 }
 
 /* Trama do tecido + véu mais denso onde fica o texto */
@@ -2327,7 +2327,7 @@ p {
   background:
     repeating-linear-gradient(45deg, rgba(13, 30, 46, 0.35) 0 1px, transparent 1px 3px),
     repeating-linear-gradient(-45deg, rgba(13, 30, 46, 0.35) 0 1px, transparent 1px 3px),
-    linear-gradient(90deg, #0d1e2e 0%, rgba(13, 30, 46, 0.95) 45%, rgba(9, 22, 34, 0.7) 75%, rgba(9, 22, 34, 0.94) 100%);
+    linear-gradient(90deg, #0d1e2e 0%, rgba(13, 30, 46, 0.95) 45%, rgba(9, 22, 34, 0.55) 75%, rgba(9, 22, 34, 0.9) 100%);
 }
 
 .contact-card-box > :not(.contact-themis-veil) {
