@@ -1,8 +1,6 @@
 import { Icon } from './Icon.js';
 
-export function About({ lawyer, siteConfig }) {
-  const valueIcons = ['scale', 'shield', 'clock', 'chat'];
-
+export function About({ siteConfig }) {
   return `
     <section id="sobre" class="section-block about-section">
       <div class="container">
@@ -20,9 +18,9 @@ export function About({ lawyer, siteConfig }) {
               
               <!-- Moldura Principal -->
               <div class="about-photo-wrapper">
-                <img 
-                  src="/images/themis.png" 
-                  alt="Escultura da Deusa da Justiça (Themis) com balança e espada"
+                <img
+                  src="/images/wallison-prado.jpg"
+                  alt="Dr. Wallison Prado, advogado, em seu escritório"
                   class="about-portrait-img desktop-only"
                   width="440"
                   height="480"
@@ -36,13 +34,6 @@ export function About({ lawyer, siteConfig }) {
                   height="160"
                   loading="lazy"
                 />
-              </div>
-
-              <!-- Selo Institucional sobre a imagem (Desktop) -->
-              <div class="about-photo-badge desktop-only">
-                <span class="badge-dot" aria-hidden="true"></span>
-                <strong>Símbolo da Justiça</strong>
-                <small>Precisão Técnica & Ética</small>
               </div>
             </div>
           </div>
@@ -70,33 +61,7 @@ export function About({ lawyer, siteConfig }) {
                 ${Icon({ name: 'chat', size: 18 })}
                 <span>Falar com o Dr. Wallison</span>
               </a>
-              <a href="${siteConfig.instagram}" target="_blank" rel="noopener noreferrer" class="button button-outline about-btn-instagram" title="Acompanhar no Instagram">
-                ${Icon({ name: 'instagram', size: 18 })}
-                <span>Instagram</span>
-              </a>
             </div>
-          </div>
-        </div>
-
-        <!-- Linha Inferior: 4 Cards de Pilares -->
-        <div class="about-pillars-container" data-reveal="fade-up">
-          <div class="about-horizontal-cards-grid">
-            ${lawyer.values
-              .map(
-                (val, idx) => `
-                  <article class="about-framed-card" style="--pillar-delay: ${idx * 0.1}s">
-                    <div class="card-top-row">
-                      <div class="card-icon-emblem">
-                        ${Icon({ name: valueIcons[idx] || 'check', size: 18 })}
-                      </div>
-                      <span class="card-pillar-number">0${idx + 1}</span>
-                    </div>
-                    <h3 class="card-framed-title">${val.title}</h3>
-                    <p class="card-framed-desc">${val.desc}</p>
-                  </article>
-                `
-              )
-              .join('')}
           </div>
         </div>
       </div>

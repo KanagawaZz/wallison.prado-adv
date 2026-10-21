@@ -35,17 +35,6 @@ export function FAQ({ faq, siteConfig }) {
             )
             .join('')}
         </div>
-
-        <div class="faq-support-box" data-reveal="fade-up">
-          <div class="support-text">
-            <strong>Conteúdo sobre direitos do servidor</strong>
-            <p>No Instagram, explico mudanças na legislação e decisões que afetam servidores de Mato Grosso.</p>
-          </div>
-          <a href="${siteConfig.instagram}" target="_blank" rel="noopener noreferrer" class="button button-instagram">
-            ${Icon({ name: 'instagram', size: 18 })}
-            <span>Acompanhar no Instagram</span>
-          </a>
-        </div>
       </div>
     </section>
   `;

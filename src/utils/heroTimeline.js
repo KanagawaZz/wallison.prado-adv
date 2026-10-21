@@ -1,16 +1,14 @@
 /**
  * Controlador da Linha do Tempo e Efeitos do Hero
- * - Filme de identidade WP roda sozinho em tela cheia (conteúdo e header ocultos)
- * - Aos VIDEO_REVEAL_AT s do filme (emblema WP formado) o véu sobe e o conteúdo entra por cima:
- *   - +0.0s a 3.5s: textos, retrato e losango entram lentamente em sequência
+ * - Filme de identidade WP roda como fundo do hero desde o início, sob o conteúdo
+ * - O conteúdo entra na hora, por cima do filme:
+ *   - +0.0s a 3.5s: textos, retrato e losango entram em sequência
  *   - +1.5s: glow do losango | +3.0s: primeiro shine | +3.8s: estado final
  * - O filme termina congelado no emblema, como fundo do hero
  * - Estado contínuo: Shine a cada 8s, tilt 3D e parallax
  * - Interrupção: Pula para o estado final ao rolar, clicar ou teclar.
- * - Sem vídeo (erro, autoplay bloqueado ou rede lenta): conteúdo entra na hora.
+ * - Sem vídeo (erro): volta o monograma e o glow originais do hero.
  */
-const VIDEO_REVEAL_AT = 4.5; // segundo do filme em que o conteúdo começa a aparecer
-const VIDEO_START_TIMEOUT = 2500; // se o filme não começar até aqui (ms), revela sem ele
 const VIDEO_SPEED = 1.15; // velocidade do filme (1 = normal)
 
 export function initHeroTimeline() {
@@ -170,37 +168,21 @@ export function initHeroTimeline() {
   // Registra ouvintes para interrupção voluntária do usuário (scroll, click, touch)
   setupInterruptionListeners();
 
-  if (!video) {
-    startRevealSequence();
-  } else {
-    if (header) {
-      header.classList.add('header-intro-hidden');
-    }
-
-    // Conteúdo entra quando o emblema WP se forma (ou no fim do filme)
-    const handleVideoTime = () => {
-      if (video.currentTime < VIDEO_REVEAL_AT) return;
-      video.removeEventListener('timeupdate', handleVideoTime);
-      startRevealSequence();
-    };
-    video.addEventListener('timeupdate', handleVideoTime);
-    video.addEventListener('ended', startRevealSequence, { once: true });
+  if (video) {
     video.addEventListener('error', dropVideo, { once: true });
 
     video.defaultPlaybackRate = VIDEO_SPEED;
     video.playbackRate = VIDEO_SPEED;
 
-    // Autoplay bloqueado (ex.: modo economia de energia): revela com o 1º frame de fundo
+    // Autoplay bloqueado (ex.: modo economia de energia): fica o 1º frame de fundo
     const playAttempt = video.play();
     if (playAttempt) {
-      playAttempt.catch(startRevealSequence);
+      playAttempt.catch(() => {});
     }
-
-    // Rede lenta: não segura o visitante esperando o filme carregar
-    addTimeout(() => {
-      if (video.currentTime < 0.1) startRevealSequence();
-    }, VIDEO_START_TIMEOUT);
   }
+
+  // O filme roda só como fundo: o conteúdo entra na hora, sem esperar o emblema
+  startRevealSequence();
 
   // --------------------------------------------------------------------------
   // INTERATIVIDADES CONTÍNUAS NO DESKTOP (Sem rodar em mobile < 768px)

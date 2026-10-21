@@ -734,10 +734,25 @@ p {
   font-weight: 500;
 }
 
-.hero-btn-oab {
+/* Registro OAB como link discreto sob o botão principal */
+.hero-oab-link {
+  flex-basis: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.hero-oab-link:hover,
+.hero-oab-link:focus-visible {
+  color: var(--color-accent-light);
+  opacity: 1;
 }
 
 /* Garantias / Trust Row */
