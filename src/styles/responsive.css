@@ -506,6 +506,30 @@
     padding-block: 1rem 1.25rem;
   }
 
+  /* No celular os destaques cabem na 1ª tela: ficam ocultos durante o filme e
+     entram logo depois do botão do hero (mesmo tempo do antigo hero-trust-row) */
+  #inicio.hero-video-wait ~ #destaques {
+    opacity: 0;
+  }
+
+  #inicio.hero-intro-running ~ #destaques {
+    animation: hero-trust-cinematic 1.4s cubic-bezier(0.16, 1, 0.3, 1) 2.1s both;
+  }
+
+  /* Etiquetas PAD • Progressões • Licença-prêmio: entre o texto de apoio (1.2s) e o botão (1.7s) */
+  .hero-section.hero-intro-running .hero-mobile-tags {
+    animation: hero-fade-cinematic 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.45s both;
+  }
+
+  /* Abertura pulada (toque/rolagem) ou concluída: aparecem na hora */
+  #inicio.hero-skip-fast ~ #destaques,
+  #inicio.hero-stage-ready ~ #destaques,
+  .hero-section.hero-skip-fast .hero-mobile-tags,
+  .hero-section.hero-stage-ready .hero-mobile-tags {
+    animation: none;
+    opacity: 1;
+  }
+
   .trust-bar-grid {
     display: flex !important;
     flex-direction: column !important;
