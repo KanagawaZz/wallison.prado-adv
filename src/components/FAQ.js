@@ -2,7 +2,7 @@ import { Icon } from './Icon.js';
 
 export function FAQ({ faq, siteConfig }) {
   return `
-    <section id="duvidas" class="section-block faq-section">
+    <section id="duvidas" class="section-block faq-section desktop-only">
       <div class="container">
         <div class="section-header" data-reveal="fade-up">
           <div class="eyebrow-chip">

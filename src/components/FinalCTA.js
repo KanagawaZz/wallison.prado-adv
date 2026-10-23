@@ -13,9 +13,10 @@ export function FinalCTA({ siteConfig }) {
               Me conte o que está acontecendo. Na primeira conversa, explico o que a lei prevê para o seu caso e quais caminhos existem.
             </p>
 
-            <div class="contact-trust-checklist">
+            <div class="contact-trust-checklist desktop-only">
               <span>✓ Primeira conversa gratuita</span>
-              <span>✓ Atendimento pelo WhatsApp</span>
+              <span>✓ WhatsApp e videochamada</span>
+              <span>✓ Assinatura pelo celular</span>
               <span>✓ Sigilo profissional</span>
             </div>
 

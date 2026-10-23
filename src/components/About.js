@@ -37,13 +37,6 @@ export function About({ lawyer, siteConfig }) {
                   loading="lazy"
                 />
               </div>
-
-              <!-- Selo Institucional sobre a imagem (Desktop) -->
-              <div class="about-photo-badge desktop-only">
-                <span class="badge-dot" aria-hidden="true"></span>
-                <strong>Símbolo da Justiça</strong>
-                <small>Precisão Técnica & Ética</small>
-              </div>
             </div>
           </div>
 
@@ -79,7 +72,7 @@ export function About({ lawyer, siteConfig }) {
         </div>
 
         <!-- Linha Inferior: 4 Cards de Pilares -->
-        <div class="about-pillars-container" data-reveal="fade-up">
+        <div class="about-pillars-container desktop-only" data-reveal="fade-up">
           <div class="about-horizontal-cards-grid">
             ${lawyer.values
               .map(

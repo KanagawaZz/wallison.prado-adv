@@ -31,7 +31,7 @@ export function Footer({ siteConfig }) {
             <li><a href="#inicio">Início</a></li>
             <li><a href="#atuacao">Áreas de atuação</a></li>
             <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#duvidas">Dúvidas</a></li>
+            <li class="desktop-only"><a href="#duvidas">Dúvidas</a></li>
             <li><a href="#contato">Contato</a></li>
           </ul>
         </div>

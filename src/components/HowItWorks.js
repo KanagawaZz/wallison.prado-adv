@@ -2,7 +2,7 @@ import { Icon } from './Icon.js';
 
 export function HowItWorks({ steps }) {
   return `
-    <section id="como-funciona" class="section-block steps-section">
+    <section id="como-funciona" class="section-block steps-section desktop-only">
       <div class="container">
         <div class="section-header" data-reveal="fade-up">
           <div class="eyebrow-chip">

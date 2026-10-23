@@ -72,21 +72,6 @@ export function Hero({ lawyer, siteConfig }) {
                 <span>Consultar inscrição na OAB</span>
               </a>
             </div>
-
-            <div class="hero-trust-row" aria-label="Diferenciais">
-              <div class="trust-pill">
-                <span class="pill-check">${Icon({ name: 'check', size: 14 })}</span>
-                <span>Primeira conversa gratuita</span>
-              </div>
-              <div class="trust-pill">
-                <span class="pill-check">${Icon({ name: 'check', size: 14 })}</span>
-                <span>WhatsApp e videochamada</span>
-              </div>
-              <div class="trust-pill">
-                <span class="pill-check">${Icon({ name: 'check', size: 14 })}</span>
-                <span>Assinatura pelo celular</span>
-              </div>
-            </div>
           </div>
 
           <!-- Coluna Direita: Palco Visual com Foto do Dr. Wallison + Losango Dourado + Monograma Monumental -->
