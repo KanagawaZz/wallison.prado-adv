@@ -61,14 +61,14 @@ button {
   box-sizing: border-box;
 }
 
-/* Classes Utilitárias Responsivas */
-@media (max-width: 767px) {
+/* Classes Utilitárias Responsivas (mesmo corte de 768px do responsive.css e do heroTimeline.js) */
+@media (max-width: 768px) {
   .desktop-only {
     display: none !important;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .mobile-only {
     display: none !important;
   }
