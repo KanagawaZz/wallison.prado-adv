@@ -433,33 +433,6 @@
     text-align: center;
   }
 
-  /* 3 tags curtas do que resolve: PAD • Progressões • Licença-prêmio */
-  .hero-mobile-tags {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-block: 4px 8px;
-  }
-
-  .hero-mobile-tag {
-    display: inline-block;
-    padding: 3px 9px;
-    border-radius: 12px;
-    background: rgba(220, 164, 44, 0.12);
-    border: 1px solid rgba(220, 164, 44, 0.32);
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #FCE28A;
-    letter-spacing: 0.02em;
-  }
-
-  .hero-mobile-tags .tag-bullet {
-    color: rgba(220, 164, 44, 0.5);
-    font-size: 0.7rem;
-  }
-
   /* Botão principal de largura total */
   .hero-actions {
     width: 100%;
@@ -516,16 +489,9 @@
     animation: hero-trust-cinematic 1.4s cubic-bezier(0.16, 1, 0.3, 1) 2.1s both;
   }
 
-  /* Etiquetas PAD • Progressões • Licença-prêmio: entre o texto de apoio (1.2s) e o botão (1.7s) */
-  .hero-section.hero-intro-running .hero-mobile-tags {
-    animation: hero-fade-cinematic 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.45s both;
-  }
-
   /* Abertura pulada (toque/rolagem) ou concluída: aparecem na hora */
   #inicio.hero-skip-fast ~ #destaques,
-  #inicio.hero-stage-ready ~ #destaques,
-  .hero-section.hero-skip-fast .hero-mobile-tags,
-  .hero-section.hero-stage-ready .hero-mobile-tags {
+  #inicio.hero-stage-ready ~ #destaques {
     animation: none;
     opacity: 1;
   }

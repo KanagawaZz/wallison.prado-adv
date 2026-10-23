@@ -42,14 +42,6 @@ export function Hero({ lawyer, siteConfig }) {
               Oriento e defendo servidores estaduais, municipais e federais em processos disciplinares, progressões, adicionais e licença-prêmio, com atendimento pelo WhatsApp, sem precisar sair de casa.
             </p>
 
-            <div class="hero-mobile-tags mobile-only" aria-label="Temas principais">
-              <span class="hero-mobile-tag">PAD</span>
-              <span class="tag-bullet">•</span>
-              <span class="hero-mobile-tag">Progressões</span>
-              <span class="tag-bullet">•</span>
-              <span class="hero-mobile-tag">Licença-prêmio</span>
-            </div>
-
             <div class="hero-actions" id="heroActionButtons">
               <a 
                 class="button button-primary hero-btn-main" 
