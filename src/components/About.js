@@ -20,14 +20,18 @@ export function About({ lawyer, siteConfig }) {
               
               <!-- Moldura Principal -->
               <div class="about-photo-wrapper">
-                <img 
-                  src="/images/themis.png" 
-                  alt="Escultura da Deusa da Justiça (Themis) com balança e espada"
-                  class="about-portrait-img desktop-only"
-                  width="440"
-                  height="480"
-                  loading="lazy"
-                />
+                <!-- WebP (~46 KB) com PNG de fallback; display: contents mantém o layout da moldura -->
+                <picture style="display: contents;">
+                  <source srcset="/images/themis.webp" type="image/webp" />
+                  <img
+                    src="/images/themis.png"
+                    alt="Escultura da Deusa da Justiça (Themis) com balança e espada"
+                    class="about-portrait-img desktop-only"
+                    width="440"
+                    height="480"
+                    loading="lazy"
+                  />
+                </picture>
                 <img 
                   src="/images/wallison-prado.jpg" 
                   alt="Dr. Wallison Prado, advogado"
