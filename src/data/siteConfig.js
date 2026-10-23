@@ -19,6 +19,7 @@ export const siteConfig = {
   // Horário e formato de atendimento
   openingHours: 'Segunda a sexta, das 8h às 18h',
   
-  baseUrl: 'https://landing-page-wallison.vercel.app',
+  // Definido em .env (VITE_SITE_URL)
+  baseUrl: import.meta.env.VITE_SITE_URL,
   description: 'Orientação e defesa de servidores estaduais, municipais e federais em PAD, progressões, adicionais e licença-prêmio. Atendimento online em todo o Mato Grosso.',
 };

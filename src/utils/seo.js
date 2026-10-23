@@ -23,44 +23,5 @@ export function applySeo(siteConfig, lawyer) {
   setMeta('meta[property="og:site_name"]', 'content', siteConfig.name);
   setMeta('meta[property="og:type"]', 'content', 'website');
   setMeta('meta[property="og:locale"]', 'content', 'pt_BR');
-
-  if (siteConfig.baseUrl) {
-    setMeta('meta[property="og:url"]', 'content', siteConfig.baseUrl);
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', siteConfig.baseUrl);
-  }
-
-  // Injeção de Dados Estruturados Schema.org (JSON-LD) para busca institucional
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'LegalService',
-    name: siteConfig.name,
-    description: siteConfig.description,
-    telephone: siteConfig.whatsappNumber,
-    email: siteConfig.email,
-    areaServed: {
-      '@type': 'AdministrativeArea',
-      name: 'Mato Grosso',
-    },
-    serviceType: 'Direito Administrativo para Servidores Públicos',
-    founder: {
-      '@type': 'Person',
-      name: lawyer.name,
-      jobTitle: lawyer.role,
-    },
-  };
-
-  let jsonLdScript = document.querySelector('#schema-jsonld');
-  if (!jsonLdScript) {
-    jsonLdScript = document.createElement('script');
-    jsonLdScript.id = 'schema-jsonld';
-    jsonLdScript.type = 'application/ld+json';
-    document.head.appendChild(jsonLdScript);
-  }
-  jsonLdScript.textContent = JSON.stringify(structuredData);
+  // canonical, og:url, og:image e JSON-LD ficam estáticos no index.html (lidos sem JavaScript pelos robôs)
 }
