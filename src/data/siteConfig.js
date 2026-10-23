@@ -22,4 +22,18 @@ export const siteConfig = {
   // Definido em .env (VITE_SITE_URL)
   baseUrl: import.meta.env.VITE_SITE_URL,
   description: 'Orientação e defesa de servidores estaduais, municipais e federais em PAD, progressões, adicionais e licença-prêmio. Atendimento online em todo o Mato Grosso.',
+
+  // LGPD: controlador dos dados e canal para pedidos do titular (usados na Política de Privacidade)
+  privacy: {
+    controller: 'Wallison Prado',
+    controllerId: 'advogado inscrito na OAB/MT sob o nº 31.726',
+    email: 'adv.wallisonprado@gmail.com',
+    lastUpdated: '23 de outubro de 2026',
+  },
+
+  // Ferramentas de análise: só carregam após o consentimento no aviso de cookies
+  analytics: {
+    googleAnalyticsId: 'G-7NCSHSVRJ2',
+    clarityId: 'z22rv9fzmd',
+  },
 };

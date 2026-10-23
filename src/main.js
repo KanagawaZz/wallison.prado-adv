@@ -22,6 +22,7 @@ import { applySeo } from './utils/seo.js';
 import { initHeroTimeline } from './utils/heroTimeline.js';
 import { initScrollAnimations, initAboutLight } from './utils/scrollAnimations.js';
 import { init3DEffects } from './utils/tilt3d.js';
+import { initConsent } from './utils/consent.js';
 
 // Aplica SEO dinâmico
 applySeo(siteConfig, lawyer);
@@ -56,3 +57,4 @@ initHeroTimeline();
 initScrollAnimations();
 initAboutLight();
 init3DEffects();
+initConsent(siteConfig);

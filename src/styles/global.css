@@ -2547,6 +2547,24 @@ p {
   color: #697c8d;
 }
 
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+}
+
+.footer-legal-links a,
+.footer-lgpd-link {
+  color: #a7bbcb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-legal-links a:hover,
+.footer-lgpd-link:hover {
+  color: var(--color-accent-light);
+}
+
 .footer-bottom-badges {
   display: flex;
   align-items: center;

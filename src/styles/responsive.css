@@ -1039,6 +1039,12 @@
     text-align: center;
     font-size: 0.78rem;
     color: #7A8E9F;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-legal-links {
+    justify-content: center;
   }
 
   /* ========================================================================

@@ -21,7 +21,7 @@ export function Footer({ siteConfig }) {
           </p>
           <div class="footer-lgpd-note">
             <span class="lgpd-icon">${Icon({ name: 'shield', size: 14 })}</span>
-            <p><strong>Privacidade (LGPD):</strong> Os dados enviados por WhatsApp ou e-mail são utilizados exclusivamente para fins de contato e análise prévia da situação funcional.</p>
+            <p><strong>Privacidade (LGPD):</strong> Os dados enviados por WhatsApp ou e-mail são utilizados exclusivamente para fins de contato e análise prévia da situação funcional. <a href="/politica-de-privacidade.html" class="footer-lgpd-link">Saiba mais</a>.</p>
           </div>
         </div>
 
@@ -67,6 +67,10 @@ export function Footer({ siteConfig }) {
 
       <div class="container footer-bottom-row">
         <p>© 2026 Wallison Prado Advocacia.</p>
+        <nav class="footer-legal-links" aria-label="Privacidade">
+          <a href="/politica-de-privacidade.html">Política de privacidade</a>
+          <a href="#" data-cookie-prefs>Preferências de cookies</a>
+        </nav>
       </div>
     </footer>
   `;
