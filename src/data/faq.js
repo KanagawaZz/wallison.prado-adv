@@ -15,9 +15,9 @@ export const faq = [
       'Não. O atendimento é por WhatsApp e videochamada, e os documentos são assinados eletronicamente, de qualquer cidade de Mato Grosso.',
   },
   {
-    question: 'A primeira conversa tem custo?',
+    question: 'Como é a primeira conversa?',
     answer:
-      'Não. Nela, entendo a sua situação e explico os caminhos possíveis. Se houver uma atuação a contratar, valores e formas de pagamento, inclusive parcelado, são apresentados antes de qualquer compromisso.',
+      'Nela, entendo a sua situação e explico, com franqueza, os caminhos possíveis e os riscos de cada um. Se houver uma atuação a seguir, todas as condições são apresentadas por escrito antes de qualquer compromisso.',
   },
   {
     question: 'Quais documentos devo separar?',

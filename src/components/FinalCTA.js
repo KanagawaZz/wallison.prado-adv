@@ -14,7 +14,7 @@ export function FinalCTA({ siteConfig }) {
             </p>
 
             <div class="contact-trust-checklist desktop-only">
-              <span>✓ Primeira conversa gratuita</span>
+              <span>✓ Primeira conversa sem compromisso</span>
               <span>✓ WhatsApp e videochamada</span>
               <span>✓ Assinatura pelo celular</span>
               <span>✓ Sigilo profissional</span>
