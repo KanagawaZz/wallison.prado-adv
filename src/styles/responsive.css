@@ -281,8 +281,7 @@
     font-size: 0.65rem;
   }
 
-  .nav-container,
-  .header-action {
+  .nav-container {
     display: none !important;
   }
 
@@ -481,6 +480,12 @@
     justify-content: center;
     gap: 8px;
     box-shadow: 0 4px 18px rgba(11, 27, 51, 0.6);
+  }
+
+  .hero-oab-link {
+    align-self: center;
+    font-size: 0.74rem;
+    margin-top: 2px;
   }
 
   /* Uma linha pequena embaixo do botão */

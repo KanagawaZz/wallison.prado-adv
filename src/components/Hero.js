@@ -62,14 +62,14 @@ export function Hero({ lawyer, siteConfig }) {
                 <span>Falar com o Dr. Wallison</span>
               </a>
 
-              <a 
-                class="button button-outline hero-btn-oab" 
-                href="${siteConfig.oabLink}" 
-                target="_blank" 
+              <a
+                class="hero-oab-link"
+                href="${siteConfig.oabLink}"
+                target="_blank"
                 rel="noopener noreferrer"
               >
-                ${Icon({ name: 'scale', size: 16 })}
-                <span>Consultar inscrição na OAB</span>
+                <span>${siteConfig.oabNumber} · consultar inscrição no CNA</span>
+                ${Icon({ name: 'externalLink', size: 12 })}
               </a>
             </div>
           </div>

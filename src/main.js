@@ -1,6 +1,5 @@
 import { Header } from './components/Header.js';
 import { Hero } from './components/Hero.js';
-import { NameBanner } from './components/NameBanner.js';
 import { TrustBar } from './components/TrustBar.js';
 import { About } from './components/About.js';
 import { PracticeAreas } from './components/PracticeAreas.js';
@@ -29,12 +28,11 @@ applySeo(siteConfig, lawyer);
 
 const app = document.querySelector('#app');
 
-// Ordem estrita: Hero → Faixa de nome → TrustBar → About → PracticeAreas → HowItWorks → FAQ → FinalCTA → Footer
+// Ordem estrita: Hero → TrustBar → About → PracticeAreas → HowItWorks → FAQ → FinalCTA → Footer
 app.innerHTML = `
   ${Header({ navigation, siteConfig, lawyer })}
   <main>
     ${Hero({ lawyer, siteConfig })}
-    ${NameBanner({ lawyer, siteConfig })}
     ${TrustBar({ trustBadges })}
     ${About({ lawyer, siteConfig })}
     ${PracticeAreas({ practiceAreas, siteConfig })}

@@ -88,7 +88,7 @@ h1, h2, h3, h4 {
 }
 
 /* Títulos grandes (40px+) */
-h1, .hero-title, .name-banner-title {
+h1, .hero-title {
   font-weight: 500;
 }
 
@@ -281,22 +281,6 @@ p {
   border-color: rgba(201, 164, 92, 0.45);
 }
 
-.button-header {
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(184, 155, 94, 0.4);
-  font-size: 0.88rem;
-  padding: 0.55rem 1.25rem;
-  min-height: 40px;
-  border-radius: var(--radius-sm);
-}
-
-.button-header:hover {
-  background: rgba(184, 155, 94, 0.15);
-  border-color: var(--color-accent);
-  color: #ffffff;
-}
-
 .button-instagram {
   background: var(--color-primary);
   color: #ffffff;
@@ -461,38 +445,6 @@ p {
 
 .nav-link:hover::after {
   transform: scaleX(1);
-}
-
-.button-header {
-  background: transparent;
-  color: var(--color-text);
-  border: 1px solid var(--color-accent-border);
-  font-size: 0.88rem;
-  padding: 0.55rem 1.25rem;
-  min-height: 40px;
-  border-radius: var(--radius-sm);
-  position: relative;
-  overflow: hidden;
-}
-
-.button-header:hover {
-  background: var(--color-accent-soft);
-  border-color: var(--color-accent);
-  color: var(--color-accent-light);
-}
-
-/* Shine no botão do WhatsApp do header (passagem única no hover) */
-.button-header::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent 30%, rgba(230, 201, 138, 0.45) 50%, transparent 70%);
-  transform: translateX(-160%);
-  pointer-events: none;
-}
-
-.button-header:hover::after {
-  animation: btn-shine-pass 0.8s var(--ease-standard) forwards;
 }
 
 /* ==========================================================================
@@ -734,10 +686,25 @@ p {
   font-weight: 500;
 }
 
-.hero-btn-oab {
+/* Inscrição na OAB: link discreto abaixo do CTA, sem competir com ele */
+.hero-oab-link {
+  flex-basis: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.hero-oab-link:hover,
+.hero-oab-link:focus-visible {
+  color: var(--color-accent-light);
+  opacity: 1;
 }
 
 /* Garantias / Trust Row */
@@ -1246,60 +1213,6 @@ p {
     opacity: 0.14 !important;
     transform: translateY(-50%) !important;
   }
-}
-
-/* ==========================================================================
-   FAIXA DE NOME (AJUSTE 2 DO USUÁRIO)
-   ========================================================================== */
-
-.name-banner-section {
-  background-color: var(--color-primary-dark);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  padding: 5rem 0;
-  text-align: center;
-  position: relative;
-}
-
-.name-banner-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.name-banner-subtag {
-  display: inline-block;
-  font-size: 0.75rem;
-  color: var(--color-accent);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-
-.name-banner-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  color: var(--color-text);
-  text-transform: uppercase;
-  margin: 0.5rem 0;
-  line-height: 1.15;
-}
-
-.name-banner-badge {
-  font-size: 0.92rem;
-  letter-spacing: 0.25em;
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.name-banner-divider {
-  width: 60px;
-  height: 1px;
-  background-color: var(--color-accent);
-  margin: 1.8rem auto 0;
 }
 
 /* ==========================================================================
@@ -1946,21 +1859,6 @@ p {
   flex-wrap: wrap;
   gap: 16px;
   align-items: center;
-}
-
-.about-btn-cta {
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 500;
-  background: #0B1B33;
-  color: #FFFFFF;
-  border: 1px solid var(--color-accent);
-}
-
-.about-btn-cta:hover {
-  background: #12284A;
-  color: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
 }
 
 .about-btn-instagram {

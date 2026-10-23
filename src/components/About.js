@@ -63,10 +63,6 @@ export function About({ lawyer, siteConfig }) {
             </div>
 
             <div class="about-actions-row">
-              <a href="${siteConfig.whatsappLink}" target="_blank" rel="noopener noreferrer" class="button button-primary about-btn-cta">
-                ${Icon({ name: 'chat', size: 18 })}
-                <span>Falar com o Dr. Wallison</span>
-              </a>
               <a href="${siteConfig.instagram}" target="_blank" rel="noopener noreferrer" class="button button-outline about-btn-instagram" title="Acompanhar no Instagram">
                 ${Icon({ name: 'instagram', size: 18 })}
                 <span>Instagram</span>

@@ -25,12 +25,6 @@ export function Header({ navigation, siteConfig, lawyer }) {
               .join('')}
           </nav>
         </div>
-
-        <div class="header-action">
-          <a class="button button-header" href="${siteConfig.whatsappLink}" target="_blank" rel="noopener noreferrer">
-            <span>Falar com o Advogado</span>
-          </a>
-        </div>
       </div>
     </header>
   `;
