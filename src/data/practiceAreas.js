@@ -4,15 +4,8 @@ export const practiceAreas = [
     icon: 'shield',
     tag: 'Processo Disciplinar',
     title: 'PAD, Sindicâncias e Defesa Funcional',
-    subtitle: 'Proteja seu cargo, estabilidade e histórico funcional contra punições arbitrárias',
-    description:
-      'Atuação técnica e imediata desde a notificação inicial até recursos finais. Garantimos a observância do contraditório, ampla defesa e legalidade procedimental perante comissões processantes, evitando demissões, suspensões ou penalidades indevidas.',
-    examples: [
-      'Intimação para depor ou prestar esclarecimentos em comissão processante',
-      'Defesa prévia, oitiva de testemunhas e alegações finais fundamentadas',
-      'Anulação judicial de portarias punitivas e PADs com vício ou cerceamento de defesa',
-      'Combate a acusações desproporcionais de faltas, inassiduidade ou quebra de deveres',
-    ],
+    subtitle: 'Para quem foi notificado de um processo disciplinar ou de uma sindicância.',
+    description: 'Acompanho o servidor desde a notificação do PAD ou da sindicância até os recursos, atuando para que o contraditório e a ampla defesa sejam respeitados em cada etapa.',
     spheres: ['Estadual (MT)', 'Municipal', 'Federal'],
   },
   {
@@ -20,15 +13,9 @@ export const practiceAreas = [
     icon: 'trendingUp',
     tag: 'Carreira e Vencimentos',
     title: 'Progressões, Promoções e Retroativos',
-    subtitle: 'Destrave sua evolução de carreira e cobre as diferenças salariais não pagas',
+    subtitle: 'Para quem cumpriu os requisitos e a progressão não veio.',
     description:
-      'Avaliação documental para destravar progressões funcionais por antiguidade, merecimento ou titulação acadêmica (pós/mestrado) retidas indevidamente por alegações orçamentárias ou inércia da administração, com cobrança dos retroativos.',
-    examples: [
-      'Progressão por titulação retida após conclusão de especialização ou mestrado',
-      'Atraso injustificado na concessão de classes ou níveis da carreira',
-      'Cobrança judicial de diferenças remuneratórias retroativas à data do direito',
-      'Enquadramento incorreto em novos Planos de Cargos, Carreiras e Salários (PCCS)',
-    ],
+      'Analiso a documentação funcional para identificar progressões e promoções retidas e busco o reconhecimento das diferenças salariais em atraso, com a devida atualização, nas esferas estadual, municipal e federal.',
     spheres: ['Estadual (MT)', 'Municipal', 'Federal'],
   },
   {
@@ -36,15 +23,9 @@ export const practiceAreas = [
     icon: 'fileCheck',
     tag: 'Benefícios Estatutários',
     title: 'Licença-Prêmio Acumulada em Dinheiro',
-    subtitle: 'Conversão em pecúnia de períodos adquiridos e não gozados',
+    subtitle: 'Para quem tem períodos de licença-prêmio que não chegou a usufruir.',
     description:
-      'O servidor que se aposentou ou está em vias de se aposentar sem ter usufruído suas licenças-prêmio tem direito reconhecido pelos tribunais superiores de receber os valores indenizados em dinheiro, livres de imposto de renda e previdência.',
-    examples: [
-      'Indenização em pecúnia de licenças-prêmio acumuladas para aposentados recentes',
-      'Cobrança de férias não gozadas por necessidade do serviço público',
-      'Isenção de Imposto de Renda e contribuição previdenciária sobre o valor indenizado',
-      'Atenção ao prazo limite de 5 anos após a data de publicação da aposentadoria',
-    ],
+      'Atuo para que períodos de licença-prêmio não usufruídos sejam convertidos em indenização, especialmente para servidores aposentados ou em vias de se aposentar, conforme o entendimento consolidado dos tribunais.',
     spheres: ['Estadual (MT)', 'Municipal', 'Federal'],
   },
   {
@@ -52,15 +33,9 @@ export const practiceAreas = [
     icon: 'coins',
     tag: 'Vantagens Funcionais',
     title: 'Insalubridade, Periculosidade e Adicional Noturno',
-    subtitle: 'Restabelecimento de percentuais cortados e cobrança de retroativos devidos',
+    subtitle: 'Para quem teve um adicional reduzido, cortado ou nunca pago.',
     description:
-      'Fiscalização da conformidade do pagamento de adicionais ocupacionais para servidores da Saúde, Educação, Segurança e Obras, combatendo cortes unilaterais arbitrários e bases de cálculo defasadas.',
-    examples: [
-      'Corte ou redução unilateral de adicional sem novo laudo pericial técnico',
-      'Exposição contínua a agentes biológicos, químicos ou risco sem o devido pagamento',
-      'Correção da base de cálculo de adicional calculada a menor pelo ente público',
-      'Cobrança retroativa das parcelas não quitadas nos últimos 5 anos com juros e correção',
-    ],
+      'Verifico se os adicionais de insalubridade, periculosidade e noturno estão sendo pagos corretamente e atuo para restabelecer percentuais suprimidos e cobrar valores devidos, observado o prazo prescricional.',
     spheres: ['Estadual (MT)', 'Municipal', 'Federal'],
   },
   {
@@ -68,15 +43,8 @@ export const practiceAreas = [
     icon: 'shield',
     tag: 'Segurança Funcional',
     title: 'Proteção contra retaliação',
-    subtitle: 'O servidor conta com garantias constitucionais de estabilidade e a lei veda expressamente qualquer ato de retaliação.',
-    description:
-      'A demanda é proposta em face do Ente Público (Estado de Mato Grosso ou Município), e jamais contra a pessoa física da chefia ou do gestor. O ordenamento jurídico assegura proteção à ampla defesa e veda expressamente qualquer ato de retaliação no âmbito funcional, garantindo estabilidade e tranquilidade ao servidor.',
-    examples: [
-      'Garantia de estabilidade funcional e proteção contra perseguições veladas',
-      'Ação judicial proposta contra o Ente Público, sem confronto com a chefia imediata',
-      'Resguardo do histórico funcional e sigilo profissional absoluto',
-      'Medidas jurídicas cabíveis para coibir qualquer ato discriminatório ou arbitrário',
-    ],
+    subtitle: 'Para quem tem receio de buscar um direito e sofrer represália.',
+    description: 'Oriento o servidor sobre as garantias que o protegem ao buscar seus direitos. A ação é proposta contra o ente público, e não contra a chefia, e a lei veda atos de retaliação.',
     spheres: ['Estadual (MT)', 'Municipal', 'Federal'],
   },
   {
@@ -84,15 +52,9 @@ export const practiceAreas = [
     icon: 'alertCircle',
     tag: 'Legalidade do Ato',
     title: 'Desvio de Função e Remoções Arbitrárias',
-    subtitle: 'Proteção contra transferências punitivas e exercício de funções incompatíveis',
+    subtitle: 'Para quem exerce funções de outro cargo ou foi removido sem justificativa.',
     description:
-      'Atuação para reparar desvios funcionais comprovados com cobrança de diferenças salariais, bem como para anular atos administrativos arbitrários de remoção ou transferência de lotação motivados por perseguição política ou pessoal.',
-    examples: [
-      'Servidor executando atribuições de cargo de nível superior sem a contraprestação',
-      'Cobrança judicial das diferenças salariais devidas ao cargo correspondente',
-      'Remoção de ofício desprovida de motivação legítima ou com desvio de finalidade',
-      'Medidas judiciais urgentes (liminares) para restabelecimento de lotação original',
-    ],
+      'Atuo em casos de desvio de função, buscando as diferenças remuneratórias correspondentes, e na revisão de remoções e transferências sem motivação adequada ou com caráter punitivo.',
     spheres: ['Estadual (MT)', 'Municipal', 'Federal'],
   },
 ];

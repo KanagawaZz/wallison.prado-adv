@@ -1,46 +1,77 @@
 :root {
-  /* Paleta Nobre e Institucional - Conforme Diretrizes da OAB */
-  --color-primary: #0B1B33;           /* Azul-marinho profundo como cor principal */
-  --color-primary-dark: #071224;      /* Azul-marinho ultra escuro */
-  --color-primary-light: #162a4a;     /* Tom intermediário elegante */
-  --color-primary-soft: rgba(11, 27, 51, 0.05);
+  /* ==========================================================================
+     PALETA DE CORES ESTRITA & CONTRASTE WCAG AA / AAA
+     1. Marinho Profundo (#0B1B33)
+     2. Dourado Champanhe (#C9A45C & #E6C98A)
+     3. Branco-Gelo (#F3EFE6) & Texto Claro (#C9D1DE)
+     4. Fundo de Cards Escuro Nobre (#10233F)
+     ========================================================================== */
+  --color-primary: #0B1B33;             /* Fundo marinho escuro nobre */
+  --color-primary-dark: #071224;        /* Base ultra escura */
+  
+  --color-card-bg: #10233F;             /* Fundo dos cards escuro (nada de card branco) */
+  --color-card-border: rgba(201, 164, 92, 0.18); /* Borda 1px 18% dourada */
 
-  --color-accent: #B89B5E;            /* Dourado champanhe fosco apenas em detalhes */
-  --color-accent-hover: #a3874b;      /* Dourado escurecido para hover */
-  --color-accent-light: #cfb77f;      /* Dourado claro para linhas finas */
-  --color-accent-soft: rgba(184, 155, 94, 0.10);
-  --color-accent-border: rgba(184, 155, 94, 0.35);
+  --color-accent: #DCA42C;              /* Ouro nobre radiante e aquecido */
+  --color-accent-sub: #F0C455;          /* Ouro acetinado de joalheria */
+  --color-accent-light: #F7D26D;        /* Luz dourada para hover / destaque */
+  --color-accent-hover: #FCE28A;        /* Brilho dourado intenso (sem tom prateado) */
+  --color-accent-soft: rgba(220, 164, 44, 0.16);
+  --color-accent-border: rgba(220, 164, 44, 0.38);
+  
+  /* Gradientes metálicos enriquecidos em ouro autêntico ("brilho de ouro puro 18k") */
+  --gold-metallic-gradient: linear-gradient(135deg, #FDE38C 0%, #E2B23E 25%, #B38116 52%, #F9DA7A 78%, #D4A024 100%);
+  
+  --color-bg: #0B1B33;                  /* Fundo principal escuro */
+  
+  --color-text: #F3EFE6;                /* Branco-gelo para títulos (contraste 14.5:1) */
+  --color-text-secondary: #C9D1DE;      /* Texto corrido e parágrafos (contraste 10.9:1) */
+  
+  --color-border: rgba(201, 164, 92, 0.18);
 
-  --color-bg: #F7F4EE;                /* Off-white quente como fundo */
-  --color-bg-alt: #EFEBE1;            /* Off-white secundário */
-  --color-surface: #FFFFFF;           /* Superfície limpa para cards */
-  --color-surface-subtle: #FAF8F4;
-
-  --color-text: #1A202C;              /* Grafite escuro para máxima legibilidade */
-  --color-text-secondary: #4A5568;    /* Grafite médio para parágrafos */
-  --color-text-muted: #718096;        /* Grafite suave para notas secundárias */
-  --color-text-light: #F7F4EE;
-
-  --color-border: rgba(11, 27, 51, 0.10);  /* Borda sutil de 1px */
-  --color-border-subtle: rgba(11, 27, 51, 0.06);
-
-  /* Tipografia */
-  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  /* ==========================================================================
+     TIPOGRAFIA (REGRAS ESTRITAS DE PESO E TAMANHO)
+     - Cormorant Garamond: APENAS em títulos >= 24px (500 nos grandes, 600 nos médios)
+     - Inter: em texto corrido (16-18px, 400), botões e menus (15-16px, 500)
+     ========================================================================== */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Efeitos e Sombras Leves */
-  --shadow-subtle: 0 2px 8px rgba(11, 27, 51, 0.04);
-  --shadow-card: 0 8px 24px rgba(11, 27, 51, 0.06);
-  --shadow-hover: 0 12px 32px rgba(11, 27, 51, 0.10);
+  /* ==========================================================================
+     ESCALA FIXA DE ESPAÇAMENTO (8, 16, 24, 32, 48, 64, 96, 128px)
+     ========================================================================== */
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-48: 48px;
 
-  /* Cantos suaves (8-12px) */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
-  --radius-pill: 9999px;
+  /* ==========================================================================
+     PALETA DE CAMADAS CLARAS (MARFIM, BRANCO & DOURADO NOBRE)
+     ========================================================================== */
+  --color-light-gold: #8A5F08;           /* Ouro nobre profundo com contraste AA (5.6:1 no branco, 4.9:1 no creme) */
+  --color-light-gold-metallic: linear-gradient(135deg, #8E6210 0%, #6F4C05 55%, #85600E 100%); /* todas as paradas >= 4.5:1 no creme */
 
-  /* Layout */
-  --container-max: 1200px;
-  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Espaçamento entre seções: 56px desktop (112px visível), 36px mobile (72px visível) */
+  --section-padding-desktop: 56px;
+  --section-padding-mobile: 36px;
+  --section-padding-y: var(--section-padding-desktop);
+
+  /* ==========================================================================
+     CONTAINER GLOBAL
+     max-width 1240px, margin 0 auto, padding lateral clamp(24px, 6vw, 96px)
+     ========================================================================== */
+  --container-max: 1240px;
+  --container-padding: clamp(24px, 6vw, 96px);
+
+  /* ==========================================================================
+     EASINGS & TRANSIÇÕES
+     ========================================================================== */
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ==========================================================================
+     CANTOS (MÁXIMO 8PX)
+     ========================================================================== */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px; /* LIMITE MÁXIMO */
+  --radius-pill: 9999px; /* Apenas para selos/tags pequenos */
 }

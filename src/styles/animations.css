@@ -1,351 +1,320 @@
 /* ==========================================================================
-   ANIMAÇÕES E TRANSIÇÕES SUAVES (300-500ms)
-   Respeita prefers-reduced-motion e diretrizes de sobriedade visual
+   PADRÃO GLOBAL DE ANIMAÇÕES (SEÇÃO 3)
+   - Easing padrão: cubic-bezier(0.22, 1, 0.36, 1)
+   - Duração: entre 0.6s e 1.2s para entradas
+   - Gatilho: 20% do elemento na tela, once: true
+   - Distâncias pequenas: 20 a 40px
+   - Propriedades animadas: transform, opacity, filter
+   - prefers-reduced-motion: fade direto de 0.3s sem movimento
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   PADRÃO DE REVELAÇÃO (3.3 - ENTRADA DE SEÇÕES)
+   -------------------------------------------------------------------------- */
 
 [data-reveal] {
   opacity: 0;
-  transition: opacity 0.45s var(--transition-smooth), transform 0.45s var(--transition-smooth);
-  will-change: opacity, transform;
+  transition: opacity 0.8s var(--ease-standard),
+              transform 0.8s var(--ease-standard),
+              filter 0.8s var(--ease-standard);
+  will-change: opacity, transform, filter;
 }
 
-[data-reveal="fade-up"] {
+/* Rótulo Dourado (Linha cresce 0.5s, texto surge 0.15s depois) */
+[data-reveal="label"] {
+  transform: translateY(16px);
+}
+[data-reveal="label"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal="label"]::before {
+  transform: scaleX(0);
+}
+[data-reveal="label"].is-visible::before {
+  transform: scaleX(1);
+}
+
+/* Título de Seção (30px subida + blur 8px -> 0 em 0.9s) */
+[data-reveal="title"] {
+  transform: translateY(30px);
+  filter: blur(8px);
+  transition-duration: 0.9s;
+}
+
+[data-reveal="title"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  transition-delay: 0.15s;
+}
+
+/* Em celulares (<768px): blur máximo de 4px para preservar performance */
+@media (max-width: 768px) {
+  [data-reveal="title"] {
+    filter: blur(4px);
+    transform: translateY(20px);
+  }
+}
+
+/* Parágrafo de Seção (20px subida, sem blur, 0.7s) */
+[data-reveal="paragraph"],
+[data-reveal="lead"] {
   transform: translateY(20px);
+  transition-duration: 0.7s;
 }
 
-[data-reveal="fade-right"] {
-  transform: translateX(-24px);
+[data-reveal="paragraph"].is-visible,
+[data-reveal="lead"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.25s;
 }
 
-[data-reveal="fade-left"] {
-  transform: translateX(24px);
+/* Fade-up genérico padrão */
+[data-reveal="fade-up"] {
+  transform: translateY(30px);
+  transition-duration: 0.8s;
 }
 
-[data-reveal].is-visible {
+[data-reveal="fade-up"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   ANIMAÇÕES VINDAS DAS LATERAIS (REGRA 6)
+   - Coluna texto: translateX(-80px -> 0)
+   - Coluna imagem: translateX(80px -> 0)
+   - Mobile: limite de 32px
+   -------------------------------------------------------------------------- */
+
+[data-reveal="from-left"] {
+  transform: translateX(-80px);
+  opacity: 0;
+  filter: blur(6px);
+  transition: opacity 1.0s var(--ease-standard),
+              transform 1.0s var(--ease-standard),
+              filter 1.0s var(--ease-standard);
+}
+
+[data-reveal="from-left"].is-visible {
+  transform: translateX(0);
+  opacity: 1;
+  filter: none;
+}
+
+[data-reveal="from-right"] {
+  transform: translateX(80px);
+  opacity: 0;
+  filter: blur(6px);
+  transition: opacity 1.0s var(--ease-standard),
+              transform 1.0s var(--ease-standard),
+              filter 1.0s var(--ease-standard);
+}
+
+[data-reveal="from-right"].is-visible {
+  transform: translateX(0);
+  opacity: 1;
+  filter: none;
+}
+
+@media (max-width: 768px) {
+  [data-reveal="from-left"] {
+    transform: translateX(-32px);
+    filter: blur(4px);
+  }
+  [data-reveal="from-right"] {
+    transform: translateX(32px);
+    filter: blur(4px);
+  }
+}
+
+/* Cards em Grid com Entrada Direcional (Regra 6) */
+[data-reveal-card] {
+  opacity: 0;
+  transition: opacity 0.85s var(--ease-standard),
+              transform 0.85s var(--ease-standard),
+              filter 0.85s var(--ease-standard);
+}
+
+[data-reveal-card="left"] {
+  transform: translateX(-60px);
+  filter: blur(4px);
+}
+
+[data-reveal-card="center"] {
+  transform: translateY(40px);
+  filter: blur(4px);
+}
+
+[data-reveal-card="right"] {
+  transform: translateX(60px);
+  filter: blur(4px);
+}
+
+[data-reveal-card].is-visible {
   opacity: 1;
   transform: none;
-  will-change: auto;
+  filter: none;
+  transition-delay: var(--card-row-delay, 0s);
 }
 
-/* Previne que transformações horizontais causem corte lateral no celular */
 @media (max-width: 768px) {
-  [data-reveal="fade-right"],
-  [data-reveal="fade-left"] {
-    transform: translateY(14px);
+  [data-reveal-card="left"] {
+    transform: translateX(-32px);
+  }
+  [data-reveal-card="center"] {
+    transform: translateY(28px);
+  }
+  [data-reveal-card="right"] {
+    transform: translateX(32px);
   }
 }
 
-/* Delay escalonado sutil para cartões */
-.practice-card,
-.step-card,
-.myth-depth-card,
-.trust-card {
-  transition-delay: var(--card-delay, var(--step-delay, var(--myth-delay, 0s)));
-}
-
-/* Reflexo Especular de Luz Dinâmico (Efeito 3D Glare discreto) */
-.glare-reflection {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
+/* Entrada escalonada de filhos (cards, passos, itens) com stagger 0.12s a partir de 0.5s */
+.stagger-container [data-reveal-item] {
   opacity: 0;
-  transition: opacity 0.25s ease;
-  z-index: 10;
-  mix-blend-mode: overlay;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-standard), transform 0.8s var(--ease-standard);
+  transition-delay: calc(0.5s + (var(--item-index, 0) * 0.12s));
 }
 
-/* Indicador sutil de atendimento ativo */
-.live-dot,
-.tooltip-status-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #25d366;
-  position: relative;
-  flex-shrink: 0;
+.stagger-container.is-visible [data-reveal-item] {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.live-dot::after,
-.tooltip-status-dot::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background-color: #25d366;
-  animation: gentle-pulse 2.8s infinite ease-out;
-}
-
-@keyframes gentle-pulse {
+@keyframes metal-shine-pass {
   0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  70% {
-    transform: scale(2.2);
-    opacity: 0;
+    transform: translateX(-160%);
   }
   100% {
-    transform: scale(2.2);
-    opacity: 0;
+    transform: translateX(260%);
   }
 }
 
-/* Brilho discreto no botão do WhatsApp */
-.whatsapp-pulse-ring {
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(37, 211, 102, 0.25) 0%, transparent 70%);
-  animation: whatsapp-glow 3s infinite ease-in-out;
-  pointer-events: none;
-  z-index: 0;
-}
+/* --------------------------------------------------------------------------
+   GLOW RESPIRATÓRIO DO LOSANGO (4S CICLO - QUASE IMPERCEPTÍVEL - 3.1)
+   -------------------------------------------------------------------------- */
 
-@keyframes whatsapp-glow {
+@keyframes losango-breathe {
   0%, 100% {
-    transform: scale(1);
-    opacity: 0.3;
+    filter: drop-shadow(0 0 6px rgba(201, 164, 92, 0.25));
   }
   50% {
-    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px rgba(201, 164, 92, 0.45));
+  }
+}
+
+.losango-glow-active {
+  animation: losango-breathe 4s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   ROTAÇÃO MONUMENTAL DO LOSANGO (CTA FINAL - 120S VIVO - 3.9)
+   -------------------------------------------------------------------------- */
+
+@keyframes slow-spin-monumental {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   ANEL PULSANTE DOURADO DO WHATSAPP (3.11)
+   Círculo dourado de 1px que cresce de scale 1 a 1.6 enquanto esmaece (opacity 0.6 -> 0) a cada 3s
+   -------------------------------------------------------------------------- */
+
+.whatsapp-gold-pulse {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 1px solid var(--color-accent);
+  animation: gold-pulse-ring 3s var(--ease-standard) infinite;
+  pointer-events: none;
+}
+
+@keyframes gold-pulse-ring {
+  0% {
+    transform: scale(1);
     opacity: 0.6;
   }
-}
-
-/* Micro-transição de abertura do Acordeão FAQ */
-.faq-chevron-icon {
-  transition: transform 0.3s var(--transition-smooth);
-}
-
-.faq-item[open] .faq-chevron-icon {
-  transform: rotate(180deg);
-}
-
-.faq-answer-wrapper {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s var(--transition-smooth);
-}
-
-.faq-item[open] .faq-answer-wrapper {
-  grid-template-rows: 1fr;
-}
-
-.faq-answer-inner {
-  overflow: hidden;
-}
-
-/* ==========================================================================
-   ENTRADA EM CASCATA DO HERO (carregamento inicial)
-   ========================================================================== */
-
-@keyframes hero-enter-soft {
-  from {
+  70%, 100% {
+    transform: scale(1.6);
     opacity: 0;
-    transform: translateY(26px);
-    filter: blur(8px);
-  }
-  55% {
-    opacity: 1;
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
   }
 }
 
-@keyframes hero-title-enter {
-  from {
-    opacity: 0;
-    transform: translateY(34px) scale(0.985);
-    filter: blur(10px);
-  }
-  55% {
-    opacity: 1;
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
+/* --------------------------------------------------------------------------
+   ACORDEÃO SUAVE DO FAQ (3.8 - 0.45S COM ÍCONE + QUE GIRA 45° PARA ×)
+   -------------------------------------------------------------------------- */
 
-@keyframes hero-visual-enter {
-  from {
-    opacity: 0;
-    transform: translateY(36px) scale(1.035);
-    filter: blur(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-.hero-copy > * {
-  animation: hero-enter-soft 0.9s var(--transition-smooth) both;
-}
-
-.hero-copy > :nth-child(1) { animation-delay: 0.05s; }
-.hero-copy > :nth-child(2) { animation-delay: 0.22s; }
-.hero-copy > :nth-child(3) { animation: hero-title-enter 1.05s var(--transition-smooth) 0.4s both; }
-.hero-copy > :nth-child(4) { animation-delay: 0.58s; }
-.hero-copy > :nth-child(5) { animation-delay: 0.72s; }
-.hero-copy > :nth-child(6) { animation-delay: 0.86s; }
-
-.hero-visual {
-  animation: hero-visual-enter 1.15s var(--transition-smooth) 0.65s both;
-}
-
-/* Deriva contínua e discreta do brilho ambiente do Hero */
-.hero-ambient-glow {
-  animation: ambient-drift 16s ease-in-out infinite alternate;
-}
-
-@keyframes ambient-drift {
-  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.9; }
-  50% { transform: translate3d(-28px, 18px, 0) scale(1.07); opacity: 1; }
-  100% { transform: translate3d(18px, -12px, 0) scale(1.03); opacity: 0.85; }
-}
-
-/* Flutuação suave da legenda do retrato */
-.portrait-caption-pill {
-  animation: gentle-float 6s ease-in-out infinite;
-}
-
-@keyframes gentle-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-/* ==========================================================================
-   LINHA DE PROGRESSO DOS PASSOS (cresce quando a seção entra em cena)
-   ========================================================================== */
-
-.steps-progress-line {
-  position: absolute;
-  top: 40px;
-  bottom: 40px;
-  left: 50%;
-  width: 2px;
-  background: linear-gradient(180deg, rgba(196, 154, 86, 0.55) 0%, rgba(196, 154, 86, 0.06) 100%);
-  pointer-events: none;
-}
-
-.steps-progress-line.is-visible {
-  animation: progress-line-grow 1.1s var(--transition-smooth) 0.25s backwards;
-}
-
-@keyframes progress-line-grow {
-  from { transform: scaleY(0); transform-origin: top center; }
-  to { transform: scaleY(1); transform-origin: top center; }
-}
-
-/* Na grade empilhada do mobile/tablet a linha central sai de cena */
-@media (max-width: 991px) {
-  .steps-progress-line {
-    display: none;
-  }
-}
-
-/* ==========================================================================
-   BRILHO QUE PERCORRE OS BOTÕES PRINCIPAIS (hover)
-   ========================================================================== */
-
-.button-primary,
-.button-gold {
+.faq-accordion-item {
+  border-bottom: 1px solid var(--color-border);
   position: relative;
-  overflow: hidden;
+  transition: border-color 0.3s var(--ease-standard);
 }
 
-.button-primary::after,
-.button-gold::after {
+.faq-accordion-item.is-open {
+  border-color: rgba(201, 164, 92, 0.35);
+}
+
+/* Linha dourada de 2px à esquerda que cresce de cima para baixo */
+.faq-accordion-item::before {
   content: '';
   position: absolute;
+  left: 0;
   top: 0;
   bottom: 0;
-  left: -70%;
-  width: 40%;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.28), transparent);
-  transform: skewX(-18deg);
-  opacity: 0;
-  pointer-events: none;
-  transition: left 0.65s ease, opacity 0.3s ease;
+  width: 2px;
+  background-color: var(--color-accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.45s var(--ease-standard);
 }
 
-.button-primary:hover::after,
-.button-gold:hover::after {
-  left: 135%;
-  opacity: 1;
+.faq-accordion-item.is-open::before {
+  transform: scaleY(1);
 }
 
-/* Desativação respeitosa de movimento (Acessibilidade) */
+/* --------------------------------------------------------------------------
+   ACESSIBILIDADE: PREFERS-REDUCED-MOTION
+   -------------------------------------------------------------------------- */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation-duration: 0.3s !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0.3s !important;
     scroll-behavior: auto !important;
+    transform: none !important;
+    filter: none !important;
   }
 
-  [data-reveal] {
+  [data-reveal],
+  [data-reveal="title"],
+  [data-reveal="paragraph"],
+  [data-reveal="fade-up"],
+  .stagger-container [data-reveal-item] {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
+    transition: opacity 0.3s ease !important;
   }
-}
 
-/* ==========================================================================
-   ENTRADA CÊNICA DO MONOGRAMA E DA GEOMETRIA DO HERO
-   ========================================================================== */
-
-.hero-monogram {
-  animation:
-    monogram-enter 1.6s var(--transition-smooth) 0.3s both,
-    monogram-drift 16s ease-in-out 2.2s infinite alternate;
-}
-
-@keyframes monogram-enter {
-  from {
-    opacity: 0;
-    transform: translateY(-52%) rotate(-6deg) scale(1.06);
+  .eyebrow-chip::before,
+  [data-reveal="label"]::before {
+    transform: scaleX(1) !important;
   }
-  to {
-    opacity: 1;
-    transform: translateY(-52%) rotate(-6deg) scale(1);
+
+  .losango-glow-active,
+.whatsapp-gold-pulse {
+    animation: none !important;
   }
-}
-
-@keyframes monogram-drift {
-  from { transform: translateY(-52%) rotate(-6deg); }
-  to { transform: translateY(-54%) rotate(-4.5deg); }
-}
-
-.geo-circle {
-  animation: geo-enter 1.4s var(--transition-smooth) 0.9s both;
-}
-
-@keyframes geo-enter {
-  from {
-    opacity: 0;
-    transform: translateY(-50%) scale(1.05);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
-  }
-}
-
-.geo-diagonal {
-  animation: geo-line 1.6s var(--transition-smooth) 1.1s both;
-}
-
-@keyframes geo-line {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }

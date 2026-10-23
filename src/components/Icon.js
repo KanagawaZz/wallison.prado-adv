@@ -48,12 +48,6 @@ export function Icon({ name = 'shield', className = '', size = 20 }) {
         <path d="m16.7 13.3.6.7"/>
       </svg>
     `,
-    briefcase: `
-      <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}" aria-hidden="true">
-        <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-        <rect width="20" height="14" x="2" y="6" rx="2"/>
-      </svg>
-    `,
     alertCircle: `
       <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
@@ -66,27 +60,9 @@ export function Icon({ name = 'shield', className = '', size = 20 }) {
         <polyline points="20 6 9 17 4 12"/>
       </svg>
     `,
-    xMark: `
-      <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="${className}" aria-hidden="true">
-        <line x1="18" y1="6" x2="6" y2="18"/>
-        <line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
-    `,
     chat: `
       <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}" aria-hidden="true">
         <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
-      </svg>
-    `,
-    creditCard: `
-      <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}" aria-hidden="true">
-        <rect width="20" height="14" x="2" y="5" rx="2"/>
-        <line x1="2" x2="22" y1="10" y2="10"/>
-      </svg>
-    `,
-    arrowUpRight: `
-      <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}" aria-hidden="true">
-        <path d="M7 7h10v10"/>
-        <path d="M7 17 17 7"/>
       </svg>
     `,
     arrowRight: `

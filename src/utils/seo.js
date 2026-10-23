@@ -1,5 +1,5 @@
 export function applySeo(siteConfig, lawyer) {
-  const fullTitle = `${siteConfig.name} | ${lawyer.oab} • Defesa de Servidores em MT`;
+  const fullTitle = siteConfig.title;
   const description = siteConfig.description;
 
   document.title = fullTitle;
@@ -18,9 +18,8 @@ export function applySeo(siteConfig, lawyer) {
   };
 
   setMeta('meta[name="description"]', 'content', description);
-  setMeta('meta[name="keywords"]', 'content', siteConfig.keywords.join(', '));
   setMeta('meta[property="og:title"]', 'content', fullTitle);
-  setMeta('meta[property="og:description"]', 'content', description);
+  setMeta('meta[property="og:description"]', 'content', 'Orientação e defesa de servidores estaduais, municipais e federais em PAD, progressões, adicionais e licença-prêmio em todo o Mato Grosso.');
   setMeta('meta[property="og:site_name"]', 'content', siteConfig.name);
   setMeta('meta[property="og:type"]', 'content', 'website');
   setMeta('meta[property="og:locale"]', 'content', 'pt_BR');

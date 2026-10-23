@@ -7,12 +7,11 @@ export function FAQ({ faq, siteConfig }) {
         <div class="section-header" data-reveal="fade-up">
           <div class="eyebrow-chip">
             ${Icon({ name: 'alertCircle', size: 14 })}
-            <span>Dúvidas Frequentes</span>
+            <span>DÚVIDAS</span>
           </div>
-          <h2>Perguntas frequentes sobre o atendimento</h2>
-          <p class="section-subheading">
-            Esclarecimentos objetivos sobre o procedimento de atendimento online, documentação e prazos em Direito Administrativo.
-          </p>
+          <h2>
+            Perguntas frequentes
+          </h2>
         </div>
 
         <div class="faq-accordion-container" data-reveal="fade-up">
@@ -39,8 +38,8 @@ export function FAQ({ faq, siteConfig }) {
 
         <div class="faq-support-box" data-reveal="fade-up">
           <div class="support-text">
-            <strong>Conteúdo jurídico contínuo para servidores públicos</strong>
-            <p>Acompanhe análises sobre a legislação dos servidores, decisões judiciais recentes e orientações sobre direitos funcionais no Instagram.</p>
+            <strong>Conteúdo sobre direitos do servidor</strong>
+            <p>No Instagram, explico mudanças na legislação e decisões que afetam servidores de Mato Grosso.</p>
           </div>
           <a href="${siteConfig.instagram}" target="_blank" rel="noopener noreferrer" class="button button-instagram">
             ${Icon({ name: 'instagram', size: 18 })}

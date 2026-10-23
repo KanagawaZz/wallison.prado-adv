@@ -4,28 +4,26 @@ export const lawyer = {
   title: 'Advogado',
   oab: 'OAB/MT 31.726',
   oabLink: 'https://cna.oab.org.br/',
-  role: 'Advogado Especialista em Defesa de Servidores Públicos',
-  spheres: ['Estadual', 'Municipal', 'Federal'],
+  role: 'Advogado',
   state: 'MT',
-  coverage: 'Cuiabá e todo o interior de Mato Grosso (100% online)',
-  serviceMode: '100% online, por WhatsApp e videochamada, com assinatura eletrônica no celular',
-  bio: 'Advogado dedicado com exclusividade à proteção dos direitos de servidores públicos em Mato Grosso. Atua de forma combativa e técnica contra ilegalidades administrativas, congelamento de progressões, processos disciplinares arbitrários e cortes indevidos de vencimentos. Com atendimento direto, seguro e sem intermediários, assegura ao servidor do interior e da capital acesso a uma defesa jurídica sólida, fundamentada e com transparência em cada etapa.',
+  bioParagraph1: 'Sou o Wallison Prado e atuo na defesa de servidores públicos em Mato Grosso, em situações que vão de um processo disciplinar inesperado a uma progressão que nunca saiu do papel.',
+  bioParagraph2: 'Sei que, para o servidor, buscar um direito costuma vir acompanhado de receio: da chefia, dos colegas, de complicar a carreira. Por isso, meu trabalho começa explicando com calma o que a lei prevê para o seu caso, quais caminhos existem e os riscos de cada um.',
   values: [
     { 
-      title: 'Domínio da Legislação Estadual e Municipal', 
-      desc: 'Análise aprofundada do Estatuto dos Servidores de MT e legislações específicas de cada prefeitura e carreira.' 
+      title: 'Leitura atenta do seu estatuto', 
+      desc: 'Cada órgão e cada município têm regras próprias. Analiso a legislação que se aplica a você antes de qualquer orientação.' 
     },
     { 
-      title: 'Discrição e Resguardo da Carreira', 
-      desc: 'Condução ética de cada caso, zelando pela tranquilidade da sua trajetória funcional e pelo respeito rigoroso às garantias do servidor.' 
+      title: 'Discrição', 
+      desc: 'Seu caso é tratado sob sigilo profissional. Nada é comunicado ao seu órgão sem a sua decisão.' 
     },
     { 
-      title: 'Atenção Rigorosa aos Prazos de Prescrição', 
-      desc: 'Agilidade na identificação de direitos para estancar a perda mensal de valores retroativos decorrentes da prescrição de 5 anos da Fazenda Pública.' 
+      title: 'Atenção aos prazos', 
+      desc: 'Valores devidos pela Fazenda Pública prescrevem em 5 anos. Identificar isso cedo faz diferença no que ainda pode ser buscado.' 
     },
     { 
-      title: 'Comunicação Clara e Direta no WhatsApp', 
-      desc: 'Sem juridiquês ou enrolação: você conversa diretamente com o Dr. Wallison, recebe relatórios claros e sabe o andamento do seu caso.' 
+      title: 'Linguagem clara', 
+      desc: 'Explico cada etapa sem juridiquês, para você decidir com segurança.' 
     },
   ],
 };
